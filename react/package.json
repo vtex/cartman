@@ -2,6 +2,7 @@
   "name": "vtex.checkout-debugger",
   "version": "0.0.1",
   "dependencies": {
+    "@vtex/styleguide": "^2.0.0-rc.22",
     "js-cookie": "^2.1.3",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",

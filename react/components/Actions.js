@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Button from '@vtex/styleguide/lib/Button'
 
 class Actions extends Component {
   render() {
     return (
-      <h3>Actions</h3>
+      <div>
+        <Button secondary>Save</Button>
+      </div>
     )
   }
 }
