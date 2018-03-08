@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import Actions from './Actions'
-import Items from './Items'
+import Menu from './Menu'
 
 class Sidebar extends Component {
   render() {
@@ -13,7 +13,10 @@ class Sidebar extends Component {
           <Header />
           <Actions />
           <div>
-            <Items />
+            <Menu title="Read" description="Go further into your Cart data" />
+            <Menu title="Items" description="Manage the items of your Cart" />
+            <Menu title="UTMs" description="Define your Cart UTMs" />
+            <Menu />
           </div>
         </div>
       </div>
