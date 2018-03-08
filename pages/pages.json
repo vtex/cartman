@@ -1,0 +1,18 @@
+{
+  "pages": {
+    "legacy-checkout-debugger": {
+      "path": "/legacy-extensions/checkout-debugger"
+    },
+    "checkout-debugger": {
+      "path": "/checkout-debugger"
+    }
+  },
+  "extensions": {
+    "legacy-checkout-debugger": {
+      "component": "index"
+    },
+    "checkout-debugger": {
+      "component": "index"
+    }
+  }
+}
