@@ -5,8 +5,13 @@ import Button from '@vtex/styleguide/lib/Button'
 class Actions extends Component {
   render() {
     return (
-      <div>
-        <Button secondary>Save</Button>
+      <div className="pa4 w-100 cf">
+        <div className="fl">
+          <Button primary>Copy this Cart</Button>
+        </div>
+        <div className="fr">
+          <Button secondary>Reset Cart</Button>
+        </div>
       </div>
     )
   }
