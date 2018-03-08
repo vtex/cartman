@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 class Header extends Component {
   render() {
     return (
-      <h3>Header</h3>
+      <header className="f3 bg-light-silver serious-black pa5 tc">
+        Cart Debugger
+      </header>
     )
   }
 }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class Debugger extends Component {
   render() {
     return (
-      <h3> Hello!</h3>
+      <h3> Hello Augusto!</h3>
     )
   }
 }
