@@ -64,7 +64,7 @@ export function buildQueryString(jsonObject) {
                 default:
             }
 
-            return query + filters + `P:[ ${priceFrom} TO ${priceTo}]`;
+            return query + filters + `P:[${priceFrom} TO ${priceTo}]`;
         }
     }
 }
@@ -72,7 +72,7 @@ export function buildQueryString(jsonObject) {
 export function selectFromPossibleItems(possibleItems, number, seller){
 	var selectedItems = [];
 
-	const drawList = possibleItems.reduce(selectMany(x=>x.items), []);
+	var drawList = possibleItems.reduce(selectMany(x=>x.items), []);
 
 	for (var i = 0; i < number; i++) {
 		var index = Math.floor(Math.random()*drawList.length);
