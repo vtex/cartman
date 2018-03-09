@@ -73,9 +73,9 @@ export const addSpecifiedSku = (jsonObject, salesChannel) => dispatch => {
   dispatch(addToCart())
   var skuIds = jsonObject["skuIds"].split(",");
   var skuArray = [];
-  for(sku in skuIds){
-    skuArray.push({id:sku, quantity:1, seller:jsonObject["itemsSellers"]});
-  }
+  skuIds.map((skuId) => {
+    skuArray.push({id: skuId.trim(), quantity: jsonObject["itemsQuantity"], seller: jsonObject["sellerId"]});
+  })
   return window.vtexjs.checkout.addToCart(skuArray, null, salesChannel)
   .then(() => {
     dispatch(addedToCart())
