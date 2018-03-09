@@ -7,22 +7,22 @@ import Button from '@vtex/styleguide/lib/Button'
 class Utms extends Component {
   render() {
     return (
-      <div className="ph4">
+      <div className="ph4 mb5">
         <p>
           <Label htmlFor="utmSource">utm_source</Label>
-          <Input htmlProps={{ id: 'utm_source' }} />
+          <Input id="utmSource" />
         </p>
         <p>
           <Label htmlFor="utmCampaign">utm_campaign</Label>
-          <Input htmlProps={{ id: 'utmCampaign' }} />
+          <Input id="utmCampaign" />
         </p>
         <p>
           <Label htmlFor="utmMedium">utm_medium</Label>
-          <Input htmlProps={{ id: 'utmMedium' }} />
+          <Input id="utmMedium" />
         </p>
 
         <div className="tc">
-          <Button primary>Add UTMs to Cart</Button>
+          <Button primary>Add UTMs to Context</Button>
         </div>
       </div>
     )
