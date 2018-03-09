@@ -66,12 +66,12 @@ export function buildQueryString(jsonObject) {
                 default:
             }
 
-            return query + filters + `P:[${priceFrom} TO ${priceTo}]`;
+            return query + filters + `P:[${priceFrom} TO ${priceTo}]&_from=0&_to=49`;
         }
     }
 }
 
-export function selectFromPossibleItems(possibleItems, number, seller){
+export function selectFromPossibleItems(possibleItems, number, seller, quantity){
 
 	var selectedItems = [];
 
@@ -79,7 +79,7 @@ export function selectFromPossibleItems(possibleItems, number, seller){
 
 	for (var i = 0; i < number; i++) {
 		var index = Math.floor(Math.random()*drawList.length);
-		selectedItems.push({id: parseInt(drawList[index].itemId), quantity: 1, seller: seller});
+		selectedItems.push({id: parseInt(drawList[index].itemId), quantity:quantity, seller: seller});
     }
 	return selectedItems
 
