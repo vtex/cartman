@@ -70,29 +70,38 @@ class Items extends Component {
     })
   }
 
+  handleItemsQuantityChange = (e) => {
+    this.setState({
+      ...this.state,
+      itemsQuantity: e.target.value
+    })
+  }
+
   handleSubmit = (e) => {
-    this.props.searchCatalog(this.state)
+    this.props.searchCatalog(this.state, window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm.salesChannel)
   }
 
   render() {
     const {simulation, isLoading} = this.props
     if (isLoading){
       return (
-        <table style={{ height: '40px', width: '40px' }}>
-          <tbody>
-            <tr>
-              <td>
-                <Spinner />
-              </td>
-            </tr>
-          </tbody>
-      </table>
+        <div className="pl5 justify-center">
+          <table style={{ height: '40px', width: '40px' }}>
+            <tbody>
+              <tr>
+                <td>
+                  <Spinner />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       )
     }
 
     return (
       <div>
-        <form className="ph5 mv5" onSubmit={this.handleSubmit}>
+        <div className="ph5 mv5">
           <div className="lh-copy f6 mb6">
             <Alert>
               We'll filter your items by the parameters that you specify.
@@ -105,7 +114,7 @@ class Items extends Component {
           </div>
           <div className="pb4">
             <Label htmlFor="itemsQuantity">Quantity of each item</Label>
-            <Input id="itemsQuantity" placeholder="Default is 1" />
+            <Input onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
           </div>
           <div className="pb4">
             <Label htmlFor="itemsCategory">Category ID</Label>
@@ -142,7 +151,7 @@ class Items extends Component {
           <div className="tc mt5">
             <Button onClick={this.handleSubmit} primary>Add items to Cart</Button>
           </div>
-        </form>
+        </div>
       </div>
     )
   }
