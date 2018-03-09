@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Header from './Header'
 import Actions from './Actions'
 import Menu from './Menu'
+import Utms from './Utms'
 
 class Sidebar extends Component {
   render() {
@@ -13,6 +14,7 @@ class Sidebar extends Component {
           <Header />
           <Actions />
           <div>
+            <Utms />
             <Menu title="Read" description="Go further into your Cart data" />
             <Menu title="Items" description="Manage the items of your Cart" />
             <Menu title="UTMs" description="Define your Cart UTMs" />

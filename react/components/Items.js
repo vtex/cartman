@@ -42,7 +42,7 @@ class Items extends Component {
         </p>
 
         <div className="tc">
-          <Button primary>Add items do Cart</Button>
+          <Button primary>Add items to Cart</Button>
         </div>
       </div>
     )
