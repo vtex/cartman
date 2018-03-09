@@ -7,38 +7,38 @@ import Button from '@vtex/styleguide/lib/Button'
 class Items extends Component {
   render() {
     return (
-      <div className="ph4">
+      <div className="ph4 mb5">
         <p>
           <Label htmlFor="itemsQuantity">Number of items</Label>
-          <Input htmlProps={{ id: 'itemsQuantity' }} />
+          <Input id="itemsQuantity" name="oi" />
         </p>
         <p>
-          <Label htmlFor="itemsCategories">Categories</Label>
-          <Input htmlProps={{ id: 'itemsCategories' }} />
+          <Label htmlFor="itemsCategory">Category</Label>
+          <Input id="itemsCategory" />
         </p>
         <p>
-          <Label htmlFor="itemsBrands">Brands</Label>
-          <Input htmlProps={{ id: 'itemsBrands' }} />
+          <Label htmlFor="itemsBrand">Brand</Label>
+          <Input id="itemsBrand" />
         </p>
         <p>
-          <Label htmlFor="itemsCollections">Collections</Label>
-          <Input htmlProps={{ id: 'itemsCollections' }} />
+          <Label htmlFor="itemsCollection">Collection</Label>
+          <Input id="itemsCollection" />
         </p>
         <p>
-          <Label htmlFor="itemsSellers">Sellers</Label>
-          <Input htmlProps={{ id: 'itemsSellers' }} />
+          <Label htmlFor="itemsSeller">Seller</Label>
+          <Input id="itemsSeller" />
         </p>
         <p>
-          <Label htmlFor="itemsIDs">SKU IDs</Label>
-          <Input htmlProps={{ id: 'itemsIDs' }} />
+          <Label htmlFor="itemsID">SKU ID</Label>
+          <Input id="itemsID" />
         </p>
         <p>
           <Label htmlFor="itemsPriceFrom">Price from</Label>
-          <Input htmlProps={{ id: 'itemsPriceFrom' }} />
+          <Input id="itemsPriceFrom" />
         </p>
         <p>
           <Label htmlFor="itemsPriceUpTo">Price up to</Label>
-          <Input htmlProps={{ id: 'itemsPriceUpTo' }} />
+          <Input id="itemsPriceUpTo" />
         </p>
 
         <div className="tc">
