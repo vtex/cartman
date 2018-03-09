@@ -19,10 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-<<<<<<< HEAD
         addedTocart: true,
-=======
->>>>>>> Fix add items to cart feature
       }
     }
     default:

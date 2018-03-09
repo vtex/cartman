@@ -56,11 +56,7 @@ export const searchCatalog = (jsonObject, salesChannel) => dispatch => {
     .then(checkStatus)
     .then(parseJSON)
     .then((possibleItems) => {
-<<<<<<< HEAD
       dispatch(selectPossibleItems(possibleItems, jsonObject["numberOfItems"], jsonObject["itemsSellers"], jsonObject["itemsQuantity"], salesChannel))
-=======
-      dispatch(selectPossibleItems(possibleItems, jsonObject["numberOfItems"], jsonObject["itemsSellers"]))
->>>>>>> Fix add items to cart feature
     })
 }
 
@@ -73,7 +69,6 @@ export const selectPossibleItems = (possibleItems, number = 0, seller = 1, quant
   })
 }
 
-<<<<<<< HEAD
 export const addSpecifiedSku = (jsonObject, salesChannel) => dispatch => {
   dispatch(addToCart())
   var skuIds = jsonObject["skuIds"].split(",");
@@ -82,14 +77,6 @@ export const addSpecifiedSku = (jsonObject, salesChannel) => dispatch => {
     skuArray.push({id: skuId.trim(), quantity: jsonObject["itemsQuantity"], seller: jsonObject["sellerId"]});
   })
   return window.vtexjs.checkout.addToCart(skuArray, null, salesChannel)
-=======
-export const selectPossibleItems = (possibleItems, number = 0, seller = 1) => dispatch => {
-  dispatch(addToCart())
-  const items = selectFromPossibleItems(possibleItems, number, seller)
-
-  console.log(items)
-  return window.vtexjs.checkout.addToCart(items, null, 1)
->>>>>>> Fix add items to cart feature
   .then(() => {
     dispatch(addedToCart())
   })
