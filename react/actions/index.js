@@ -48,7 +48,7 @@ export const getOrderForm = (account) => dispatch => {
     })
 }
 
-export const searchCatalog = (jsonObject) => dispatch => {
+export const searchCatalog = (jsonObject, salesChannel) => dispatch => {
   dispatch(addToCart())
   return fetch(buildQueryString(jsonObject), {
     credentials: 'same-origin',
@@ -56,27 +56,27 @@ export const searchCatalog = (jsonObject) => dispatch => {
     .then(checkStatus)
     .then(parseJSON)
     .then((possibleItems) => {
-      dispatch(selectPossibleItems(possibleItems, jsonObject["numberOfItems"], jsonObject["itemsSellers"], jsonObject["itemsQuantity"]))
+      dispatch(selectPossibleItems(possibleItems, jsonObject["numberOfItems"], jsonObject["itemsSellers"], jsonObject["itemsQuantity"], salesChannel))
     })
 }
 
-export const selectPossibleItems = (possibleItems, number = 0, seller = 1, quantity=1) => dispatch => {
+export const selectPossibleItems = (possibleItems, number = 0, seller = 1, quantity = 1, salesChannel) => dispatch => {
   dispatch(addToCart())
   const items = selectFromPossibleItems(possibleItems, number, seller, quantity)
-  return window.vtexjs.checkout.addToCart(items, null, 1)
+  return window.vtexjs.checkout.addToCart(items, null, salesChannel)
   .then(() => {
     dispatch(addedToCart())
   })
 }
 
-export const addSpecifiedSku = (jsonObject) => dispatch => {
+export const addSpecifiedSku = (jsonObject, salesChannel) => dispatch => {
   dispatch(addToCart())
   var skuIds = jsonObject["skuIds"].split(",");
   var skuArray = [];
   for(sku in skuIds){
     skuArray.push({id:sku, quantity:1, seller:jsonObject["itemsSellers"]});
   }
-  return window.vtexjs.checkout.addToCart(skuArray, null, 1)
+  return window.vtexjs.checkout.addToCart(skuArray, null, salesChannel)
   .then(() => {
     dispatch(addedToCart())
   })

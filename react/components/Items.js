@@ -70,8 +70,15 @@ class Items extends Component {
     })
   }
 
+  handleItemsQuantityChange = (e) => {
+    this.setState({
+      ...this.state,
+      itemsQuantity: e.target.value
+    })
+  }
+
   handleSubmit = (e) => {
-    this.props.searchCatalog(this.state)
+    this.props.searchCatalog(this.state, window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm.salesChannel)
   }
 
   render() {
@@ -107,7 +114,7 @@ class Items extends Component {
           </div>
           <div className="pb4">
             <Label htmlFor="itemsQuantity">Quantity of each item</Label>
-            <Input id="itemsQuantity" placeholder="Default is 1" />
+            <Input onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
           </div>
           <div className="pb4">
             <Label htmlFor="itemsCategory">Category ID</Label>

@@ -79,7 +79,7 @@ export function selectFromPossibleItems(possibleItems, number, seller, quantity)
 
 	for (var i = 0; i < number; i++) {
 		var index = Math.floor(Math.random()*drawList.length);
-		selectedItems.push({id: parseInt(drawList[index].itemId), quantity:quantity, seller: seller});
+		selectedItems.push({id: parseInt(drawList[index].itemId), quantity: quantity, seller: seller});
     }
 	return selectedItems
 
