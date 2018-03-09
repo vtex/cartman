@@ -26,3 +26,49 @@ export function generateUrl(orderForm, account){
   })
   return  `https://${account}.vtexcommercestable.com.br/checkout/cart/add/${queryString}`
 }
+
+function buildQueryString(environment, jsonObject) {
+
+    var query = environment + ".vtexcommercestable.com.br/api/catalog_system/pub/products/search/"
+
+    if (jsonObject === null) {
+        return query;
+    }
+    else {
+        var productName = "";
+        var priceFrom = 0;
+        var priceTo = 99999;
+        var filters = "?fq=";
+
+        for (param in jsonObject) {
+            switch (param) {
+                case "number":
+                    break;
+                case "priceFrom":
+                    priceFrom = jsonObject["priceFrom"];
+                    break;
+                case "priceTo":
+                    priceTo = jsonObject["priceTo"];
+                    break;
+                case "category":
+                    filters = filters + "C:/" + jsonObject["category"]+"/,";
+                    break;
+                case "brand":
+                    filters = filters + "brandId:" + jsonObject["brandId"] + ",";
+                    break;
+                case "collection":
+                    filters = filters + "productClusterIds:" + jsonObject["collection"] + ",";
+                    break;
+                case "seller":
+                    filters = filters + "sellerId:" + jsonObject["seller"] + ",";
+                    break;
+                case "skuId":
+                    filters = filters + "skuId:" + jsonObject["skuId"] + ",";
+                    break;
+                default:
+            }
+
+            return query + filters + "P:[" + priceFrom + " TO " + priceTo + "]";
+        }
+    }
+}
