@@ -10,7 +10,7 @@ class Items extends Component {
       <div className="ph4 mb5">
         <p>
           <Label htmlFor="itemsQuantity">Number of items</Label>
-          <Input id="itemsQuantity" name="oi" />
+          <Input id="itemsQuantity" />
         </p>
         <p>
           <Label htmlFor="itemsCategory">Category</Label>
