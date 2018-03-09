@@ -6,6 +6,7 @@ import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 import Alert from '@vtex/styleguide/lib/Alert'
 import { addSpecifiedSku } from '../actions/index'
+import Spinner from '@vtex/styleguide/lib/Spinner'
 
 class SkuItems extends Component {
   constructor(props) {
@@ -42,6 +43,23 @@ class SkuItems extends Component {
   }
 
   render() {
+    const {simulation, isLoading} = this.props
+    if (isLoading){
+      return (
+        <div className="pl5 justify-center">
+          <table style={{ height: '40px', width: '40px' }}>
+            <tbody>
+              <tr>
+                <td>
+                  <Spinner />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+
     return (
       <div>
         <div className="ph5 mv5" onSubmit={this.handleSubmit}>
@@ -77,7 +95,8 @@ SkuItems.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  simulation: state.simulation
+  simulation: state.simulation,
+  isLoading: state.isLoading,
 })
 
 export default connect(mapStateToProps, {
