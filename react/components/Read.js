@@ -9,45 +9,36 @@ class Read extends Component {
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
     const { orderForm } = window.vtexjs.checkout
     return (
-      <div className="ph4 mb5">
-        <h1>Cart context</h1>
-        <h2>UTMs</h2>
+      <div className="ph5 mv5">
+        <h2 className="f3">UTMs</h2>
         {orderForm.marketingData && orderForm.marketingData.utmSource && (
-          <p>
-            utm_source: {orderForm.marketingData.utmSource}
-          </p>)}
+          <p>utm_source: {orderForm.marketingData.utmSource}</p>
+        )}
         {orderForm.marketingData && orderForm.marketingData.utmMedium && (
-          <p>
-            utm_medium: {orderForm.marketingData.utmMedium}
-          </p>)}
+          <p>utm_medium: {orderForm.marketingData.utmMedium}</p>
+        )}
         {orderForm.marketingData && orderForm.marketingData.utmCampaign && (
-          <p>
-            utm_medium: {orderForm.marketingData.utmCampaign}
-          </p>)}
-          <h2>Applied benefits</h2>
+          <p>utm_medium: {orderForm.marketingData.utmCampaign}</p>
+        )}
+
+        { orderForm.ratesAndBenefitsData && orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.length > 0 && <h2 className="f3">Benefits</h2> }
+
         {orderForm.ratesAndBenefitsData && orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.map((benefit) => (
-              <div key={benefit.id}>
-                <div>
-                  {benefit.name}
-                </div>
-              </div>
-        ))}
-        <h1>Items</h1>
-        {orderForm.items.map((item) => (
-            <div key={item.uniqueId}>
-              <div>
-                <h2>{item.skuName}</h2>
-              </div>
-              <div className="pa2">
-                SKU Id: {item.id}
-              </div>
-              <div className="pa2">
-                Quantity: {item.quantity}
-              </div>
-              <div className="pa2">
-                Seller: {item.seller}
-              </div>
+          <div key={benefit.id}>
+            <div>
+              {benefit.name}
             </div>
+          </div>
+        ))}
+
+        <h2 className="f3">Items</h2>
+        {orderForm.items.map((item) => (
+          <div className="mb4" key={item.uniqueId}>
+            <p className="f5 fw5 lh-title">{item.skuName}</p>
+            <p>SKU Id: {item.id}</p>
+            <p>Quantity: {item.quantity}</p>
+            <p>Seller: {item.seller}</p>
+          </div>
         ))}
       </div>
     )
