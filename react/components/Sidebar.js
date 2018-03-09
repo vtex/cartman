@@ -49,7 +49,7 @@ class Sidebar extends Component {
       <div className="">
         {
           this.state.isOpen && (
-            <div className="wrapper fixed right-0 bottom-2-m w-100 mw6-m pl7-m pr5-m z-max">
+            <div className="debug fixed right-0 bottom-2-m w-100 mw6-m pl7-m pr5-m z-max">
               <div className="h-100 br0 br3-m bg-white shadow-1-m ml7-m mr4-m">
                 <div className="flex flex-column h-100">
                   <div className="flex-none">
