@@ -83,22 +83,6 @@ class Items extends Component {
 
   render() {
     const {simulation, isLoading} = this.props
-    if (isLoading){
-      return (
-        <div className="pl5 justify-center">
-          <table style={{ height: '40px', width: '40px' }}>
-            <tbody>
-              <tr>
-                <td>
-                  <Spinner />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      )
-    }
-
     return (
       <div>
         <div className="ph5 mv5">
@@ -144,7 +128,25 @@ class Items extends Component {
           </div>
 
           <div className="tc mt5">
-            <Button onClick={this.handleSubmit} primary>Add items to Cart</Button>
+            {
+              isLoading
+              ? (
+                <Button disabled>
+                  <span className="flex items-center">
+                    <svg className="loader flex-none mr3" version="1.1" x="0px" y="0px" viewBox="0 0 24 24" width="16" height="16">
+                      <g transform="rotate(57.229285712486934 12 12)">
+                        <circle opacity="0.4" fill="none" stroke="#111111" cx="12" cy="12" r="11"></circle>
+                        <path fill="none" stroke="#111111" d="M12,1 c6.0751324,0,11,4.9248676,11,11"></path>
+                      </g>
+                    </svg>
+                    <span className="flex-auto">
+                      Add items to Cart
+                    </span>
+                  </span>
+                </Button>
+              )
+              : <Button onClick={this.handleSubmit} primary>Add items to Cart</Button>
+            }
           </div>
         </div>
       </div>
