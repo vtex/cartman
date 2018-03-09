@@ -85,6 +85,7 @@ class Items extends Component {
     const {simulation, isLoading} = this.props
     if (isLoading){
       return (
+<<<<<<< HEAD
         <div className="pl5 justify-center">
           <table style={{ height: '40px', width: '40px' }}>
             <tbody>
@@ -96,6 +97,17 @@ class Items extends Component {
             </tbody>
           </table>
         </div>
+=======
+        <table style={{ height: '40px', width: '40px' }}>
+          <tbody>
+            <tr>
+              <td>
+                <Spinner />
+              </td>
+            </tr>
+          </tbody>
+      </table>
+>>>>>>> Fix add items to cart feature
       )
     }
 

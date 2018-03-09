@@ -71,7 +71,11 @@ export function buildQueryString(jsonObject) {
     }
 }
 
+<<<<<<< HEAD
 export function selectFromPossibleItems(possibleItems, number, seller, quantity){
+=======
+export function selectFromPossibleItems(possibleItems, number, seller){
+>>>>>>> Fix add items to cart feature
 
 	var selectedItems = [];
 
@@ -79,7 +83,11 @@ export function selectFromPossibleItems(possibleItems, number, seller, quantity)
 
 	for (var i = 0; i < number; i++) {
 		var index = Math.floor(Math.random()*drawList.length);
+<<<<<<< HEAD
 		selectedItems.push({id: parseInt(drawList[index].itemId), quantity: quantity, seller: seller});
+=======
+		selectedItems.push({id: parseInt(drawList[index].itemId), quantity: 1, seller: seller});
+>>>>>>> Fix add items to cart feature
     }
 	return selectedItems
 
