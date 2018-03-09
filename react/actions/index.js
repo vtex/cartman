@@ -55,17 +55,18 @@ export const searchCatalog = (jsonObject) => dispatch => {
     .then(checkStatus)
     .then(parseJSON)
     .then((possibleItems) => {
-      dispatch(selectPossibleItems(possibleItems, jsonObject["number"], jsonObject["seller"]))
+      dispatch(selectPossibleItems(possibleItems, jsonObject["numberOfItems"], jsonObject["itemsSellers"]))
     })
 
 }
 
-export const selectPossibleItems = (possibleItems, number, seller) => dispatch => {
+export const selectPossibleItems = (possibleItems, number = 0, seller = 1) => dispatch => {
   dispatch(addToCart())
   const items = selectFromPossibleItems(possibleItems, number, seller)
-  Promise.map(items, (item) => {
-    return window.vtexjs.checkout.addToCart(item, null, 1)
-  }).then(() => {
+
+  console.log(items)
+  return window.vtexjs.checkout.addToCart(items, null, 1)
+  .then(() => {
     dispatch(addedToCart())
   })
 }

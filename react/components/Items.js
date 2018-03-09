@@ -5,6 +5,7 @@ import Label from './Label'
 import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 import { searchCatalog } from '../actions/index'
+import Spinner from '@vtex/styleguide/lib/Spinner'
 
 class Items extends Component {
   constructor(props) {
@@ -73,6 +74,21 @@ class Items extends Component {
   }
 
   render() {
+    const {simulation, isLoading} = this.props
+    if (isLoading){
+      return (
+        <table style={{ height: '40px', width: '40px' }}>
+          <tbody>
+            <tr>
+              <td>
+                <Spinner />
+              </td>
+            </tr>
+          </tbody>
+      </table>
+      )
+    }
+
     return (
       <div className="ph4 mb5">
         <p>
@@ -121,7 +137,9 @@ Items.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  simulation: state.simulation
+  simulation: state.simulation,
+  isLoading: state.isLoading,
+  addedToCart: state.addedToCart,
 })
 
 export default connect(mapStateToProps, {

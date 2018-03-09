@@ -1,5 +1,5 @@
 import * as types from '../actions/types'
-const initialState = {}
+const initialState = {isLoading: true}
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -7,6 +7,18 @@ export default (state = initialState, action) => {
       return {
         ...state,
         orderForm: action.orderForm,
+      }
+    }
+    case types.ADD_TO_CART: {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    case types.ADDED_TO_CART: {
+      return {
+        ...state,
+        isLoading: false,
       }
     }
     default:

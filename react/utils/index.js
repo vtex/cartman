@@ -41,25 +41,25 @@ export function buildQueryString(jsonObject) {
         var param = ""
         for (param in jsonObject) {
             switch (param) {
-                case "number":
+                case "numberOfItems":
                     break;
                 case "priceFrom":
                     priceFrom = jsonObject["priceFrom"];
                     break;
-                case "priceTo":
-                    priceTo = jsonObject["priceTo"];
+                case "priceUp":
+                    priceTo = jsonObject["priceUp"];
                     break;
-                case "category":
-                    filters = filters + "C:/" + jsonObject["category"]+"/,";
+                case "categories":
+                    filters = filters + "C:/" + jsonObject["categories"]+"/,";
                     break;
                 case "brand":
-                    filters = filters + "brandId:" + jsonObject["brandId"] + ",";
+                    filters = filters + "brandId:" + jsonObject["brands"] + ",";
                     break;
-                case "collection":
-                    filters = filters + "productClusterIds:" + jsonObject["collection"] + ",";
+                case "collections":
+                    filters = filters + "productClusterIds:" + jsonObject["collections"] + ",";
                     break;
-                case "seller":
-                    filters = filters + "sellerId:" + jsonObject["seller"] + ",";
+                case "itemsSellers":
+                    filters = filters + "sellerId:" + jsonObject["itemsSellers"] + ",";
                     break;
                 default:
             }
@@ -70,17 +70,15 @@ export function buildQueryString(jsonObject) {
 }
 
 export function selectFromPossibleItems(possibleItems, number, seller){
+
 	var selectedItems = [];
 
 	var drawList = possibleItems.reduce(selectMany(x=>x.items), []);
 
 	for (var i = 0; i < number; i++) {
 		var index = Math.floor(Math.random()*drawList.length);
-		selectedItems.push(drawList[index].itemId);
+		selectedItems.push({id: parseInt(drawList[index].itemId), quantity: 1, seller: seller});
     }
-
-    console.log(selectedItems)
-
 	return selectedItems
 
 }
