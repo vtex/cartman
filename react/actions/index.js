@@ -83,8 +83,8 @@ export const addSpecifiedSku = (jsonObject, salesChannel) => dispatch => {
 }
 
 export const setUTMData = (jsonObject) => dispatch => {
-  dispatch(sendAttachment())
-  
+  dispatch(addToCart())
+
   return window.vtexjs.checkout.sendAttachment('marketingData', jsonObject)
   .then(() => {
     dispatch(addedToCart())
