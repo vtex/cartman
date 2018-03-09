@@ -75,7 +75,7 @@ class Items extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="ph4 mb5">
+        <div className="ph5 mv5">
           <div className="pb4">
             <Label htmlFor="itemsQuantity">Number of items</Label>
             <Input onChange={this.handleNumberOfItemsChange} id="itemsQuantity"/>
@@ -100,13 +100,16 @@ class Items extends Component {
             <Label htmlFor="itemsIDs">SKU IDs</Label>
             <Input onChange={this.handleItemsIdsChange} id="itemsIDs" />
           </div>
-          <div className="pb4">
-            <Label htmlFor="itemsPriceFrom">Price from</Label>
-            <Input onChange={this.handlePriceFromChange} id="itemsPriceFrom" />
-          </div>
-          <div className="pb4">
-            <Label htmlFor="itemsPriceUpTo">Price up to</Label>
-            <Input onChange={this.handlePriceUpChange} id="itemsPriceUpTo" />
+
+          <div className="pb4 cf">
+            <div className="fl w-50 pr3">
+              <Label htmlFor="itemsPriceFrom">Price from</Label>
+              <Input onChange={this.handlePriceFromChange} id="itemsPriceFrom" />
+            </div>
+            <div className="fl w-50 pl3">
+              <Label htmlFor="itemsPriceUpTo">Price up to</Label>
+              <Input onChange={this.handlePriceUpChange} id="itemsPriceUpTo" />
+            </div>
           </div>
 
         <div className="tc">

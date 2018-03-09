@@ -42,7 +42,7 @@ class Sidebar extends Component {
         {
           this.state.isOpen && (
             <div className="wrapper fixed right-0 bottom-2-m w-100 mw6-m pl7-m pr5-m z-max">
-              <div className="h-100 br0 br3-m bg-near-white shadow-1-m ml7-m mr4-m">
+              <div className="h-100 br0 br3-m bg-white shadow-1-m ml7-m mr4-m">
                 <div className="flex flex-column h-100">
                   <div className="flex-none">
                     <Header
@@ -54,13 +54,17 @@ class Sidebar extends Component {
                   <div className="flex-none">
                     <Actions />
                   </div>
-                  <div className="flex-auto overflow-auto">
+                  <div className="relative flex-auto overflow-auto">
                     {
                       this.state.page === 'home' && (
-                        <div className="bt b--light-gray">
+                        <div>
                           <Menu onClick={this.handleGoToRead} title="Read" description="Go further into your Cart data" />
                           <Menu onClick={this.handleGoToItems} title="Items" description="Manage the items of your Cart" />
                           <Menu onClick={this.handleGoToUtms} title="UTMs" description="Define your Cart UTMs" />
+
+                          <div className="absolute bottom-0 tc mb7 w-100 rebel-pink lh-copy f6">
+                            Cart Debugger is NOT visible to customers.
+                          </div>
                         </div>
                       )
                     }
@@ -75,7 +79,7 @@ class Sidebar extends Component {
         {
           this.state.isOpen
           ? (
-            <button className="dn db-m fixed right-2 bottom-2 shadow-1 pa5 br-100 pointer bg-near-white" onClick={this.handleToggleSidebarView}>
+            <button className="dn db-m fixed right-2 bottom-2 bn shadow-1 pa5 br-100 pointer bg-near-white" onClick={this.handleToggleSidebarView}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <g fill="#111111">
                   <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
@@ -84,7 +88,7 @@ class Sidebar extends Component {
             </button>
           )
           : (
-            <button className="fixed right-2 bottom-2 shadow-1 pa5 br-100 pointer bg-blue" onClick={this.handleToggleSidebarView}>
+            <button className="fixed right-2 bottom-2 bn shadow-1 pa5 br-100 pointer bg-blue" onClick={this.handleToggleSidebarView}>
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24" width="24" height="24">
                 <line data-cap="butt" fill="none" stroke="#ffffff" x1="12" y1="7" x2="12" y2="23"></line>
                 <line data-cap="butt" fill="none" stroke="#ffffff" x1="1" y1="13" x2="4" y2="13"></line>

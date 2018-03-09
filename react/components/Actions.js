@@ -35,7 +35,7 @@ class Actions extends Component {
 
   render() {
       return (
-        <div className="pa4 w-100 cf">
+        <div className="pa5 w-100 cf bb b--light-gray">
           <div className="fl">
             <CopyToClipboard text={generateUrl((window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm) || this.props.orderForm, this.context.account)}
                onCopy={this.handleCopyCartButton}>
