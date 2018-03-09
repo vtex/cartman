@@ -24,7 +24,7 @@ class Sidebar extends Component {
   }
 
   handleGoToRead = () => {
-    this.setState({ page: 'items' })
+    this.setState({ page: 'read' })
   }
 
   handleGoToItems = () => {
