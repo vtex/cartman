@@ -5,6 +5,7 @@ import Actions from './Actions'
 import Menu from './Menu'
 import Items from './Items'
 import Utms from './Utms'
+import Read from './Read'
 
 import styles from '../theme.css'
 
@@ -70,6 +71,7 @@ class Sidebar extends Component {
                         </div>
                       )
                     }
+                    { this.state.page === 'read' && <Read /> }
                     { this.state.page === 'items' && <Items /> }
                     { this.state.page === 'utms' && <Utms /> }
                   </div>
