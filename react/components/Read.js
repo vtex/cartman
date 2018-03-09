@@ -6,35 +6,48 @@ import Button from '@vtex/styleguide/lib/Button'
 
 class Read extends Component {
   render() {
+    if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
     return (
       <div className="ph4 mb5">
         <h1>Cart context</h1>
         <h2>UTMs</h2>
-        <p>
-          utm_source: instagram
-        </p>
-        <p>
-          utm_medium: newsletter
-        </p>
-        <p>
-          utm_campaign: Dia das Mães
-        </p>
+        {orderForm.marketingData && orderForm.marketingData.utmSource && (
+          <p>
+            utm_source: {orderForm.marketingData.utmSource}
+          </p>)}
+        {orderForm.marketingData && orderForm.marketingData.utmMedium && (
+          <p>
+            utm_medium: {orderForm.marketingData.utmMedium}
+          </p>)}
+        {orderForm.marketingData && orderForm.marketingData.utmCampaign && (
+          <p>
+            utm_medium: {orderForm.marketingData.utmCampaign}
+          </p>)}
+          <h2>Applied benefits</h2>
+        {orderForm.ratesAndBenefitsData && orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.map((benefit) => (
+              <div key={benefit.id}>
+                <div>
+                  {benefit.name}
+                </div>
+              </div>
+        ))}
         <h1>Items</h1>
-        <h2><marquee behavior="alternate">Novalgina</marquee></h2>
-        <h3>Applied benefits</h3>
-        <p>
-          Frete Grátis
-        </p>
-        <p>
-          10% Primeira Compra
-        </p>
-        <p>
-          20% Dia das Mães
-        </p>
-        <h3>Seller</h3>
-        <p>
-          Drogaria SP
-        </p>
+        {orderForm.items.map((item) => (
+            <div key={item.uniqueId}>
+              <div>
+                <h2>{item.skuName}</h2>
+              </div>
+              <div className="pa2">
+                SKU Id: {item.id}
+              </div>
+              <div className="pa2">
+                Quantity: {item.quantity}
+              </div>
+              <div className="pa2">
+                Seller: {item.seller}
+              </div>
+            </div>
+        ))}
       </div>
     )
   }
