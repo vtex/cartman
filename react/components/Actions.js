@@ -34,11 +34,6 @@ class Actions extends Component {
   }
 
   render() {
-      if (!window.vtexjs && !this.props.orderForm){
-        return (
-          <h2> Loading </h2>
-        )
-      }
       return (
         <div className="pa4 w-100 cf">
           <div className="fl">
@@ -47,7 +42,7 @@ class Actions extends Component {
               {
                 this.state.copied === true
                 ? <Button disabled>Copied to Clipboard!</Button>
-                : <Button primary>Copy link to this Cart</Button>
+                : <Button primary>Copy Cart link</Button>
               }
             </CopyToClipboard>
           </div>
