@@ -132,11 +132,6 @@ class Items extends Component {
             <Label htmlFor="itemsSeller">Seller ID</Label>
             <Input onChange={this.handleItemsSellersChange} id="itemsSeller" />
           </div>
-          <div className="pb4">
-            <Label htmlFor="itemsIDs">SKU IDs</Label>
-            <Input onChange={this.handleItemsIdsChange} id="itemsIDs" placeholder="11111, 12345, 54321" />
-          </div>
-
           <div className="pb4 cf">
             <div className="fl w-50 pr3">
               <Label htmlFor="itemsPriceFrom">Price from</Label>
