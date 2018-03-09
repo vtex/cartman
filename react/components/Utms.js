@@ -8,15 +8,15 @@ class Utms extends Component {
   render() {
     return (
       <div className="ph4 mb5">
-        <p>
+        <p className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
           <Input id="utmSource" />
         </p>
-        <p>
+        <p className="pb4">
           <Label htmlFor="utmCampaign">utm_campaign</Label>
           <Input id="utmCampaign" />
         </p>
-        <p>
+        <p className="pb4">
           <Label htmlFor="utmMedium">utm_medium</Label>
           <Input id="utmMedium" />
         </p>
