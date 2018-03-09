@@ -7,9 +7,24 @@ import { getOrderForm } from '../actions/index'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 class Actions extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      copied: 'false'
+    }
+  }
+
 
   handleResetCartButton = () => {
     window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.removeAllItems()
+  }
+
+  handleCopyCartButton = () => {
+    this.setState({copied: true})
+    setTimeout(
+      function() { this.setState({copied: false});
+    }.bind(this), 2000)
   }
 
   componentDidMount(){
@@ -28,8 +43,12 @@ class Actions extends Component {
         <div className="pa4 w-100 cf">
           <div className="fl">
             <CopyToClipboard text={generateUrl((window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm) || this.props.orderForm, this.context.account)}
-              onCopy={() => this.setState({copied: true})}>
-              <Button onCopy={this.handleCopyCartButton} primary>Copy this Cart</Button>
+               onCopy={this.handleCopyCartButton}>
+              {
+                this.state.copied === true
+                ? <Button disabled>Copied to Clipboard!</Button>
+                : <Button primary>Copy link to this Cart</Button>
+              }
             </CopyToClipboard>
           </div>
           <div className="fr">
