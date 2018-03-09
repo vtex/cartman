@@ -41,48 +41,39 @@ export function buildQueryString(jsonObject) {
         var priceTo = 99999;
         var filters = "?fq=";
         var param = ""
-        for (param in jsonObject) {
-            switch (param) {
-                case "numberOfItems":
-                    break;
-                case "priceFrom":
-                    priceFrom = jsonObject["priceFrom"];
-                    break;
-                case "priceUp":
-                    priceTo = jsonObject["priceUp"];
-                    break;
-                case "categories":
-                    filters = filters + "C:/" + jsonObject["categories"]+"/,";
-                    break;
-                case "brand":
-                    filters = filters + "brandId:" + jsonObject["brands"] + ",";
-                    break;
-                case "collections":
-                    filters = filters + "productClusterIds:" + jsonObject["collections"] + ",";
-                    break;
-                case "itemsSellers":
-                    filters = filters + "sellerId:" + jsonObject["itemsSellers"] + ",";
-                    break;
-                default:
-            }
 
-            return query + filters + `P:[${priceFrom} TO ${priceTo}]&_from=0&_to=49`;
+        if(jsonObject.hasOwnProperty("priceFrom")){
+          priceFrom = jsonObject["priceFrom"];
         }
+        if (jsonObject.hasOwnProperty("priceUp")){
+          priceTo = jsonObject["priceUp"];
+        }
+        if(jsonObject.hasOwnProperty("categories")){
+          filters = filters + "C:/" + jsonObject["categories"]+"/,";
+        }
+        if(jsonObject.hasOwnProperty("brand")){
+          filters = filters + "brandId:" + jsonObject["brands"] + ",";
+        }
+        if(jsonObject.hasOwnProperty("collections")){
+          filters = filters + "productClusterIds:" + jsonObject["collections"] + ",";
+        }
+        if(jsonObject.hasOwnProperty("itemsSellers")){
+          filters = filters + "sellerId:" + jsonObject["itemsSellers"] + ",";
+        }
+        return query + filters + `P:[${priceFrom} TO ${priceTo}]&_from=0&_to=49`;
     }
 }
 
-export function selectFromPossibleItems(possibleItems, number, seller, quantity){
+export function selectFromPossibleItems(possibleItems, number = 1, seller, quantity){
 
 	var selectedItems = [];
-
 	var drawList = possibleItems.reduce(selectMany(x=>x.items), []);
 
 	for (var i = 0; i < number; i++) {
-		var index = Math.floor(Math.random()*drawList.length);
+		var index = Math.floor(Math.random() * drawList.length);
 		selectedItems.push({id: parseInt(drawList[index].itemId), quantity: quantity, seller: seller});
     }
 	return selectedItems
-
 }
 
 function selectMany(f){
