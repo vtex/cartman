@@ -15,7 +15,7 @@ class Items extends Component {
   handleNumberOfItemsChange = (e) => {
     this.setState({
       ...this.state,
-      numberOfItems: e.target.value
+      numberOfItems: e.target.value === null ? 1 : e.target.value
     })
   }
 
