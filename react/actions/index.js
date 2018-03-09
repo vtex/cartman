@@ -55,17 +55,27 @@ export const searchCatalog = (jsonObject) => dispatch => {
     .then(checkStatus)
     .then(parseJSON)
     .then((possibleItems) => {
-      dispatch(selectPossibleItems(possibleItems, jsonObject["numberOfItems"], jsonObject["itemsSellers"]))
+      dispatch(selectPossibleItems(possibleItems, jsonObject["numberOfItems"], jsonObject["itemsSellers"], jsonObject["itemsQuantity"]))
     })
-
 }
 
-export const selectPossibleItems = (possibleItems, number = 0, seller = 1) => dispatch => {
+export const selectPossibleItems = (possibleItems, number = 0, seller = 1, quantity=1) => dispatch => {
   dispatch(addToCart())
-  const items = selectFromPossibleItems(possibleItems, number, seller)
-
-  console.log(items)
+  const items = selectFromPossibleItems(possibleItems, number, seller, quantity)
   return window.vtexjs.checkout.addToCart(items, null, 1)
+  .then(() => {
+    dispatch(addedToCart())
+  })
+}
+
+export const addSpecifiedSku = (jsonObject) => dispatch => {
+  dispatch(addToCart())
+  var skuIds = jsonObject["skuIds"].split(",");
+  var skuArray = [];
+  for(sku in skuIds){
+    skuArray.push({id:sku, quantity:1, seller:jsonObject["itemsSellers"]});
+  }
+  return window.vtexjs.checkout.addToCart(skuArray, null, 1)
   .then(() => {
     dispatch(addedToCart())
   })
