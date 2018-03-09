@@ -12,7 +12,7 @@ class Header extends Component {
             </svg>
           </button>
         ) }
-        { this.props.page === 'home' && <span>Cart Debugger</span>}
+        { this.props.page === 'home' && <span>Cart Toolkit</span>}
         { this.props.page === 'read' && <span>View Cart details</span>}
         { this.props.page === 'skuItems' && <span>Add items by SKU ID</span>}
         { this.props.page === 'items' && <span>Add Random Items</span>}

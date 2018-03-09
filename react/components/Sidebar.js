@@ -76,7 +76,7 @@ class Sidebar extends Component {
                           <Menu onClick={this.handleGoToUtms} title="Set UTMs" description="Define your Cart UTMs" />
 
                           <div className="absolute bottom-0 tc mb7 w-100 rebel-pink lh-copy f6">
-                            Cart Debugger is NOT visible to customers.
+                            Cart Toolkit is NOT visible to your customers.
                           </div>
                         </div>
                       )
