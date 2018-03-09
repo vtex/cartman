@@ -1,0 +1,25 @@
+.wrapper {
+  bottom: 0;
+  top: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .wrapper {
+    margin-bottom: 110px;
+    height: 740px;
+    max-height: 80vh;
+    top: initial;
+  }
+}
+
+.menu-item .menu-item-icon-white {
+  display: none;
+}
+
+.menu-item:hover .menu-item-icon-black {
+  display: none;
+}
+
+.menu-item:hover .menu-item-icon-white {
+  display: block;
+}

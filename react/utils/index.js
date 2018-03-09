@@ -1,16 +1,18 @@
 function readOrderForm(orderForm){
   let orderFormList = []
-  orderForm.items.map((item) => {
-    orderFormList =
-    [
-      ...orderFormList,
-      {
-        skuId : item.id,
-        quantity: item.quantity,
-        seller: item.seller,
-      }
-    ]
-  })
+  if (orderForm && orderForm.items) {
+    orderForm.items.map((item) => {
+      orderFormList =
+      [
+        ...orderFormList,
+        {
+          skuId : item.id,
+          quantity: item.quantity,
+          seller: item.seller,
+        }
+      ]
+    })
+  }
   return orderFormList
 }
 

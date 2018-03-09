@@ -7,9 +7,24 @@ import { getOrderForm } from '../actions/index'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 class Actions extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      copied: 'false'
+    }
+  }
+
 
   handleResetCartButton = () => {
     window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.removeAllItems()
+  }
+
+  handleCopyCartButton = () => {
+    this.setState({copied: true})
+    setTimeout(
+      function() { this.setState({copied: false});
+    }.bind(this), 2000)
   }
 
   componentDidMount(){
@@ -19,22 +34,21 @@ class Actions extends Component {
   }
 
   render() {
-      if (!window.vtexjs && !this.props.orderForm){
-        return (
-          <h2> Loading </h2>
-        )
-      }
       return (
-        <div className="pa4 w-100 cf">
-          <div className="fl">
+        <div className="pa5 w-100 cf bb b--light-gray tc">
+          <span className="mr4">
             <CopyToClipboard text={generateUrl((window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm) || this.props.orderForm, this.context.account)}
-              onCopy={() => this.setState({copied: true})}>
-              <Button onCopy={this.handleCopyCartButton} primary>Copy this Cart</Button>
+               onCopy={this.handleCopyCartButton}>
+              {
+                this.state.copied === true
+                ? <Button disabled>Copied to Clipboard!</Button>
+                : <Button primary>Copy Cart link</Button>
+              }
             </CopyToClipboard>
-          </div>
-          <div className="fr">
+          </span>
+          <span>
             <Button onClick={this.handleResetCartButton} secondary>Reset Cart</Button>
-          </div>
+          </span>
         </div>
     )
   }

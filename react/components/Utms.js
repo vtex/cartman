@@ -7,24 +7,24 @@ import Button from '@vtex/styleguide/lib/Button'
 class Utms extends Component {
   render() {
     return (
-      <div className="ph4 mb5">
-        <p>
+      <form className="ph5 mv5">
+        <div className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
           <Input id="utmSource" />
-        </p>
-        <p>
+        </div>
+        <div className="pb4">
           <Label htmlFor="utmCampaign">utm_campaign</Label>
           <Input id="utmCampaign" />
-        </p>
-        <p>
+        </div>
+        <div className="pb4">
           <Label htmlFor="utmMedium">utm_medium</Label>
           <Input id="utmMedium" />
-        </p>
-
-        <div className="tc">
-          <Button primary>Add UTMs to Context</Button>
         </div>
-      </div>
+
+        <div className="tc mt5">
+          <Button primary>Set UTMs</Button>
+        </div>
+      </form>
     )
   }
 }
