@@ -27,8 +27,7 @@ export function generateUrl(orderForm, account){
   return  `https://${account}.vtexcommercestable.com.br/checkout/cart/add/${queryString}`
 }
 
-export function buildQueryString(environment, jsonObject) {
-
+export function buildQueryString(jsonObject) {
     var query = "/api/catalog_system/pub/products/search/";
 
     if (jsonObject === null) {
@@ -39,7 +38,7 @@ export function buildQueryString(environment, jsonObject) {
         var priceFrom = 0;
         var priceTo = 99999;
         var filters = "?fq=";
-
+        var param = ""
         for (param in jsonObject) {
             switch (param) {
                 case "number":
@@ -65,7 +64,7 @@ export function buildQueryString(environment, jsonObject) {
                 default:
             }
 
-            return query + filters + "P:[" + priceFrom + " TO " + priceTo + "]";
+            return query + filters + `P:[ ${priceFrom} TO ${priceTo}]`;
         }
     }
 }
@@ -73,14 +72,16 @@ export function buildQueryString(environment, jsonObject) {
 export function selectFromPossibleItems(possibleItems, number, seller){
 	var selectedItems = [];
 
-	drawList = possibleItems.reduce(selectMany(x=>x.items), []);
+	const drawList = possibleItems.reduce(selectMany(x=>x.items), []);
 
 	for (var i = 0; i < number; i++) {
 		var index = Math.floor(Math.random()*drawList.length);
 		selectedItems.push(drawList[index].itemId);
-	}
-	
-	return {"items":selectedItems,"seller":seller};
+    }
+
+    console.log(selectedItems)
+
+	return selectedItems
 
 }
 
