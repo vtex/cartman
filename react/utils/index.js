@@ -27,9 +27,9 @@ export function generateUrl(orderForm, account){
   return  `https://${account}.vtexcommercestable.com.br/checkout/cart/add/${queryString}`
 }
 
-function buildQueryString(environment, jsonObject) {
+export function buildQueryString(environment, jsonObject) {
 
-    var query = environment + ".vtexcommercestable.com.br/api/catalog_system/pub/products/search/"
+    var query = "/api/catalog_system/pub/products/search/";
 
     if (jsonObject === null) {
         return query;
@@ -62,13 +62,30 @@ function buildQueryString(environment, jsonObject) {
                 case "seller":
                     filters = filters + "sellerId:" + jsonObject["seller"] + ",";
                     break;
-                case "skuId":
-                    filters = filters + "skuId:" + jsonObject["skuId"] + ",";
-                    break;
                 default:
             }
 
             return query + filters + "P:[" + priceFrom + " TO " + priceTo + "]";
         }
     }
+}
+
+export function selectFromPossibleItems(possibleItems, number, seller){
+	var selectedItems = [];
+
+	drawList = possibleItems.reduce(selectMany(x=>x.items), []);
+
+	for (var i = 0; i < number; i++) {
+		var index = Math.floor(Math.random()*drawList.length);
+		selectedItems.push(drawList[index].itemId);
+	}
+	
+	return {"items":selectedItems,"seller":seller};
+
+}
+
+function selectMany(f){
+   return function (acc,b) {
+       return acc.concat(f(b))
+   }
 }

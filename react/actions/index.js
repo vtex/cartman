@@ -3,6 +3,8 @@ import {
   parseJSON,
   checkStatus,
   getCheckoutCookie,
+  buildQueryString,
+  selectFromPossibleItems,
 } from './utils'
 
 import {
@@ -26,4 +28,21 @@ export const getOrderForm = (account) => dispatch => {
       dispatch(receiveOrderForm(orderForm))
     })
 
+}
+
+
+export const getPossibleItems = (jsonObject) => dispatch => {
+  return fetch(buildQueryString(account,jsonObject), {
+    credentials: 'same-origin',
+  })
+    .then(checkStatus)
+    .then(parseJSON)
+    .then((possibleItems) => {
+      dispatch(selectFromPossibleItems(possibleItems, jsonObject["number"], jsonObject["seller"]))
+    })
+
+}
+
+export const selectFromPossibleItems = (possibleItems, number, seller) => dispatch {
+  
 }
