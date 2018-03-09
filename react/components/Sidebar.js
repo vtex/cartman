@@ -18,7 +18,9 @@ class Sidebar extends Component {
               <Actions />
             </div>
             <div className="flex-auto overflow-auto">
-              <Items />
+              <Menu title="Read" description="Go further into your Cart data" />
+              <Menu title="Items" description="Manage the items of your Cart" />
+              <Menu title="UTMs" description="Define your Cart UTMs" />
             </div>
           </div>
         </div>
