@@ -60,7 +60,7 @@ export const searchCatalog = (jsonObject, salesChannel) => dispatch => {
     })
 }
 
-export const selectPossibleItems = (possibleItems, number = 0, seller = 1, quantity = 1, salesChannel) => dispatch => {
+export const selectPossibleItems = (possibleItems, number = 1, seller = 1, quantity = 1, salesChannel) => dispatch => {
   dispatch(addToCart())
   const items = selectFromPossibleItems(possibleItems, number, seller, quantity)
   return window.vtexjs.checkout.addToCart(items, null, salesChannel)
