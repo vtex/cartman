@@ -1,0 +1,13 @@
+.wrapper {
+  bottom: 0;
+  top: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .wrapper {
+    margin-bottom: 110px;
+    height: 740px;
+    max-height: 80vh;
+    top: initial;
+  }
+}

@@ -6,6 +6,8 @@ import Menu from './Menu'
 import Items from './Items'
 import Utms from './Utms'
 
+import styles from '../theme.css'
+
 class Sidebar extends Component {
   constructor(props) {
     super(props)
@@ -105,7 +107,6 @@ class Sidebar extends Component {
             </button>
           )
         }
->>>>>>> Improve UI
       </div>
     )
   }

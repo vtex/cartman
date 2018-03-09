@@ -112,10 +112,11 @@ class Items extends Component {
             </div>
           </div>
 
-        <div className="tc">
-          <Button onClick={this.handleSubmit} primary>Add items to Cart</Button>
+          <div className="tc">
+            <Button onClick={this.handleSubmit} primary>Add items to Cart</Button>
+          </div>
         </div>
-      </div>
+      </form>
     )
   }
 }
