@@ -16,7 +16,7 @@ class Sidebar extends Component {
 
     this.state = {
       page: 'home',
-      isOpen: true,
+      isOpen: false,
     }
   }
 
@@ -75,7 +75,7 @@ class Sidebar extends Component {
                           <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
                           <Menu onClick={this.handleGoToUtms} title="Set UTMs" description="Define your Cart UTMs" />
 
-                          <div className="absolute bottom-0 tc mb7 w-100 rebel-pink lh-copy f6">
+                          <div className="relative absolute-m bottom-0 tc mv5 mv7-m w-100 rebel-pink lh-copy f6">
                             Cart Toolkit is NOT visible to your customers.
                           </div>
                         </div>
@@ -103,7 +103,7 @@ class Sidebar extends Component {
             </button>
           )
           : (
-            <button className="fixed right-2 bottom-2 bn shadow-1 pa5 br-100 pointer bg-blue" onClick={this.handleToggleSidebarView}>
+            <button className="fixed right-1 bottom-1 right-2-m bottom-2-m bn shadow-1 pa4 pa5-m br-100 pointer bg-blue" onClick={this.handleToggleSidebarView}>
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24" width="24" height="24">
                 <line data-cap="butt" fill="none" stroke="#ffffff" x1="12" y1="7" x2="12" y2="23"></line>
                 <line data-cap="butt" fill="none" stroke="#ffffff" x1="1" y1="13" x2="4" y2="13"></line>
