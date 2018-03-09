@@ -49,6 +49,7 @@ export const getOrderForm = (account) => dispatch => {
 }
 
 export const searchCatalog = (jsonObject) => dispatch => {
+  dispatch(addToCart())
   return fetch(buildQueryString(jsonObject), {
     credentials: 'same-origin',
   })
@@ -61,9 +62,8 @@ export const searchCatalog = (jsonObject) => dispatch => {
 }
 
 export const selectPossibleItems = (possibleItems, number = 0, seller = 1) => dispatch => {
-  dispatch(addToCart())
   const items = selectFromPossibleItems(possibleItems, number, seller)
-
+  console.log("aquiii")
   console.log(items)
   return window.vtexjs.checkout.addToCart(items, null, 1)
   .then(() => {

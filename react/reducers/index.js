@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
+        addedTocart: true,
       }
     }
     default:
