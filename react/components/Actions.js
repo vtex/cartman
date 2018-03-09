@@ -35,8 +35,8 @@ class Actions extends Component {
 
   render() {
       return (
-        <div className="pa5 w-100 cf bb b--light-gray">
-          <div className="fl">
+        <div className="pa5 w-100 cf bb b--light-gray tc">
+          <span className="mr4">
             <CopyToClipboard text={generateUrl((window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm) || this.props.orderForm, this.context.account)}
                onCopy={this.handleCopyCartButton}>
               {
@@ -45,10 +45,10 @@ class Actions extends Component {
                 : <Button primary>Copy Cart link</Button>
               }
             </CopyToClipboard>
-          </div>
-          <div className="fr">
+          </span>
+          <span>
             <Button onClick={this.handleResetCartButton} secondary>Reset Cart</Button>
-          </div>
+          </span>
         </div>
     )
   }
