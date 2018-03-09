@@ -69,7 +69,7 @@ class Items extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="ph4">
+        <div className="ph4 mb5">
           <p>
             <Label htmlFor="itemsQuantity">Number of items</Label>
             <Input onChange={this.handleNumberOfItemsChange} htmlProps={{ type: 'number', id:'itemsQuantity' }}/>
