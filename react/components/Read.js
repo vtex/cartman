@@ -7,6 +7,7 @@ import Button from '@vtex/styleguide/lib/Button'
 class Read extends Component {
   render() {
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
+    const { orderForm } = window.vtexjs.checkout
     return (
       <div className="ph4 mb5">
         <h1>Cart context</h1>
