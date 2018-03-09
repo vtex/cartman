@@ -8,18 +8,18 @@ class Utms extends Component {
   render() {
     return (
       <div className="ph4 mb5">
-        <p className="pb4">
+        <div className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
           <Input id="utmSource" />
-        </p>
-        <p className="pb4">
+        </div>
+        <div className="pb4">
           <Label htmlFor="utmCampaign">utm_campaign</Label>
           <Input id="utmCampaign" />
-        </p>
-        <p className="pb4">
+        </div>
+        <div className="pb4">
           <Label htmlFor="utmMedium">utm_medium</Label>
           <Input id="utmMedium" />
-        </p>
+        </div>
 
         <div className="tc">
           <Button primary>Add UTMs to Context</Button>

@@ -74,39 +74,40 @@ class Items extends Component {
 
   render() {
     return (
-      <div className="ph4 mb5">
-        <p>
-          <Label htmlFor="itemsQuantity">Number of items</Label>
-          <Input onChange={this.handleNumberOfItemsChange} htmlProps={{ type: 'number', id:'itemsQuantity' }}/>
-        </p>
-        <p>
-          <Label htmlFor="itemsCategories">Categories</Label>
-          <Input onChange={this.handleItemsCategoriesChange} htmlProps={{ id: 'itemsCategories' }} />
-        </p>
-        <p>
-          <Label htmlFor="itemsBrands">Brands</Label>
-          <Input onChange={this.handleItemsBrandsChange} htmlProps={{ id: 'itemsBrands' }} />
-        </p>
-        <p>
-          <Label htmlFor="itemsCollections">Collections</Label>
-          <Input onChange={this.handleItemsCollectionsChange} htmlProps={{ id: 'itemsCollections' }} />
-        </p>
-        <p>
-          <Label htmlFor="itemsSellers">Sellers</Label>
-          <Input onChange={this.handleItemsSellersChange} htmlProps={{ id: 'itemsSellers' }} />
-        </p>
-        <p>
-          <Label htmlFor="itemsIDs">SKU IDs</Label>
-          <Input onChange={this.handleSkusIdsChange} htmlProps={{ id: 'itemsIDs' }} />
-        </p>
-        <p>
-          <Label htmlFor="itemsPriceFrom">Price from</Label>
-          <Input onChange={this.handlePriceFromChange} htmlProps={{ id: 'itemsPriceFrom' }} />
-        </p>
-        <p>
-          <Label htmlFor="itemsPriceUpTo">Price up to</Label>
-          <Input onChange={this.handlePriceUpChange} htmlProps={{ id: 'itemsPriceUpTo' }} />
-        </p>
+      <form onSubmit={this.handleSubmit}>
+        <div className="ph4 mb5">
+          <div className="pb4">
+            <Label htmlFor="itemsQuantity">Number of items</Label>
+            <Input onChange={this.handleNumberOfItemsChange} id="itemsQuantity"/>
+          </div>
+          <div className="pb4">
+            <Label htmlFor="itemsCategories">Categories</Label>
+            <Input onChange={this.handleItemsCategoriesChange} id="itemsCategories" />
+          </div>
+          <div className="pb4">
+            <Label htmlFor="itemsBrands">Brands</Label>
+            <Input onChange={this.handleItemsBrandsChange} id="itemsBrands" />
+          </div>
+          <div className="pb4">
+            <Label htmlFor="itemsCollections">Collections</Label>
+            <Input onChange={this.handleItemsCollectionsChange} id="itemsCollections" />
+          </div>
+          <div className="pb4">
+            <Label htmlFor="itemsSellers">Sellers</Label>
+            <Input onChange={this.handleItemsSellersChange} id="itemsSellers" />
+          </div>
+          <div className="pb4">
+            <Label htmlFor="itemsIDs">SKU IDs</Label>
+            <Input onChange={this.handleItemsIdsChange} id="itemsIDs" />
+          </div>
+          <div className="pb4">
+            <Label htmlFor="itemsPriceFrom">Price from</Label>
+            <Input onChange={this.handlePriceFromChange} id="itemsPriceFrom" />
+          </div>
+          <div className="pb4">
+            <Label htmlFor="itemsPriceUpTo">Price up to</Label>
+            <Input onChange={this.handlePriceUpChange} id="itemsPriceUpTo" />
+          </div>
 
         <div className="tc">
           <Button onClick={this.handleSubmit} primary>Add items to Cart</Button>
