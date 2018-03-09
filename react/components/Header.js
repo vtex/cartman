@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class Header extends Component {
   render() {
     return (
-      <header className="relative f3 bg-light-silver serious-black pa5 tc br3-m br--top-m">
+      <header className="relative f3 bg-light-silver serious-black pa5 tc br3-m br--top-m fw5">
         { this.props.page !== 'home' && (
           <button onClick={this.props.backToHome} className="absolute left-0 top-0 bn bg-transparent pointer pa5">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 16 16" width="16" height="16">
