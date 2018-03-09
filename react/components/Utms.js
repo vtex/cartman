@@ -7,7 +7,7 @@ import Button from '@vtex/styleguide/lib/Button'
 class Utms extends Component {
   render() {
     return (
-      <div className="ph4 mb5">
+      <form className="ph5 mv5">
         <div className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
           <Input id="utmSource" />
@@ -21,10 +21,10 @@ class Utms extends Component {
           <Input id="utmMedium" />
         </div>
 
-        <div className="tc">
+        <div className="tc mt5">
           <Button primary>Add UTMs to Context</Button>
         </div>
-      </div>
+      </form>
     )
   }
 }
