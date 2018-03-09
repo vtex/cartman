@@ -46,7 +46,7 @@ class Sidebar extends Component {
             <div className="flex-auto overflow-auto">
               {
                 this.state.page === 'home' && (
-                  <div>
+                  <div className="bt b--light-gray">
                     <Menu onClick={this.handleGoToRead} title="Read" description="Go further into your Cart data" />
                     <Menu onClick={this.handleGoToItems} title="Items" description="Manage the items of your Cart" />
                     <Menu onClick={this.handleGoToUtms} title="UTMs" description="Define your Cart UTMs" />
