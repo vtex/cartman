@@ -66,7 +66,7 @@ export function buildQueryString(jsonObject) {
                 default:
             }
 
-            return query + filters + `P:[${priceFrom} TO ${priceTo}]`;
+            return query + filters + `P:[${priceFrom} TO ${priceTo}]&_from=0&_to=49`;
         }
     }
 }
