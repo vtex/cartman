@@ -22,7 +22,7 @@ class Utms extends Component {
         </div>
 
         <div className="tc mt5">
-          <Button primary>Add UTMs to Context</Button>
+          <Button primary>Set UTMs</Button>
         </div>
       </form>
     )

@@ -13,9 +13,10 @@ class Header extends Component {
           </button>
         ) }
         { this.props.page === 'home' && <span>Cart Debugger</span>}
-        { this.props.page === 'read' && <span>Read</span>}
-        { this.props.page === 'items' && <span>Items</span>}
-        { this.props.page === 'utms' && <span>UTMs</span>}
+        { this.props.page === 'read' && <span>View Cart details</span>}
+        { this.props.page === 'skuItems' && <span>Add items by SKU ID</span>}
+        { this.props.page === 'items' && <span>Add Random Items</span>}
+        { this.props.page === 'utms' && <span>Set UTMs</span>}
         <button onClick={this.props.closeSideBar} className="absolute right-0 top-0 bn bg-transparent pointer pa5 bd dn-m">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <g fill="#111111">

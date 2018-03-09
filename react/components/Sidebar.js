@@ -4,6 +4,7 @@ import Header from './Header'
 import Actions from './Actions'
 import Menu from './Menu'
 import Items from './Items'
+import SkuItems from './SkuItems'
 import Utms from './Utms'
 import Read from './Read'
 
@@ -14,7 +15,7 @@ class Sidebar extends Component {
     super(props)
 
     this.state = {
-      page: 'items',
+      page: 'home',
       isOpen: true,
     }
   }
@@ -29,6 +30,10 @@ class Sidebar extends Component {
 
   handleGoToItems = () => {
     this.setState({ page: 'items' })
+  }
+
+  handleGoToSkuItems = () => {
+    this.setState({ page: 'skuItems' })
   }
 
   handleGoToUtms = () => {
@@ -54,16 +59,21 @@ class Sidebar extends Component {
                       closeSideBar={this.handleToggleSidebarView}
                     />
                   </div>
-                  <div className="flex-none">
-                    <Actions />
-                  </div>
+                  {
+                    this.state.page === 'home' && (
+                      <div className="flex-none">
+                        <Actions />
+                      </div>
+                    )
+                  }
                   <div className="relative flex-auto overflow-auto">
                     {
                       this.state.page === 'home' && (
                         <div>
-                          <Menu onClick={this.handleGoToRead} title="Read" description="Go further into your Cart data" />
-                          <Menu onClick={this.handleGoToItems} title="Items" description="Manage the items of your Cart" />
-                          <Menu onClick={this.handleGoToUtms} title="UTMs" description="Define your Cart UTMs" />
+                          <Menu onClick={this.handleGoToRead} title="View Cart details" description="Go further into your Cart data" />
+                          <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
+                          <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
+                          <Menu onClick={this.handleGoToUtms} title="Set UTMs" description="Define your Cart UTMs" />
 
                           <div className="absolute bottom-0 tc mb7 w-100 rebel-pink lh-copy f6">
                             Cart Debugger is NOT visible to customers.
@@ -72,6 +82,7 @@ class Sidebar extends Component {
                       )
                     }
                     { this.state.page === 'read' && <Read /> }
+                    { this.state.page === 'skuItems' && <SkuItems /> }
                     { this.state.page === 'items' && <Items /> }
                     { this.state.page === 'utms' && <Utms /> }
                   </div>
