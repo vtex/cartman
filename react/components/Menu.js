@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class Menu extends Component {
   render() {
     return (
-      <div className="bt b--light-gray pa6">
+      <div onClick={this.props.onClick} className="bt b--light-gray pa6">
         <div className="pa2">
           {this.props.title}
         </div>
