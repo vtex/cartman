@@ -108,7 +108,7 @@ class Utms extends Component {
                   </g>
                 </svg>
                 <span className="flex-auto">
-                  Set UTMS
+                  Set Marketing data
                 </span>
               </span>
             </Button>

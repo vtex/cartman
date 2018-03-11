@@ -1,14 +1,14 @@
 @import 'tachyons.css';
 
-.debug {
+.debug-container {
   font-size: 12px;
   bottom: 0;
   top: 0;
 }
 
 @media screen and (min-width: 40em) {
-  .debug {
-    margin-bottom: 110px;
+  .debug-container {
+    margin-bottom: 80px;
     height: 740px;
     max-height: 80vh;
     top: initial;
