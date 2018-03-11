@@ -12,6 +12,13 @@ class Utms extends Component {
     this.state = {}
   }
 
+  handleUtmSourceChange = (e) => {
+    this.setState({
+      ...this.state,
+      utmSource: e.target.value
+    })
+  }
+
   handleUtmMediumChange = (e) => {
     this.setState({
       ...this.state,
@@ -26,10 +33,17 @@ class Utms extends Component {
     })
   }
 
-  handleUtmSourceChange = (e) => {
+  handleUtmiCampaignChange = (e) => {
     this.setState({
       ...this.state,
-      utmSource: e.target.value
+      utmiCampaign: e.target.value
+    })
+  }
+
+  handleCouponChange = (e) => {
+    this.setState({
+      ...this.state,
+      coupon: e.target.value
     })
   }
 
@@ -50,6 +64,8 @@ class Utms extends Component {
       utmSource: mkt && mkt.utmSource ? mkt.utmSource : '',
       utmMedium: mkt && mkt.utmMedium ? mkt.utmMedium : '',
       utmCampaign: mkt && mkt.utmCampaign ? mkt.utmCampaign : '',
+      utmiCampaign: mkt && mkt.utmCampaign ? mkt.utmiCampaign : '',
+      coupon: mkt && mkt.coupon ? mkt.coupon : '',
     })
   }
 
@@ -70,6 +86,14 @@ class Utms extends Component {
           <Label htmlFor="utmCampaign">utm_campaign</Label>
           <Input onChange={this.handleUtmCampaignChange} id="utmCampaign" value={this.state.utmCampaign} />
         </div>
+        <div className="pb4">
+          <Label htmlFor="utmCampaign">utmi_cp</Label>
+          <Input onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
+        </div>
+        <div className="pb4">
+          <Label htmlFor="coupon">Coupon</Label>
+          <Input onChange={this.handleCouponChange} id="coupon" value={this.state.coupon} />
+        </div>
 
         <div className="tc mt5">
         {
@@ -89,7 +113,7 @@ class Utms extends Component {
               </span>
             </Button>
           )
-          : <Button submit primary>Set UTMS</Button>
+          : <Button submit primary>Set Marketing data</Button>
         }
         </div>
       </form>

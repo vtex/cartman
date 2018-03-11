@@ -73,7 +73,7 @@ class Sidebar extends Component {
                           <Menu onClick={this.handleGoToRead} title="View Cart details" description="Go further into your Cart data" />
                           <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
                           <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
-                          <Menu onClick={this.handleGoToUtms} title="Set UTMs" description="Define your Cart UTMs" />
+                          <Menu onClick={this.handleGoToUtms} title="Set Marketing data" description="Define your Cart UTMs and Coupon" />
 
                           <div className="tc mv5 mv7-m w-100 rebel-pink lh-copy f6">
                             Cartman is NOT visible to your customers.
