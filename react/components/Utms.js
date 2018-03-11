@@ -34,16 +34,17 @@ class Utms extends Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault()
     this.props.setUTMData(this.state)
   }
 
   render() {
     const { isLoading } = this.props
     return (
-      <div className="ph5 mv5">
+      <form className="ph5 mv5" onSubmit={this.handleSubmit}>
         <div className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
-          <Input onChange={this.handleUtmSourceChange} id="utmSource" />
+          <Input autoFocus onChange={this.handleUtmSourceChange} id="utmSource" />
         </div>
         <div className="pb4">
           <Label htmlFor="utmCampaign">utm_campaign</Label>
@@ -58,7 +59,7 @@ class Utms extends Component {
         {
           isLoading
           ? (
-            <Button disabled>
+            <Button submit disabled>
               <span className="flex items-center">
                 <svg className="debug-loader flex-none mr3" version="1.1" x="0px" y="0px" viewBox="0 0 24 24" width="16" height="16">
                   <g transform="rotate(57.229285712486934 12 12)">
@@ -72,10 +73,10 @@ class Utms extends Component {
               </span>
             </Button>
           )
-          : <Button onClick={this.handleSubmit} primary>Set UTMS</Button>
+          : <Button submit primary>Set UTMS</Button>
         }
         </div>
-      </div>
+      </form>
     )
   }
 }
