@@ -23,8 +23,8 @@ class FavoriteAdd extends Component {
         </div>
 
         <div className="pb4">
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" autoFocus />
+          <Label htmlFor="title">Title</Label>
+          <Input id="title" autoFocus />
         </div>
 
         <div className="tc mt5">
