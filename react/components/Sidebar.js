@@ -76,7 +76,7 @@ class Sidebar extends Component {
                           <Menu onClick={this.handleGoToUtms} title="Set UTMs" description="Define your Cart UTMs" />
 
                           <div className="tc mv5 mv7-m w-100 rebel-pink lh-copy f6">
-                            Cart Toolchain is NOT visible to your customers.
+                            Cartman is NOT visible to your customers.
                           </div>
                         </div>
                       )
