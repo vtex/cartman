@@ -15,8 +15,8 @@ class Sidebar extends Component {
     super(props)
 
     this.state = {
-      page: 'home',
-      isOpen: false,
+      page: 'utms',
+      isOpen: true,
     }
   }
 

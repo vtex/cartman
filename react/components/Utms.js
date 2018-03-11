@@ -12,14 +12,14 @@ class Utms extends Component {
     this.state = {}
   }
 
-  handleUtmSourceChange = (e) => {
+  handleUtmMediumChange = (e) => {
     this.setState({
       ...this.state,
       utmMedium: e.target.value
     })
   }
 
-  handleUtmSourceChange = (e) => {
+  handleUtmCampaignChange = (e) => {
     this.setState({
       ...this.state,
       utmCampaign: e.target.value
@@ -38,21 +38,37 @@ class Utms extends Component {
     this.props.setUTMData(this.state)
   }
 
+  componentWillMount() {
+    if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
+    const { orderForm } = window.vtexjs.checkout
+    const mkt = orderForm.marketingData
+
+    console.log(mkt.utmSource)
+
+    this.setState({
+      ...this.state,
+      utmSource: mkt && mkt.utmSource ? mkt.utmSource : '',
+      utmMedium: mkt && mkt.utmMedium ? mkt.utmMedium : '',
+      utmCampaign: mkt && mkt.utmCampaign ? mkt.utmCampaign : '',
+    })
+  }
+
   render() {
     const { isLoading } = this.props
+
     return (
       <form className="ph5 mv5" onSubmit={this.handleSubmit}>
         <div className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
-          <Input autoFocus onChange={this.handleUtmSourceChange} id="utmSource" />
-        </div>
-        <div className="pb4">
-          <Label htmlFor="utmCampaign">utm_campaign</Label>
-          <Input onChange={this.handleUtmCampaignChange} id="utmCampaign" />
+          <Input autoFocus onChange={this.handleUtmSourceChange} id="utmSource" value={this.state.utmSource} />
         </div>
         <div className="pb4">
           <Label htmlFor="utmMedium">utm_medium</Label>
-          <Input onChange={this.handleUtmMediumChange} id="utmMedium" />
+          <Input onChange={this.handleUtmMediumChange} id="utmMedium" value={this.state.utmMedium} />
+        </div>
+        <div className="pb4">
+          <Label htmlFor="utmCampaign">utm_campaign</Label>
+          <Input onChange={this.handleUtmCampaignChange} id="utmCampaign" value={this.state.utmCampaign} />
         </div>
 
         <div className="tc mt5">
