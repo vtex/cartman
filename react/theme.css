@@ -27,6 +27,18 @@
   display: block;
 }
 
+.favorite-button .favorite-icon-white {
+  display: none;
+}
+
+.favorite-button:hover .favorite-icon-blue {
+  display: none;
+}
+
+.favorite-button:hover .favorite-icon-white {
+  display: block;
+}
+
 .debug-loader {
   animation: roll .7s infinite;
 }

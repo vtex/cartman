@@ -7,6 +7,8 @@ import Items from './Items'
 import SkuItems from './SkuItems'
 import Utms from './Utms'
 import Read from './Read'
+import FavoriteAdd from './FavoriteAdd'
+import Favorites from './Favorites'
 
 import styles from '../theme.css'
 
@@ -15,8 +17,8 @@ class Sidebar extends Component {
     super(props)
 
     this.state = {
-      page: 'home',
-      isOpen: false,
+      page: 'favorites',
+      isOpen: true,
     }
   }
 
@@ -38,6 +40,14 @@ class Sidebar extends Component {
 
   handleGoToUtms = () => {
     this.setState({ page: 'utms' })
+  }
+
+  handleGoToAddFavorite = () => {
+    this.setState({ page: 'favoriteAdd' })
+  }
+
+  handleGoToFavorites = () => {
+    this.setState({ page: 'favorites' })
   }
 
   handleToggleSidebarView = () => {
@@ -62,7 +72,7 @@ class Sidebar extends Component {
                   {
                     this.state.page === 'home' && (
                       <div className="flex-none">
-                        <Actions />
+                        <Actions favoriteAdd={this.handleGoToAddFavorite} />
                       </div>
                     )
                   }
@@ -74,6 +84,7 @@ class Sidebar extends Component {
                           <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
                           <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
                           <Menu onClick={this.handleGoToUtms} title="Set UTMs" description="Define your Cart UTMs" />
+                          <Menu onClick={this.handleGoToFavorites} title="My Favorites" description="See and manage your favorite Contexts" />
 
                           <div className="tc mv5 mv7-m w-100 rebel-pink lh-copy f6">
                             Cartman is NOT visible to your customers.
@@ -85,6 +96,8 @@ class Sidebar extends Component {
                     { this.state.page === 'skuItems' && <SkuItems /> }
                     { this.state.page === 'items' && <Items /> }
                     { this.state.page === 'utms' && <Utms /> }
+                    { this.state.page === 'favoriteAdd' && <FavoriteAdd /> }
+                    { this.state.page === 'favorites' && <Favorites /> }
                   </div>
               </div>
               </div>
