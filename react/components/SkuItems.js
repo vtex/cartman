@@ -55,15 +55,15 @@ class SkuItems extends Component {
 
         <div className="pb4">
           <Label htmlFor="skuIds">SKU IDs *</Label>
-          <Input autoFocus onChange={this.handleSkuIdsChange} id="skuIds" placeholder="11111, 12345, 54321" />
+          <Input autoComplete="off" autoFocus onChange={this.handleSkuIdsChange} id="skuIds" placeholder="11111, 12345, 54321" />
         </div>
         <div className="pb4">
           <Label htmlFor="itemsQuantity">Quantity of each item</Label>
-          <Input onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
+          <Input autoComplete="off" onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
         </div>
         <div className="pb4">
           <Label htmlFor="sellerId">Seller ID</Label>
-          <Input onChange={this.handleSellerIdChange} id="sellerId" />
+          <Input autoComplete="off" onChange={this.handleSellerIdChange} id="sellerId" />
         </div>
         <div className="tc mt5">
           {

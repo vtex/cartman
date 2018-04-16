@@ -76,23 +76,23 @@ class Utms extends Component {
       <form className="ph5 mv5" onSubmit={this.handleSubmit}>
         <div className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
-          <Input autoFocus onChange={this.handleUtmSourceChange} id="utmSource" value={this.state.utmSource} />
+          <Input autoComplete="off" autoFocus onChange={this.handleUtmSourceChange} id="utmSource" value={this.state.utmSource} />
         </div>
         <div className="pb4">
           <Label htmlFor="utmMedium">utm_medium</Label>
-          <Input onChange={this.handleUtmMediumChange} id="utmMedium" value={this.state.utmMedium} />
+          <Input autoComplete="off" onChange={this.handleUtmMediumChange} id="utmMedium" value={this.state.utmMedium} />
         </div>
         <div className="pb4">
           <Label htmlFor="utmCampaign">utm_campaign</Label>
-          <Input onChange={this.handleUtmCampaignChange} id="utmCampaign" value={this.state.utmCampaign} />
+          <Input autoComplete="off" onChange={this.handleUtmCampaignChange} id="utmCampaign" value={this.state.utmCampaign} />
         </div>
         <div className="pb4">
           <Label htmlFor="utmCampaign">utmi_cp</Label>
-          <Input onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
+          <Input autoComplete="off" onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
         </div>
         <div className="pb4">
           <Label htmlFor="coupon">Coupon</Label>
-          <Input onChange={this.handleCouponChange} id="coupon" value={this.state.coupon} />
+          <Input autoComplete="off" onChange={this.handleCouponChange} id="coupon" value={this.state.coupon} />
         </div>
 
         <div className="tc mt5">

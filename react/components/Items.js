@@ -94,36 +94,36 @@ class Items extends Component {
 
         <div className="pb4">
           <Label htmlFor="itemsNumber">Number of items</Label>
-          <Input autoFocus onChange={this.handleNumberOfItemsChange} id="itemsNumber" placeholder="Default is 1" />
+          <Input autoComplete="off" autoFocus onChange={this.handleNumberOfItemsChange} id="itemsNumber" placeholder="Default is 1" />
         </div>
         <div className="pb4">
           <Label htmlFor="itemsQuantity">Quantity of each item</Label>
-          <Input onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
+          <Input autoComplete="off" onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
         </div>
         <div className="pb4">
           <Label htmlFor="itemsCategory">Category ID</Label>
-          <Input onChange={this.handleItemsCategoriesChange} id="itemsCategory" />
+          <Input autoComplete="off" onChange={this.handleItemsCategoriesChange} id="itemsCategory" />
         </div>
         <div className="pb4">
           <Label htmlFor="itemsBrand">Brand ID</Label>
-          <Input onChange={this.handleItemsBrandsChange} id="itemsBrand" />
+          <Input autoComplete="off" onChange={this.handleItemsBrandsChange} id="itemsBrand" />
         </div>
         <div className="pb4">
           <Label htmlFor="itemsCollection">Collection ID</Label>
-          <Input onChange={this.handleItemsCollectionsChange} id="itemsCollection" />
+          <Input autoComplete="off" onChange={this.handleItemsCollectionsChange} id="itemsCollection" />
         </div>
         <div className="pb4">
           <Label htmlFor="itemsSeller">Seller ID</Label>
-          <Input onChange={this.handleItemsSellersChange} id="itemsSeller" />
+          <Input autoComplete="off" onChange={this.handleItemsSellersChange} id="itemsSeller" />
         </div>
         <div className="pb4 cf">
           <div className="fl w-50 pr3">
             <Label htmlFor="itemsPriceFrom">Price from</Label>
-            <Input onChange={this.handlePriceFromChange} id="itemsPriceFrom" placeholder="99.99" />
+            <Input autoComplete="off" onChange={this.handlePriceFromChange} id="itemsPriceFrom" placeholder="99.99" />
           </div>
           <div className="fl w-50 pl3">
             <Label htmlFor="itemsPriceUpTo">Price up to</Label>
-            <Input onChange={this.handlePriceUpChange} id="itemsPriceUpTo" placeholder="99.99" />
+            <Input autoComplete="off" onChange={this.handlePriceUpChange} id="itemsPriceUpTo" placeholder="99.99" />
           </div>
         </div>
 
