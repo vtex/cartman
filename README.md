@@ -1,2 +1,2 @@
-# Checkout-Debugger-App
-App no IO com ferramentas para utilizar dentro do carrinho da loja
+# Cartman
+IO app for cart creatind and sharing and checkout debugging.
