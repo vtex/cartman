@@ -85,7 +85,7 @@ class Items extends Component {
   render() {
     const {simulation, isLoading} = this.props
     return (
-      <form onClick={this.handleSubmit} className="ph5 mv5">
+      <form onSubmit={this.handleSubmit} className="ph5 mv5">
         <div className="lh-copy f6 mb6">
           <Alert>
             We'll filter your items by the parameters that you specify.
@@ -145,7 +145,7 @@ class Items extends Component {
                 </span>
               </Button>
             )
-            : <Button submit primary>Add items to Cart</Button>
+            : <Button type="submit" primary>Add items to Cart</Button>
           }
         </div>
       </form>
