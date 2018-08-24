@@ -18,7 +18,7 @@ function readOrderForm(orderForm){
 
 export function generateUrl(orderForm, account){
   const orderFormList = readOrderForm(orderForm)
-  if (orderFormList.length === 0 ) return `https://${account}.vtexcommercestable.com.br/checkout/`
+  if (orderFormList.length === 0 ) return `${window.location.origin}/checkout/`
 
   let queryString = `?sku=${orderFormList[0].skuId}&qty=${orderFormList[0].quantity}&seller=${orderFormList[0].seller}&sc=${orderForm.salesChannel}`
   orderFormList.map((element, index) => {
@@ -26,7 +26,7 @@ export function generateUrl(orderForm, account){
       queryString = queryString + `&sku=${orderFormList[index].skuId}&qty=${orderFormList[index].quantity}&seller=${orderFormList[index].seller}&sc=${orderForm.salesChannel}`
     }
   })
-  return  `https://${account}.vtexcommercestable.com.br/checkout/cart/add/${queryString}`
+  return  `${window.location.origin}/checkout/cart/add/${queryString}`
 }
 
 export function buildQueryString(jsonObject) {
