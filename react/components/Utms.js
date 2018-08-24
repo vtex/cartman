@@ -94,7 +94,7 @@ class Utms extends Component {
           <Input autoComplete="off" onChange={this.handleUtmCampaignChange} id="utmCampaign" value={this.state.utmCampaign} />
         </div>
         <div className="pb4">
-          <Label htmlFor="utmCampaign">utmi_cp</Label>
+          <Label htmlFor="utmiCampaign">utmi_cp</Label>
           <Input autoComplete="off" onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
         </div>
         <div className="pb4">
