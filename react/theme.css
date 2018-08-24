@@ -1,13 +1,13 @@
 @import 'tachyons.css';
 
-.debug-container {
+.vtex-cartman-container {
   font-size: 12px;
   bottom: 0;
   top: 0;
 }
 
 @media screen and (min-width: 40em) {
-  .debug-container {
+  .vtex-cartman-container {
     margin-bottom: 80px;
     height: 740px;
     max-height: 80vh;
@@ -27,7 +27,7 @@
   display: block;
 }
 
-.debug-loader {
+.vtex-cartman-loader {
   animation: roll .7s infinite;
 }
 
