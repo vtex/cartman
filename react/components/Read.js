@@ -5,6 +5,11 @@ import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 
 class Read extends Component {
+  handleSetSelectedItem = (i) => {
+    this.props.setSelectedItem(i)
+    this.props.goToItemDetail()
+  }
+
   render() {
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
     const { orderForm } = window.vtexjs.checkout
@@ -24,8 +29,8 @@ class Read extends Component {
         <div className="mb5">
           <h2 className="f4 mb3">Benefits</h2>
           {!benefits || benefits.rateAndBenefitsIdentifiers.length == 0 ? <p className="gray">No benefits.</p> : '' }
-          {benefits && benefits.rateAndBenefitsIdentifiers.map((benefit) => (
-            <div className="mb4" key={benefit.id}>
+          {benefits && benefits.rateAndBenefitsIdentifiers.map((benefit, i) => (
+            <div className="mb4" key={i}>
               <h3 className="f5 fw5 mb3">{benefit.name}</h3>
               {benefit.description && <p>Description: {benefit.description}</p>}
               <p>Featured: {benefit.featured ? 'yes' : 'no'}</p>
@@ -39,19 +44,22 @@ class Read extends Component {
         <div className="mb5">
           <h2 className="f4 mb3">Items</h2>
           {orderForm.items.length == 0 ? <p className="gray">No items.</p> : '' }
-          {orderForm.items.map((item) => (
-            <div className="mb4" key={item.uniqueId}>
+          {orderForm.items.map((item, i) => (
+            <div className="mb4" key={i}>
               <h3 className="f5 fw5 mb3">{item.skuName}</h3>
-              <p>Product Id: {item.productId}</p>
-              <p>SKU Id: {item.id}</p>
+              <p>Category Ids: {item.productCategoryIds}</p>
               <p>EAN: {item.ean || '-'}</p>
+              <p>Product Id: {item.productId}</p>
               <p>Quantity: {item.quantity}</p>
               <p>
-                Seller: {item.seller} - {orderForm.sellers.map((seller) => (
-                  <span>{seller.id === item.seller && <span>{seller.name}</span>}</span>
+                Seller: {item.seller} - {orderForm.sellers.map((seller, j) => (
+                  <span key={j}>{seller.id === item.seller && <span>{seller.name}</span>}</span>
                 ))}
               </p>
-              <p>Category Ids: {item.productCategoryIds}</p>
+              <p>SKU Id: {item.id}</p>
+              <div className="mv3">
+                <Button secondary onClick={() => this.handleSetSelectedItem(i)}>View all details</Button>
+              </div>
             </div>
           ))}
         </div>

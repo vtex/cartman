@@ -7,6 +7,7 @@ import Items from './Items'
 import SkuItems from './SkuItems'
 import Utms from './Utms'
 import Read from './Read'
+import ItemDetail from './ItemDetail'
 
 import styles from '../theme.css'
 
@@ -17,6 +18,7 @@ class Sidebar extends Component {
     this.state = {
       page: 'home',
       isOpen: false,
+      selectedItem: null,
     }
   }
 
@@ -40,8 +42,16 @@ class Sidebar extends Component {
     this.setState({ page: 'utms' })
   }
 
+  handleGoToItemDetail = () => {
+    this.setState({ page: 'itemDetail' })
+  }
+
   handleToggleSidebarView = () => {
     this.setState({ isOpen: !this.state.isOpen })
+  }
+
+  setSelectedItem = (i) => {
+    this.setState({ selectedItem: i })
   }
 
   render() {
@@ -56,6 +66,7 @@ class Sidebar extends Component {
                     <Header
                       page={this.state.page}
                       backToHome={this.handleGoToHome}
+                      backToRead={this.handleGoToRead}
                       closeSideBar={this.handleToggleSidebarView}
                     />
                   </div>
@@ -81,10 +92,11 @@ class Sidebar extends Component {
                         </div>
                       )
                     }
-                    { this.state.page === 'read' && <Read /> }
+                    { this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} /> }
                     { this.state.page === 'skuItems' && <SkuItems /> }
                     { this.state.page === 'items' && <Items /> }
                     { this.state.page === 'utms' && <Utms /> }
+                    { this.state.page === 'itemDetail' && <ItemDetail selectedItem={this.state.selectedItem} /> }
                   </div>
               </div>
               </div>
