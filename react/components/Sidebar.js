@@ -106,7 +106,7 @@ class Sidebar extends Component {
         {
           this.state.isOpen
           ? (
-            <button className="dn flex-m items-center fixed right-1 bottom-1 right-2-m bottom-2-m bn shadow-1 pa4 pa5-m br-100 pointer bg-near-white outline-0" onClick={this.handleToggleSidebarView}>
+            <button className="dn flex-m items-center fixed right-1 bottom-1 right-2-m bottom-2-m bn shadow-1 pa4 pa5-m br-100 pointer bg-near-white outline-0 z-max" onClick={this.handleToggleSidebarView}>
               <svg className="flex-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <g fill="#111111">
                   <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
@@ -115,7 +115,7 @@ class Sidebar extends Component {
             </button>
           )
           : (
-            <button className="flex items-center fixed right-1 bottom-1 right-2-m bottom-2-m bn shadow-1 pa4 pa5-m br-100 pointer bg-blue outline-0" onClick={this.handleToggleSidebarView}>
+            <button className="flex items-center fixed right-1 bottom-1 right-2-m bottom-2-m bn shadow-1 pa4 pa5-m br-100 pointer bg-blue outline-0 z-max" onClick={this.handleToggleSidebarView}>
               <svg className="flex-none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24" width="24" height="24">
                 <path d="M23,12A11,11,0,1,1,12,1" fill="none" stroke="#ffffff"></path>
                 <path d="M6,12a6,6,0,1,1,6,6" fill="none" stroke="#ffffff"></path>
