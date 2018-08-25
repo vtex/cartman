@@ -18,7 +18,6 @@ class Actions extends Component {
   handleResetCartButton = () => {
     if (window.vtexjs && window.vtexjs.checkout) {
       window.vtexjs.checkout.removeAllItems()
-      window.location.href = window.vtexjs.checkout.getChangeToAnonymousUserURL()
     }
   }
 
@@ -49,7 +48,7 @@ class Actions extends Component {
             </CopyToClipboard>
           </span>
           <span>
-            <Button onClick={this.handleResetCartButton} secondary>Reset Cart</Button>
+            <Button onClick={this.handleResetCartButton} secondary>Remove items</Button>
           </span>
         </div>
     )
