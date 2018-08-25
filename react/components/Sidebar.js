@@ -86,8 +86,9 @@ class Sidebar extends Component {
                           <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
                           <Menu onClick={this.handleGoToUtms} title="Set Marketing data" description="Define your Cart UTMs and Coupon" />
 
-                          <div className="tc mv5 mv7-m w-100 rebel-pink lh-copy f6">
-                            Cartman is NOT visible to your customers.
+                          <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
+                            <div className="gray">Cartman helps you to create, investigate and share Carts.</div>
+                            <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
                           </div>
                         </div>
                       )
