@@ -9,6 +9,8 @@ import Utms from './Utms'
 import Read from './Read'
 import FavoriteAdd from './FavoriteAdd'
 import Favorites from './Favorites'
+import FavoriteImport from './FavoriteImport'
+import FavoriteActions from './FavoriteActions'
 
 import styles from '../theme.css'
 
@@ -50,6 +52,10 @@ class Sidebar extends Component {
     this.setState({ page: 'favorites' })
   }
 
+  handleGoToImportFavorites = () => {
+    this.setState({ page: 'favoritesImport' })
+  }
+
   handleToggleSidebarView = () => {
     this.setState({ isOpen: !this.state.isOpen })
   }
@@ -66,6 +72,7 @@ class Sidebar extends Component {
                     <Header
                       page={this.state.page}
                       backToHome={this.handleGoToHome}
+                      backToFavorites={this.handleGoToFavorites}
                       closeSideBar={this.handleToggleSidebarView}
                     />
                   </div>
@@ -73,6 +80,13 @@ class Sidebar extends Component {
                     this.state.page === 'home' && (
                       <div className="flex-none">
                         <Actions favoriteAdd={this.handleGoToAddFavorite} />
+                      </div>
+                    )
+                  }
+                  {
+                    this.state.page === 'favorites' && (
+                      <div className="flex-none">
+                        <FavoriteActions favoriteAdd={this.handleGoToAddFavorite} goToFavoritesImport={this.handleGoToImportFavorites} />
                       </div>
                     )
                   }
@@ -98,6 +112,7 @@ class Sidebar extends Component {
                     { this.state.page === 'utms' && <Utms /> }
                     { this.state.page === 'favoriteAdd' && <FavoriteAdd /> }
                     { this.state.page === 'favorites' && <Favorites /> }
+                    { this.state.page === 'favoritesImport' && <FavoriteImport /> }
                   </div>
               </div>
               </div>
