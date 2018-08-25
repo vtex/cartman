@@ -43,7 +43,7 @@ class Actions extends Component {
               {
                 this.state.copied === true
                 ? <Button disabled>Copied to Clipboard!</Button>
-                : <Button primary>Copy Cart link</Button>
+                : <Button primary>Copy Cart items link</Button>
               }
             </CopyToClipboard>
           </span>
