@@ -15,9 +15,11 @@ class Actions extends Component {
     }
   }
 
-
   handleResetCartButton = () => {
-    window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.removeAllItems()
+    if (window.vtexjs && window.vtexjs.checkout) {
+      window.vtexjs.checkout.removeAllItems()
+      window.location.href = window.vtexjs.checkout.getChangeToAnonymousUserURL()
+    }
   }
 
   handleCopyCartButton = () => {
