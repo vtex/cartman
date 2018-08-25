@@ -1,18 +1,6 @@
 {
-  "pages": {
-    "legacy-checkout-debugger": {
-      "path": "/legacy-extensions/checkout-debugger",
-      "disableExternals": ["tachyons"]
-    },
-    "checkout-debugger": {
-      "path": "/checkout-debugger"
-    }
-  },
   "extensions": {
-    "legacy-checkout-debugger": {
-      "component": "index"
-    },
-    "checkout-debugger": {
+    "checkout/debugger": {
       "component": "index"
     }
   }
