@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { intlShape } from 'react-intl'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Button from '@vtex/styleguide/lib/Button'
@@ -44,29 +45,31 @@ class Actions extends Component {
   }
 
   render() {
-      return (
-        <div className="pa5 w-100 cf bb b--light-gray tc">
-          <span className="mr4">
-            <CopyToClipboard text={generateUrl((window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm) || this.props.orderForm, this.context.account)}
-               onCopy={this.handleCopyCartButton}>
-              {
-                this.state.copied === true
-                ? <Button disabled>Copied!</Button>
-                : <Button primary>Copy Cart link</Button>
-              }
-            </CopyToClipboard>
-          </span>
-          <span>
-            <Button onClick={this.handleResetCartButton} secondary>Empty Cart</Button>
-          </span>
-        </div>
+    const { intl } = this.props
+    return (
+      <div className="pa5 w-100 cf bb b--light-gray tc">
+        <span className="mr4">
+          <CopyToClipboard text={generateUrl((window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm) || this.props.orderForm, this.context.account)}
+             onCopy={this.handleCopyCartButton}>
+            {
+              this.state.copied === true
+              ? <Button disabled>{intl.formatMessage({ id: 'cartman.copiedCart' })}</Button>
+              : <Button primary>{intl.formatMessage({ id: 'cartman.copyCart' })}</Button>
+            }
+          </CopyToClipboard>
+        </span>
+        <span>
+          <Button onClick={this.handleResetCartButton} secondary>{intl.formatMessage({ id: 'cartman.emptyCart' })}</Button>
+        </span>
+      </div>
     )
   }
 }
 
 
 Actions.contextTypes = {
-  account: PropTypes.string
+  account: PropTypes.string,
+  intl: intlShape,
 };
 
 const mapStateToProps = (state, ownProps) => ({

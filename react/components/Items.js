@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { intlShape } from 'react-intl'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Label from './Label'
@@ -89,46 +90,46 @@ class Items extends Component {
   }
 
   render() {
-    const {simulation, isLoading} = this.props
+    const { intl, simulation, isLoading } = this.props
     return (
       <form onSubmit={this.handleSubmit} className="ph5 mv5">
         <div className="lh-copy f6 mb6">
           <Alert>
-            We'll filter your items by the parameters that you specify.
+            {intl.formatMessage({ id: 'cartman.addRandomMessage' })}
           </Alert>
         </div>
 
         <div className="pb4">
-          <Label htmlFor="itemsNumber">Number of items</Label>
+          <Label htmlFor="itemsNumber">{intl.formatMessage({ id: 'cartman.numberOfItems' })}</Label>
           <Input autoComplete="off" autoFocus onChange={this.handleNumberOfItemsChange} id="itemsNumber" placeholder="Default is 1" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsQuantity">Quantity of each item</Label>
+          <Label htmlFor="itemsQuantity">{intl.formatMessage({ id: 'cartman.quantityOfEachItem' })}</Label>
           <Input autoComplete="off" onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsCategory">Category ID</Label>
+          <Label htmlFor="itemsCategory">{intl.formatMessage({ id: 'cartman.categoryId' })}</Label>
           <Input autoComplete="off" onChange={this.handleItemsCategoriesChange} id="itemsCategory" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsBrand">Brand ID</Label>
+          <Label htmlFor="itemsBrand">{intl.formatMessage({ id: 'cartman.brandId' })}</Label>
           <Input autoComplete="off" onChange={this.handleItemsBrandsChange} id="itemsBrand" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsCollection">Collection ID</Label>
+          <Label htmlFor="itemsCollection">{intl.formatMessage({ id: 'cartman.collectionId' })}</Label>
           <Input autoComplete="off" onChange={this.handleItemsCollectionsChange} id="itemsCollection" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsSeller">Seller ID</Label>
+          <Label htmlFor="itemsSeller">{intl.formatMessage({ id: 'cartman.sellerId' })}</Label>
           <Input autoComplete="off" onChange={this.handleItemsSellersChange} id="itemsSeller" />
         </div>
         <div className="pb4 cf">
           <div className="fl w-50 pr3">
-            <Label htmlFor="itemsPriceFrom">Price from</Label>
+            <Label htmlFor="itemsPriceFrom">{intl.formatMessage({ id: 'cartman.priceFrom' })}</Label>
             <Input autoComplete="off" onChange={this.handlePriceFromChange} id="itemsPriceFrom" placeholder="99.99" />
           </div>
           <div className="fl w-50 pl3">
-            <Label htmlFor="itemsPriceUpTo">Price up to</Label>
+            <Label htmlFor="itemsPriceUpTo">{intl.formatMessage({ id: 'cartman.priceTo' })}</Label>
             <Input autoComplete="off" onChange={this.handlePriceUpChange} id="itemsPriceUpTo" placeholder="99.99" />
           </div>
         </div>
@@ -146,12 +147,12 @@ class Items extends Component {
                     </g>
                   </svg>
                   <span className="flex-auto">
-                    Add items to Cart
+                    {intl.formatMessage({ id: 'cartman.addItemsToCart' })}
                   </span>
                 </span>
               </Button>
             )
-            : <Button type="submit" primary>Add items to Cart</Button>
+            : <Button type="submit" primary>{intl.formatMessage({ id: 'cartman.addItemsToCart' })}</Button>
           }
         </div>
       </form>
@@ -160,7 +161,8 @@ class Items extends Component {
 }
 
 Items.propTypes = {
-  searchCatalog: PropTypes.func.isRequired
+  searchCatalog: PropTypes.func.isRequired,
+  intl: intlShape,
 }
 
 const mapStateToProps = (state, ownProps) => ({

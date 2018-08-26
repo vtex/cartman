@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { intlShape } from 'react-intl'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Label from './Label'
@@ -84,7 +85,7 @@ class Utms extends Component {
   }
 
   render() {
-    const { isLoading } = this.props
+    const { intl, isLoading } = this.props
 
     return (
       <form className="ph5 mv5" onSubmit={this.handleSubmit}>
@@ -105,7 +106,7 @@ class Utms extends Component {
           <Input autoComplete="off" onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
         </div>
         <div className="pb4">
-          <Label htmlFor="coupon">Coupon</Label>
+          <Label htmlFor="coupon">{intl.formatMessage({ id: 'cartman.coupon' })}</Label>
           <Input autoComplete="off" onChange={this.handleCouponChange} id="coupon" value={this.state.coupon} />
         </div>
 
@@ -122,12 +123,12 @@ class Utms extends Component {
                   </g>
                 </svg>
                 <span className="flex-auto">
-                  Set Marketing data
+                  {intl.formatMessage({ id: 'cartman.setMarketingData' })}
                 </span>
               </span>
             </Button>
           )
-          : <Button type="submit" primary>Set Marketing data</Button>
+          : <Button type="submit" primary>{intl.formatMessage({ id: 'cartman.setMarketingData' })}</Button>
         }
         </div>
       </form>
@@ -136,7 +137,8 @@ class Utms extends Component {
 }
 
 Utms.propTypes = {
-  setUTMData: PropTypes.func.isRequired
+  setUTMData: PropTypes.func.isRequired,
+  intl: intlShape,
 }
 
 const mapStateToProps = (state, ownProps) => ({

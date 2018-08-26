@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { injectIntl, intlShape } from 'react-intl'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import Actions from './Actions'
@@ -162,6 +163,7 @@ class Sidebar extends Component {
     const reactivateLink = window.location.origin + '/checkout?cartman=on'
     var cartmanEnabled = this.isCartmanEnabled()
 
+    const { intl } = this.props
     return (
       cartmanEnabled
         ? (
@@ -189,37 +191,21 @@ class Sidebar extends Component {
                               <div className="mt5"><Button onClick={this.handleReactivate}>Undo Deactivate</Button></div>
                             </div>
                           )
-                          : (
-                            <Fragment>
-                              {
-                                this.state.page === 'home' && (
-                                  <div className="flex-none">
-                                    <Actions />
-                                  </div>
-                                )
-                              }
-                              <div className="relative flex-auto overflow-auto">
-                                {
-                                  this.state.page === 'home' && (
-                                    <div>
-                                      <Menu onClick={this.handleGoToRead} title="View Cart details" description="Go further into your Cart data" />
-                                      <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
-                                      <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
-                                      <Menu onClick={this.handleGoToUtms} title="Set Marketing data" description="Define your Cart UTMs and Coupon" />
+                        }
+                        <div className="relative flex-auto overflow-auto">
+                          {
+                            this.state.page === 'home' && (
+                              <div>
+                                <Menu onClick={this.handleGoToRead} title={intl.formatMessage({ id: 'cartman.viewDetails' })} description="Go further into your Cart data" />
+                                <Menu onClick={this.handleGoToSkuItems} title={intl.formatMessage({ id: 'cartman.addBySkuId' })} description="Pick your items one by one" />
+                                <Menu onClick={this.handleGoToItems} title={intl.formatMessage({ id: 'cartman.addRandom' })} description="We'll sort some items for you" />
+                                <Menu onClick={this.handleGoToUtms} title={intl.formatMessage({ id: 'cartman.setMarketingData' })} description="Define your Cart UTMs and Coupon" />
 
-                                      <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
-                                        <div className="gray mb3">Cartman helps you to create, investigate and share Carts.</div>
-                                        <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
-                                        <div className=""><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
-                                      </div>
-                                    </div>
-                                  )
-                                }
-                                { this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} /> }
-                                { this.state.page === 'skuItems' && <SkuItems /> }
-                                { this.state.page === 'items' && <Items /> }
-                                { this.state.page === 'utms' && <Utms /> }
-                                { this.state.page === 'itemDetail' && <ItemDetail selectedItem={this.state.selectedItem} /> }
+                                <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
+                                <div className="gray mb2">{intl.formatMessage({ id: 'cartman.cartmanDescription' })}</div>
+                                  <div className="rebel-pink">{intl.formatMessage({ id: 'cartman.cartmanWarning' })}</div>
+                                  <div className=""><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
+                                </div>
                               </div>
                             </Fragment>
                           )
@@ -266,9 +252,8 @@ class Sidebar extends Component {
 
 
 
-Sidebar.propTypes = { 
+Sidebar.propTypes = {
+  intl: intlShape,
 }
 
-
-
-export default Sidebar
+export default injectIntl(Sidebar)
