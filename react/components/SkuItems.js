@@ -83,7 +83,7 @@ class SkuItems extends Component {
                 </span>
               </Button>
             )
-            : <Button submit primary>Add items to Cart</Button>
+            : <Button type="submit" primary>Add items to Cart</Button>
           }
         </div>
       </form>
