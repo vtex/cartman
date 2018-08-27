@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import Actions from './Actions'
@@ -8,6 +8,7 @@ import SkuItems from './SkuItems'
 import Utms from './Utms'
 import Read from './Read'
 import ItemDetail from './ItemDetail'
+import Button from '@vtex/styleguide/lib/Button'
 
 import styles from '../theme.css'
 
@@ -18,6 +19,7 @@ class Sidebar extends Component {
     this.state = {
       page: 'home',
       isOpen: false,
+      deactivate: false,
       selectedItem: null,
     }
   }
@@ -50,11 +52,17 @@ class Sidebar extends Component {
     this.setState({ isOpen: !this.state.isOpen })
   }
 
+  handleDeactivate = () => {
+    this.setState({ deactivate: true })
+  }
+
   setSelectedItem = (i) => {
     this.setState({ selectedItem: i })
   }
 
   render() {
+    const reactivateLink = window.location.origin + '/checkout?reactivateCartman=true'
+
     return (
       <div className="vtex-cartman">
         {
@@ -71,35 +79,50 @@ class Sidebar extends Component {
                     />
                   </div>
                   {
-                    this.state.page === 'home' && (
-                      <div className="flex-none">
-                        <Actions />
+                    this.state.deactivate
+                    ? (
+                      <div className="flex-auto tc ma5 f5 lh-copy">
+                        <p className="fw5">Cartman will not be loaded for you in this Account anymore.</p>
+                        <p>If you change your mind later, you can reactivate Cartman througth the link:</p>
+                        <p style={{ wordBreak: 'break-all' }}><a href={reactivateLink}>{reactivateLink}</a></p>
                       </div>
                     )
-                  }
-                  <div className="relative flex-auto overflow-auto">
-                    {
-                      this.state.page === 'home' && (
-                        <div>
-                          <Menu onClick={this.handleGoToRead} title="View Cart details" description="Go further into your Cart data" />
-                          <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
-                          <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
-                          <Menu onClick={this.handleGoToUtms} title="Set Marketing data" description="Define your Cart UTMs and Coupon" />
+                    : (
+                      <Fragment>
+                        {
+                          this.state.page === 'home' && (
+                            <div className="flex-none">
+                              <Actions />
+                            </div>
+                          )
+                        }
+                        <div className="relative flex-auto overflow-auto">
+                          {
+                            this.state.page === 'home' && (
+                              <div>
+                                <Menu onClick={this.handleGoToRead} title="View Cart details" description="Go further into your Cart data" />
+                                <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
+                                <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
+                                <Menu onClick={this.handleGoToUtms} title="Set Marketing data" description="Define your Cart UTMs and Coupon" />
 
-                          <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
-                            <div className="gray">Cartman helps you to create, investigate and share Carts.</div>
-                            <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
-                          </div>
+                                <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
+                                  <div className="gray mb3">Cartman helps you to create, investigate and share Carts.</div>
+                                  <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
+                                  <div><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
+                                </div>
+                              </div>
+                            )
+                          }
+                          { this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} /> }
+                          { this.state.page === 'skuItems' && <SkuItems /> }
+                          { this.state.page === 'items' && <Items /> }
+                          { this.state.page === 'utms' && <Utms /> }
+                          { this.state.page === 'itemDetail' && <ItemDetail selectedItem={this.state.selectedItem} /> }
                         </div>
-                      )
-                    }
-                    { this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} /> }
-                    { this.state.page === 'skuItems' && <SkuItems /> }
-                    { this.state.page === 'items' && <Items /> }
-                    { this.state.page === 'utms' && <Utms /> }
-                    { this.state.page === 'itemDetail' && <ItemDetail selectedItem={this.state.selectedItem} /> }
-                  </div>
-              </div>
+                      </Fragment>
+                    )
+                  }
+                </div>
               </div>
             </div>
           )
