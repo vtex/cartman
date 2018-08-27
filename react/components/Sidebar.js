@@ -108,7 +108,7 @@ class Sidebar extends Component {
                                 <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
                                   <div className="gray mb3">Cartman helps you to create, investigate and share Carts.</div>
                                   <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
-                                  <div><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
+                                  <div className="dn"><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
                                 </div>
                               </div>
                             )
