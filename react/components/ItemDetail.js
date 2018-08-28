@@ -13,7 +13,7 @@ class ItemDetail extends Component {
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
 
     const { orderForm } = window.vtexjs.checkout
-    let item, itemKeys = null
+    let item = null
 
     if (orderForm.items && orderForm.items[this.props.selectedItem]) {
       item = orderForm.items[this.props.selectedItem]
