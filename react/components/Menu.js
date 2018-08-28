@@ -6,10 +6,10 @@ class Menu extends Component {
     return (
       <div onClick={this.props.onClick} className="menu-item flex items-center bb b--light-gray pv6 ph5 pointer hover-bg-blue hover-white">
         <div className="flex-auto">
-          <div className="f4 mb4">
+          <div className="f4">
             {this.props.title}
           </div>
-          <div className="f6 o-60">
+          <div className="f6 o-60 dn">
             {this.props.description}
           </div>
         </div>

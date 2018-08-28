@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <header className="relative f3 bg-light-silver serious-black pa5 tc br3-m br--top-m fw5">
         { this.props.page !== 'home' && (
-          <button onClick={this.props.backToHome} className="absolute left-0 top-0 bn bg-transparent pointer pa5">
+          <button onClick={this.props.page === 'itemDetail' ? this.props.backToRead : this.props.backToHome} className="absolute left-0 top-0 bn bg-transparent pointer pa5 outline-0">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 16 16" width="16" height="16">
               <polyline fill="none" stroke="#111111" points="11.5,0.5 4,8 11.5,15.5 "></polyline>
             </svg>
@@ -17,6 +17,7 @@ class Header extends Component {
         { this.props.page === 'skuItems' && <span>Add items by SKU ID</span>}
         { this.props.page === 'items' && <span>Add Random Items</span>}
         { this.props.page === 'utms' && <span>Set Marketing data</span>}
+        { this.props.page === 'itemDetail' && <span>Item Detail</span>}
         <button onClick={this.props.closeSideBar} className="absolute right-0 top-0 bn bg-transparent pointer pa5 bd dn-m">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <g fill="#111111">

@@ -9,7 +9,13 @@ import { setUTMData } from '../actions/index'
 class Utms extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      utmSource: '',
+      utmMedium: '',
+      utmCampaign: '',
+      utmiCampaign: '',
+      coupon: '',
+    }
   }
 
   handleUtmSourceChange = (e) => {
@@ -57,16 +63,17 @@ class Utms extends Component {
     const { orderForm } = window.vtexjs.checkout
     const mkt = orderForm.marketingData
 
-    console.log(mkt.utmSource)
+    if (mkt) {
+      this.setState({
+        ...this.state,
+        utmSource: mkt.utmSource ? mkt.utmSource : '',
+        utmMedium: mkt.utmMedium ? mkt.utmMedium : '',
+        utmCampaign: mkt.utmCampaign ? mkt.utmCampaign : '',
+        utmiCampaign: mkt.utmCampaign ? mkt.utmiCampaign : '',
+        coupon: mkt.coupon ? mkt.coupon : '',
+      })
+    }
 
-    this.setState({
-      ...this.state,
-      utmSource: mkt && mkt.utmSource ? mkt.utmSource : '',
-      utmMedium: mkt && mkt.utmMedium ? mkt.utmMedium : '',
-      utmCampaign: mkt && mkt.utmCampaign ? mkt.utmCampaign : '',
-      utmiCampaign: mkt && mkt.utmCampaign ? mkt.utmiCampaign : '',
-      coupon: mkt && mkt.coupon ? mkt.coupon : '',
-    })
   }
 
   render() {
@@ -87,7 +94,7 @@ class Utms extends Component {
           <Input autoComplete="off" onChange={this.handleUtmCampaignChange} id="utmCampaign" value={this.state.utmCampaign} />
         </div>
         <div className="pb4">
-          <Label htmlFor="utmCampaign">utmi_cp</Label>
+          <Label htmlFor="utmiCampaign">utmi_cp</Label>
           <Input autoComplete="off" onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
         </div>
         <div className="pb4">
@@ -113,7 +120,7 @@ class Utms extends Component {
               </span>
             </Button>
           )
-          : <Button submit primary>Set Marketing data</Button>
+          : <Button type="submit" primary>Set Marketing data</Button>
         }
         </div>
       </form>

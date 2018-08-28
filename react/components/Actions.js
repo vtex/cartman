@@ -15,9 +15,10 @@ class Actions extends Component {
     }
   }
 
-
   handleResetCartButton = () => {
-    window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.removeAllItems()
+    if (window.vtexjs && window.vtexjs.checkout) {
+      window.vtexjs.checkout.removeAllItems()
+    }
   }
 
   handleCopyCartButton = () => {
@@ -41,13 +42,13 @@ class Actions extends Component {
                onCopy={this.handleCopyCartButton}>
               {
                 this.state.copied === true
-                ? <Button disabled>Copied to Clipboard!</Button>
+                ? <Button disabled>Copied!</Button>
                 : <Button primary>Copy Cart link</Button>
               }
             </CopyToClipboard>
           </span>
           <span>
-            <Button onClick={this.handleResetCartButton} secondary>Reset Cart</Button>
+            <Button onClick={this.handleResetCartButton} secondary>Empty Cart</Button>
           </span>
         </div>
     )
