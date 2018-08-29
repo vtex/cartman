@@ -1,7 +1,7 @@
 {
   "name": "checkout-debugger",
   "vendor": "vtex",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "title": "Checkout debugger app",
   "description": "Checkout debugger app",
   "mustUpdateAt": "2019-03-01",
