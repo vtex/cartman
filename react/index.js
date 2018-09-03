@@ -9,9 +9,10 @@ const renderRoot = () => {
   return (
     <Provider store={store}>
       <ClientSide>
-        <Sidebar />
+        <Sidebar visible={true}/>
       </ClientSide>
     </Provider>
   )
 }
 export default renderRoot
+ 

@@ -6,6 +6,7 @@ import { generateUrl } from '../utils'
 import { getOrderForm } from '../actions/index'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
+
 class Actions extends Component {
   constructor(props) {
     super(props)

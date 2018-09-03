@@ -9,10 +9,11 @@ import Utms from './Utms'
 import Read from './Read'
 import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
-
+import Cookie from 'js-cookie'
 import styles from '../theme.css'
 
 class Sidebar extends Component {
+  
   constructor(props) {
     super(props)
 
@@ -21,7 +22,67 @@ class Sidebar extends Component {
       isOpen: false,
       deactivate: false,
       selectedItem: null,
+      visible: props.visible,
     }
+  }
+
+  isCartmanEnabled = () => {
+    let enabled = false
+    let cartmanIsInLocalStorage = this.getCartmanStatusInLocalStorage()
+    if (cartmanIsInLocalStorage) {
+      enabled = true
+
+    } else {
+      if (typeof cartmanIsInLocalStorage === "undefined"){
+        this.enableCartman()
+        enabled = true
+      } 
+    }
+
+
+    let cartmanIsInLocation = this.isCartmanQueryOn()
+
+
+    if (cartmanIsInLocalStorage || cartmanIsInLocation){
+      enabled = true
+    }
+
+    return enabled
+
+  }
+
+  isUserAdmin = () => {
+     
+  }
+
+  enableCartman = () => {
+    this.saveCartmanInLocalStorage()
+  }
+
+  disableCartman = () => {
+
+  }
+
+  isCartmanQueryOn = () => {
+    return location.search.includes("cartman=on")
+  }
+
+  saveCartmanInLocalStorage = () => {
+    let cartmanEnabled = true
+    localStorage.setItem("isCartmanEnabled", JSON.stringify(cartmanEnabled))
+  }
+
+  deleteCartmanInLocalStorage = () => {
+    delete localStorage.isCartmanEnabled
+  }
+
+  getCartmanStatusInLocalStorage = () => {
+    let cartmanStatus = localStorage.isCartmanEnabled
+    if (typeof cartmanStatus !== "undefined"){
+      cartmanStatus = JSON.parse(cartmanStatus)
+    }
+
+    return cartmanStatus
   }
 
   handleGoToHome = () => {
@@ -61,9 +122,19 @@ class Sidebar extends Component {
   }
 
   render() {
+    let indexCartmanQuery = location.search.lastIndexOf("&") 
+    let cartmanQuery = location.search.substring(indexCartmanQuery)
+    let cartmanIsEnabled = false
+    if (cartmanQuery === "cartman=on"){
+      cartmanIsEnabled = true
+    }
     const reactivateLink = window.location.origin + '/checkout?reactivateCartman=true'
-
+    const temp =  this.isCartmanEnabled() //JSON.parse(localStorage.isAdmin)
+    //console.log(temp) 
+  
     return (
+      temp
+      ? (
       <div className="vtex-cartman">
         {
           this.state.isOpen && (
@@ -108,7 +179,7 @@ class Sidebar extends Component {
                                 <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
                                   <div className="gray mb3">Cartman helps you to create, investigate and share Carts.</div>
                                   <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
-                                  <div className="dn"><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
+                                  <div className=""><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
                                 </div>
                               </div>
                             )
@@ -149,12 +220,17 @@ class Sidebar extends Component {
             </button>
           )
         }
-      </div>
-    )
+      </div>) : (<div></div>
+    ))
   }
+  
+  }
+
+
+
+Sidebar.propTypes = { 
 }
 
-Sidebar.propTypes = {
-}
+
 
 export default Sidebar
