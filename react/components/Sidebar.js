@@ -29,22 +29,23 @@ class Sidebar extends Component {
   isCartmanEnabled = () => {
     let enabled = false
     let cartmanIsInLocalStorage = this.getCartmanStatusInLocalStorage()
+    let isCartmanUndefined = typeof cartmanIsInLocalStorage === "undefined"
+    let cartmanQueryOn = this.isCartmanQueryOn()
     if (cartmanIsInLocalStorage) {
       enabled = true
 
     } else {
-      if (typeof cartmanIsInLocalStorage === "undefined"){
+      if (cartmanQueryOn){
+        this.enableCartman()
+        enabled = true  
+
+      } else if (isCartmanUndefined){
         this.enableCartman()
         enabled = true
-      } 
-    }
-
-
-    let cartmanIsInLocation = this.isCartmanQueryOn()
-
-
-    if (cartmanIsInLocalStorage || cartmanIsInLocation){
-      enabled = true
+      
+      } else {
+        enabled = false
+      }
     }
 
     return enabled
@@ -60,7 +61,8 @@ class Sidebar extends Component {
   }
 
   disableCartman = () => {
-
+    let cartmanDisabled = false
+    localStorage.setItem("isCartmanEnabled", JSON.stringify(cartmanDisabled))
   }
 
   isCartmanQueryOn = () => {
@@ -122,15 +124,9 @@ class Sidebar extends Component {
   }
 
   render() {
-    let indexCartmanQuery = location.search.lastIndexOf("&") 
-    let cartmanQuery = location.search.substring(indexCartmanQuery)
-    let cartmanIsEnabled = false
-    if (cartmanQuery === "cartman=on"){
-      cartmanIsEnabled = true
-    }
     const reactivateLink = window.location.origin + '/checkout?reactivateCartman=true'
-    const temp =  this.isCartmanEnabled() //JSON.parse(localStorage.isAdmin)
-    //console.log(temp) 
+    const temp =  this.isCartmanEnabled() 
+    console.log(temp) 
   
     return (
       temp
