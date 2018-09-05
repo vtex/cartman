@@ -129,14 +129,18 @@ class Sidebar extends Component {
     this.setState({ deactivate: true })
   }
 
+  handleReactivate = () => {
+    this.setState({ deactivate: false })
+  }
+
   setSelectedItem = (i) => {
     this.setState({ selectedItem: i })
   }
 
   render() {
-    const reactivateLink = window.location.origin + '/checkout?reactivateCartman=true'
-    var cartmanEnabled = this.isCartmanEnabled() 
-  
+    const reactivateLink = window.location.origin + '/checkout?cartman=on'
+    var cartmanEnabled = this.isCartmanEnabled()
+
     return (
       cartmanEnabled
       ? (
