@@ -164,7 +164,8 @@ class Sidebar extends Component {
                       <div className="flex-auto tc ma5 f5 lh-copy">
                         <p className="fw5">Cartman will not be loaded for you in this Account anymore.</p>
                         <p>If you change your mind later, you can reactivate Cartman througth the link:</p>
-                        <p style={{ wordBreak: 'break-all' }}><a href={reactivateLink}>{reactivateLink}</a></p>
+                        <p className="f6" style={{ wordBreak: 'break-all' }}><a href={reactivateLink}>{reactivateLink}</a></p>
+                        <div className="mt5"><Button onClick={this.handleReactivate}>Undo Deactivate</Button></div>
                       </div>
                     )
                     : (
