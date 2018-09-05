@@ -1,5 +1,5 @@
 {
-  "name": "vtex.checkout-debugger",
+  "name": "vtex.cartman",
   "version": "0.0.1",
   "dependencies": {
     "@vtex/styleguide": "^2.3.0",
