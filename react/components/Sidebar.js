@@ -21,8 +21,7 @@ class Sidebar extends Component {
       page: 'home',
       isOpen: false,
       deactivate: false,
-      selectedItem: null,
-      visible: props.visible,
+      selectedItem: null
     }
   }
 
@@ -35,7 +34,7 @@ class Sidebar extends Component {
       enabled = true
 
     } else {
-      if (cartmanQueryOn){
+      if (cartmanQueryOn && !this.state.deactivate){
         this.enableCartman()
         enabled = true  
 
@@ -53,7 +52,7 @@ class Sidebar extends Component {
   }
 
   isUserAdmin = () => {
-     
+     //TODO
   }
 
   enableCartman = () => {
@@ -63,10 +62,18 @@ class Sidebar extends Component {
   disableCartman = () => {
     let cartmanDisabled = false
     localStorage.setItem("isCartmanEnabled", JSON.stringify(cartmanDisabled))
+    this.disableCartmanQuery()
+
   }
 
   isCartmanQueryOn = () => {
     return location.search.includes("cartman=on")
+  }
+
+  disableCartmanQuery = () => {
+    let cartmanIndex = location.search.indexOf("cartman")
+    let newQuery = location.search.substr(0,cartmanIndex - 1)
+    location.search = newQuery
   }
 
   saveCartmanInLocalStorage = () => {
@@ -113,6 +120,9 @@ class Sidebar extends Component {
 
   handleToggleSidebarView = () => {
     this.setState({ isOpen: !this.state.isOpen })
+    if (this.state.deactivate){
+      this.disableCartman()
+    }
   }
 
   handleDeactivate = () => {
@@ -125,11 +135,10 @@ class Sidebar extends Component {
 
   render() {
     const reactivateLink = window.location.origin + '/checkout?reactivateCartman=true'
-    const temp =  this.isCartmanEnabled() 
-    console.log(temp) 
+    var cartmanEnabled = this.isCartmanEnabled() 
   
     return (
-      temp
+      cartmanEnabled
       ? (
       <div className="vtex-cartman">
         {
