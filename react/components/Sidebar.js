@@ -136,6 +136,10 @@ class Sidebar extends Component {
   render() {
     const reactivateLink = window.location.origin + '/checkout?reactivateCartman=true'
     var cartmanEnabled = this.isCartmanEnabled() 
+<<<<<<< HEAD
+=======
+    console.log(this.state.deactivate)
+>>>>>>> c0b1cc34277e444b418541447c6872143eb0a196
   
     return (
       cartmanEnabled
