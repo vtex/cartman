@@ -1,9 +1,9 @@
 {
-  "name": "checkout-debugger",
+  "name": "cartman",
   "vendor": "vtex",
   "version": "0.2.1",
-  "title": "Checkout debugger app",
-  "description": "Checkout debugger app",
+  "title": "Create and share carts. Debug checkout.",
+  "description": "Create and share carts. Debug checkout.",
   "mustUpdateAt": "2019-03-01",
   "categories": [],
   "registries": [

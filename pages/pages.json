@@ -1,6 +1,6 @@
 {
   "extensions": {
-    "checkout/debugger": {
+    "checkout/cartman": {
       "component": "index"
     }
   }
