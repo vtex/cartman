@@ -9,10 +9,11 @@ import Utms from './Utms'
 import Read from './Read'
 import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
-
+import Cookie from 'js-cookie'
 import styles from '../theme.css'
 
 class Sidebar extends Component {
+  
   constructor(props) {
     super(props)
 
@@ -20,8 +21,77 @@ class Sidebar extends Component {
       page: 'home',
       isOpen: false,
       deactivate: false,
-      selectedItem: null,
+      selectedItem: null
     }
+  }
+
+  isCartmanEnabled = () => {
+    let enabled = false
+    let cartmanIsInLocalStorage = this.getCartmanStatusInLocalStorage()
+    let isCartmanUndefined = typeof cartmanIsInLocalStorage === "undefined"
+    let cartmanQueryOn = this.isCartmanQueryOn()
+    if (cartmanIsInLocalStorage) {
+      enabled = true
+
+    } else {
+      if (cartmanQueryOn && !this.state.deactivate){
+        this.enableCartman()
+        enabled = true  
+
+      } else if (isCartmanUndefined){
+        this.enableCartman()
+        enabled = true
+      
+      } else {
+        enabled = false
+      }
+    }
+
+    return enabled
+
+  }
+
+  isUserAdmin = () => {
+     //TODO
+  }
+
+  enableCartman = () => {
+    this.saveCartmanInLocalStorage()
+  }
+
+  disableCartman = () => {
+    let cartmanDisabled = false
+    localStorage.setItem("isCartmanEnabled", JSON.stringify(cartmanDisabled))
+    this.disableCartmanQuery()
+
+  }
+
+  isCartmanQueryOn = () => {
+    return location.search.includes("cartman=on")
+  }
+
+  disableCartmanQuery = () => {
+    let cartmanIndex = location.search.indexOf("cartman")
+    let newQuery = location.search.substr(0,cartmanIndex - 1)
+    location.search = newQuery
+  }
+
+  saveCartmanInLocalStorage = () => {
+    let cartmanEnabled = true
+    localStorage.setItem("isCartmanEnabled", JSON.stringify(cartmanEnabled))
+  }
+
+  deleteCartmanInLocalStorage = () => {
+    delete localStorage.isCartmanEnabled
+  }
+
+  getCartmanStatusInLocalStorage = () => {
+    let cartmanStatus = localStorage.isCartmanEnabled
+    if (typeof cartmanStatus !== "undefined"){
+      cartmanStatus = JSON.parse(cartmanStatus)
+    }
+
+    return cartmanStatus
   }
 
   handleGoToHome = () => {
@@ -50,10 +120,17 @@ class Sidebar extends Component {
 
   handleToggleSidebarView = () => {
     this.setState({ isOpen: !this.state.isOpen })
+    if (this.state.deactivate){
+      this.disableCartman()
+    }
   }
 
   handleDeactivate = () => {
     this.setState({ deactivate: true })
+  }
+
+  handleReactivate = () => {
+    this.setState({ deactivate: false })
   }
 
   setSelectedItem = (i) => {
@@ -61,9 +138,12 @@ class Sidebar extends Component {
   }
 
   render() {
-    const reactivateLink = window.location.origin + '/checkout?reactivateCartman=true'
+    const reactivateLink = window.location.origin + '/checkout?cartman=on'
+    var cartmanEnabled = this.isCartmanEnabled()
 
     return (
+      cartmanEnabled
+      ? (
       <div className="vtex-cartman">
         {
           this.state.isOpen && (
@@ -84,7 +164,8 @@ class Sidebar extends Component {
                       <div className="flex-auto tc ma5 f5 lh-copy">
                         <p className="fw5">Cartman will not be loaded for you in this Account anymore.</p>
                         <p>If you change your mind later, you can reactivate Cartman througth the link:</p>
-                        <p style={{ wordBreak: 'break-all' }}><a href={reactivateLink}>{reactivateLink}</a></p>
+                        <p className="f6" style={{ wordBreak: 'break-all' }}><a href={reactivateLink}>{reactivateLink}</a></p>
+                        <div className="mt5"><Button onClick={this.handleReactivate}>Undo Deactivate</Button></div>
                       </div>
                     )
                     : (
@@ -108,7 +189,7 @@ class Sidebar extends Component {
                                 <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
                                   <div className="gray mb3">Cartman helps you to create, investigate and share Carts.</div>
                                   <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
-                                  <div className="dn"><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
+                                  <div className=""><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
                                 </div>
                               </div>
                             )
@@ -149,12 +230,17 @@ class Sidebar extends Component {
             </button>
           )
         }
-      </div>
-    )
+      </div>) : (<div></div>
+    ))
   }
+  
+  }
+
+
+
+Sidebar.propTypes = { 
 }
 
-Sidebar.propTypes = {
-}
+
 
 export default Sidebar
