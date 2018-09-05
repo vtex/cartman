@@ -9,7 +9,7 @@ const renderRoot = () => {
   return (
     <Provider store={store}>
       <ClientSide>
-        <Sidebar visible={true}/>
+        <Sidebar/>
       </ClientSide>
     </Provider>
   )
