@@ -7,13 +7,14 @@ import Items from './Items'
 import SkuItems from './SkuItems'
 import Utms from './Utms'
 import Read from './Read'
+import Shipping from './Shipping'
 import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
 import Cookie from 'js-cookie'
 import styles from '../theme.css'
 
 class Sidebar extends Component {
-  
+
   constructor(props) {
     super(props)
 
@@ -36,12 +37,12 @@ class Sidebar extends Component {
     } else {
       if (cartmanQueryOn && !this.state.deactivate){
         this.enableCartman()
-        enabled = true  
+        enabled = true
 
       } else if (isCartmanUndefined){
         this.enableCartman()
         enabled = true
-      
+
       } else {
         enabled = false
       }
@@ -100,6 +101,10 @@ class Sidebar extends Component {
 
   handleGoToRead = () => {
     this.setState({ page: 'read' })
+  }
+
+  handleGoToShipping = () => {
+    this.setState({ page: 'shipping' })
   }
 
   handleGoToItems = () => {
@@ -182,6 +187,7 @@ class Sidebar extends Component {
                             this.state.page === 'home' && (
                               <div>
                                 <Menu onClick={this.handleGoToRead} title="View Cart details" description="Go further into your Cart data" />
+                                <Menu onClick={this.handleGoToShipping} title="View Shipping details" description="" />
                                 <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
                                 <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
                                 <Menu onClick={this.handleGoToUtms} title="Set Marketing data" description="Define your Cart UTMs and Coupon" />
@@ -195,6 +201,7 @@ class Sidebar extends Component {
                             )
                           }
                           { this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} /> }
+                          { this.state.page === 'shipping' && <Shipping /> }
                           { this.state.page === 'skuItems' && <SkuItems /> }
                           { this.state.page === 'items' && <Items /> }
                           { this.state.page === 'utms' && <Utms /> }
@@ -233,12 +240,12 @@ class Sidebar extends Component {
       </div>) : (<div></div>
     ))
   }
-  
+
   }
 
 
 
-Sidebar.propTypes = { 
+Sidebar.propTypes = {
 }
 
 

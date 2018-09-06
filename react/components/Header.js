@@ -14,6 +14,7 @@ class Header extends Component {
         ) }
         { this.props.page === 'home' && <span>Cartman</span>}
         { this.props.page === 'read' && <span>View Cart details</span>}
+        { this.props.page === 'shipping' && <span>View Shipping details</span>}
         { this.props.page === 'skuItems' && <span>Add items by SKU ID</span>}
         { this.props.page === 'items' && <span>Add Random Items</span>}
         { this.props.page === 'utms' && <span>Set Marketing data</span>}
