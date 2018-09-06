@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Label from './Label'
 import Input from '@vtex/styleguide/lib/Input'
@@ -15,8 +15,36 @@ class Read extends Component {
     const { orderForm } = window.vtexjs.checkout
     const mkt = orderForm.marketingData
     const benefits = orderForm.ratesAndBenefitsData
+
+    let extensions = []
+    if (window.vtex && window.vtex.renderRuntime && window.vtex.renderRuntime.extensions) {
+      extensions = Object.keys(window.vtex.renderRuntime.extensions)
+    }
+
     return (
       <div className="ph5 mv5 lh-title">
+        <div className="mb5">
+          <h2 className="f4 mb3">Basic data</h2>
+          <p>orderFomID: {vtexjs.checkout.orderFormId}</p>
+        </div>
+
+        <div className="mb5">
+          <h2 className="f4 mb3">Extensions</h2>
+          {
+            extensions.length === 0 ? (
+              <p className="gray">No extensions.</p>
+            ) : (
+              <Fragment>
+                {
+                  extensions.map((extension, i) => (
+                    <p key={i}><strong>{extension}</strong> - {window.vtex.renderRuntime.extensions[extension].declarer}</p>
+                  ))
+                }
+              </Fragment>
+            )
+          }
+        </div>
+
         <div className="mb5">
           <h2 className="f4 mb3">Marketing data</h2>
           {!mkt || (!mkt.utmSource && !mkt.utmMedium && !mkt.utmCampaign) ? <p className="gray">No UTMs.</p> : ''}
