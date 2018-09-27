@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-// import splunkEvents from './SplunkEvents'
 import Header from './Header'
 import Actions from './Actions'
 import Menu from './Menu'
