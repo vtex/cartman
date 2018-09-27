@@ -41,6 +41,13 @@ class SkuItems extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.addSpecifiedSku(this.state)
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'clicked-add-item',
+      event: {item: this.state}
+    });
   }
 
   render() {

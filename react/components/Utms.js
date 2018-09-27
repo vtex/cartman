@@ -56,6 +56,13 @@ class Utms extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.setUTMData(this.state)
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'clicked-add-marketing-data',
+      event: {isOpen: this.state}
+    });
   }
 
   componentWillMount() {
