@@ -133,7 +133,7 @@ class Sidebar extends Component {
       level: 'Debug',
       type: 'Info',
       workflowType: 'cartman',
-      workflowInstance: 'clicked-on',
+      workflowInstance: 'cartman-opened',
       event: {isOpen: this.state.isOpen}
     });
 
