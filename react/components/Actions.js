@@ -27,6 +27,14 @@ class Actions extends Component {
     setTimeout(
       function() { this.setState({copied: false});
     }.bind(this), 2000)
+
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'clicked-copy'
+    });
+
   }
 
   componentDidMount(){

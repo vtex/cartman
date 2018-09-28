@@ -8,6 +8,14 @@ class Read extends Component {
   handleSetSelectedItem = (i) => {
     this.props.setSelectedItem(i)
     this.props.goToItemDetail()
+
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'clicked-detailed-item',
+      event: {item: i}
+    });
   }
 
   render() {

@@ -10,7 +10,8 @@
     "react-json-view": "^1.19.1",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "splunk-events": "^1.2.3"
   },
   "devDependencies": {}
 }

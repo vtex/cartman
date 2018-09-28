@@ -80,6 +80,12 @@ class Items extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.searchCatalog(this.state, window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm.salesChannel)
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'clicked-add-random-item'
+    });
   }
 
   render() {

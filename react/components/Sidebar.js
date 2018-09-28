@@ -9,8 +9,8 @@ import Utms from './Utms'
 import Read from './Read'
 import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
-import Cookie from 'js-cookie'
 import styles from '../theme.css'
+
 
 class Sidebar extends Component {
   
@@ -100,6 +100,12 @@ class Sidebar extends Component {
 
   handleGoToRead = () => {
     this.setState({ page: 'read' })
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'clicked-view-details'
+    });
   }
 
   handleGoToItems = () => {
@@ -123,10 +129,24 @@ class Sidebar extends Component {
     if (this.state.deactivate){
       this.disableCartman()
     }
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'cartman-opened',
+      event: {isOpen: this.state.isOpen}
+    });
+
   }
 
   handleDeactivate = () => {
     this.setState({ deactivate: true })
+    window.logSplunk({
+      level: 'Debug',
+      type: 'Info',
+      workflowType: 'cartman',
+      workflowInstance: 'clicked-deactivate'
+    });
   }
 
   handleReactivate = () => {
