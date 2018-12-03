@@ -27,10 +27,11 @@ class Read extends Component {
       <div className="ph5 mv5 lh-title">
         <div className="mb5">
           <h2 className="f4 mb3">Marketing data</h2>
-          {!mkt || (!mkt.utmSource && !mkt.utmMedium && !mkt.utmCampaign) ? <p className="gray">No UTMs.</p> : ''}
+          {!mkt || (!mkt.utmSource && !mkt.utmMedium && !mkt.utmCampaign && !mkt.utmiCampaign) ? <p className="gray">No UTMs.</p> : ''}
           {mkt && mkt.utmSource && (<p>utm_source: {mkt.utmSource}</p>)}
           {mkt && mkt.utmMedium && (<p>utm_medium: {mkt.utmMedium}</p>)}
           {mkt && mkt.utmCampaign && (<p>utm_campaign: {mkt.utmCampaign}</p>)}
+          {mkt && mkt.utmiCampaign && (<p>utmi_campaign: {mkt.utmiCampaign}</p>)}
           {mkt && mkt.coupon && (<p>Coupon: {mkt.coupon}</p>)}
         </div>
 
