@@ -76,7 +76,7 @@ class Utms extends Component {
         utmSource: mkt.utmSource ? mkt.utmSource : '',
         utmMedium: mkt.utmMedium ? mkt.utmMedium : '',
         utmCampaign: mkt.utmCampaign ? mkt.utmCampaign : '',
-        utmiCampaign: mkt.utmCampaign ? mkt.utmiCampaign : '',
+        utmiCampaign: mkt.utmiCampaign ? mkt.utmiCampaign : '',
         coupon: mkt.coupon ? mkt.coupon : '',
       })
     }
