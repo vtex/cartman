@@ -90,7 +90,7 @@ class Utms extends Component {
       <form className="ph5 mv5" onSubmit={this.handleSubmit}>
         <div className="pb4">
           <Label htmlFor="utmSource">utm_source</Label>
-          <Input autoComplete="off" autoFocus onChange={this.handleUtmSourceChange} id="utmSource" value={this.state.utmSource} />
+          <Input autoComplete="off" onChange={this.handleUtmSourceChange} id="utmSource" value={this.state.utmSource} />
         </div>
         <div className="pb4">
           <Label htmlFor="utmMedium">utm_medium</Label>
