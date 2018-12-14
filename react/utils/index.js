@@ -37,16 +37,24 @@ export function buildQueryString(jsonObject) {
     }
     else {
         var productName = "";
-        var priceFrom = 0;
-        var priceTo = 99999;
+        var price = '';
         var filters = "?fq=";
         var param = ""
 
-        if(jsonObject.hasOwnProperty("priceFrom")){
-          priceFrom = jsonObject["priceFrom"];
-        }
-        if (jsonObject.hasOwnProperty("priceUp")){
-          priceTo = jsonObject["priceUp"];
+        let hasPriceFrom = jsonObject.hasOwnProperty("priceFrom") && jsonObject["priceFrom"] !== ''
+        let hasPriceTo = jsonObject.hasOwnProperty("priceUp") && jsonObject["priceUp"] !== ''
+
+        if(hasPriceFrom || hasPriceTo) {
+          if(hasPriceFrom && hasPriceTo) {
+            price = `P:[${jsonObject["priceFrom"]} TO ${jsonObject["priceUp"]}]`;
+          } else {
+            if(hasPriceFrom) {
+              price = `P:[${jsonObject["priceFrom"]} TO 999999999]`;
+            }
+            if(hasPriceTo) {
+              price = `P:[0 TO ${jsonObject["priceUp"]}]`;
+            }
+          }
         }
         if(jsonObject.hasOwnProperty("categories")){
           filters = filters + "C:/" + jsonObject["categories"]+"/,";
@@ -60,7 +68,7 @@ export function buildQueryString(jsonObject) {
         if(jsonObject.hasOwnProperty("itemsSellers")){
           filters = filters + "sellerId:" + jsonObject["itemsSellers"] + ",";
         }
-        return query + filters + `P:[${priceFrom} TO ${priceTo}]&_from=0&_to=49`;
+        return query + filters + price + `&_from=0&_to=49`;
     }
 }
 
