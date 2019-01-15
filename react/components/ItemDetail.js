@@ -26,15 +26,19 @@ const theme = {
 };
 
 const format = (raw, type) => {
-  if(type === 'label') {
-    raw = raw.concat(': ')
-  }
   const style = {
     fontFamily: 'monospace',
     fontWeight: 'normal'
   }
 
-  return <strong style={style}>{raw}</strong>
+  return (
+    <strong style={style}>
+      {type === 'label'
+        ? raw + ': '
+        : raw
+      }
+    </strong>
+  )
 }
 
 
@@ -62,8 +66,8 @@ class ItemDetail extends Component {
               <ReactJson data={item} 
                           theme={theme} 
                           invertTheme={true} 
-                          labelRenderer={(raw) => format(raw, 'label')} 
-                          valueRenderer={(raw) => format(raw, 'value')}
+                          labelRenderer={(objTreePathArray) => format(objTreePathArray[0], 'label')} 
+                          valueRenderer={(value) => format(value, 'value')}
               />
             </Fragment>
           )
