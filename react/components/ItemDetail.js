@@ -41,9 +41,6 @@ const format = (raw, type) => {
 class ItemDetail extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      loaded: false
-    }
   }
 
   render() {
@@ -62,15 +59,12 @@ class ItemDetail extends Component {
           item && (
             <Fragment>
               <h2 className="f4 mb3">{item.skuName}</h2>
-              <div style={{fontFamily: 'monospace'}}>
-                <ReactJson data={item} 
-                           theme={theme} 
-                           invertTheme={true} 
-                           labelRenderer={(raw) => format(raw, 'label')} 
-                           valueRenderer={(raw) => format(raw, 'value')}
-                />
-              </div>
-              
+              <ReactJson data={item} 
+                          theme={theme} 
+                          invertTheme={true} 
+                          labelRenderer={(raw) => format(raw, 'label')} 
+                          valueRenderer={(raw) => format(raw, 'value')}
+              />
             </Fragment>
           )
         }
