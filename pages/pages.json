@@ -1,5 +1,9 @@
 {
   "extensions": {
+    "checkout-render/cartman": {
+      "component": "index",
+      "ssr": false
+    },
     "checkout/cartman": {
       "component": "index"
     }
