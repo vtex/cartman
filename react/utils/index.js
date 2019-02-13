@@ -41,21 +41,10 @@ export function buildQueryString(jsonObject) {
         var filters = "?fq=";
         var param = ""
 
-        let hasPriceFrom = jsonObject.hasOwnProperty("priceFrom") && jsonObject["priceFrom"] !== ''
-        let hasPriceTo = jsonObject.hasOwnProperty("priceUp") && jsonObject["priceUp"] !== ''
+		if(jsonObject.priceFrom || jsonObject.priceUp){
+			price = `P:[${jsonObject.priceFrom || 0} TO ${jsonObject.priceUp || 999999999}]`
+		}
 
-        if(hasPriceFrom || hasPriceTo) {
-          if(hasPriceFrom && hasPriceTo) {
-            price = `P:[${jsonObject["priceFrom"]} TO ${jsonObject["priceUp"]}]`;
-          } else {
-            if(hasPriceFrom) {
-              price = `P:[${jsonObject["priceFrom"]} TO 999999999]`;
-            }
-            if(hasPriceTo) {
-              price = `P:[0 TO ${jsonObject["priceUp"]}]`;
-            }
-          }
-        }
         if(jsonObject.hasOwnProperty("categories")){
           filters = filters + "C:/" + jsonObject["categories"]+"/,";
         }
