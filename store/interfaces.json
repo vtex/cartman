@@ -1,5 +1,6 @@
 {
   "checkout-cartman": {
-    "component": "index"
+    "component": "index",
+    "ssr": false
   }
 }
