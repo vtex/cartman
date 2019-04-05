@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { intlShape } from 'react-intl'
 import PropTypes from 'prop-types'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class Header extends Component {
   render() {
-    const { intl } = this.props
     return (
       <header className="relative f3 bg-light-silver serious-black pa5 tc br3-m br--top-m fw5">
         { this.props.page !== 'home' && (
@@ -15,11 +14,11 @@ class Header extends Component {
           </button>
         ) }
         { this.props.page === 'home' && <span>Cartman</span>}
-        { this.props.page === 'read' && <span>{intl.formatMessage({ id: 'cartman.viewCartDetails' })}</span>}
-        { this.props.page === 'skuItems' && <span>{intl.formatMessage({ id: 'cartman.addBySkuId' })}</span>}
-        { this.props.page === 'items' && <span>{intl.formatMessage({ id: 'cartman.addRandom' })}</span>}
-        { this.props.page === 'utms' && <span>{intl.formatMessage({ id: 'cartman.setMarketingData' })}</span>}
-        { this.props.page === 'itemDetail' && <span>{intl.formatMessage({ id: 'cartman.itemDetail' })}</span>}
+        { this.props.page === 'read' && <span><FormattedMessage id="cartman.viewCartDetails"/></span>}
+        { this.props.page === 'skuItems' && <span><FormattedMessage id="cartman.addBySkuId"/></span>}
+        { this.props.page === 'items' && <span><FormattedMessage id="cartman.addRandom"/></span>}
+        { this.props.page === 'utms' && <span><FormattedMessage id="cartman.setMarketingData"/></span>}
+        { this.props.page === 'itemDetail' && <span><FormattedMessage id="cartman.itemDetail"/></span>}
         <button onClick={this.props.closeSideBar} className="absolute right-0 top-0 bn bg-transparent pointer pa5 bd dn-m">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <g fill="#111111">

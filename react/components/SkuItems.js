@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { intlShape } from 'react-intl'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Label from './Label'
@@ -8,6 +7,7 @@ import Button from '@vtex/styleguide/lib/Button'
 import Alert from '@vtex/styleguide/lib/Alert'
 import { addSpecifiedSku } from '../actions/index'
 import Spinner from '@vtex/styleguide/lib/Spinner'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class SkuItems extends Component {
   constructor(props) {
@@ -57,20 +57,20 @@ class SkuItems extends Component {
       <form className="ph5 mv5" onSubmit={this.handleSubmit}>
         <div className="lh-copy f6 mb6">
           <Alert>
-            {intl.formatMessage({ id: 'cartman.addByIdMessage' })}
+            <FormattedMessage id="cartman.addByIdMessage"/>
           </Alert>
         </div>
 
         <div className="pb4">
-          <Label htmlFor="skuIds">{intl.formatMessage({ id: 'cartman.skuIds' })} *</Label>
+          <Label htmlFor="skuIds"><FormattedMessage id="cartman.skuIds"/> *</Label>
           <Input autoComplete="off" autoFocus onChange={this.handleSkuIdsChange} id="skuIds" placeholder="11111, 12345, 54321" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsQuantity">{intl.formatMessage({ id: 'cartman.quantityOfEachItem' })}</Label>
+          <Label htmlFor="itemsQuantity"><FormattedMessage id="cartman.quantityOfEachItem"/></Label>
           <Input autoComplete="off" onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
         </div>
         <div className="pb4">
-          <Label htmlFor="sellerId">{intl.formatMessage({ id: 'cartman.sellerId' })}</Label>
+          <Label htmlFor="sellerId"><FormattedMessage id="cartman.sellerId"/></Label>
           <Input autoComplete="off" onChange={this.handleSellerIdChange} id="sellerId" />
         </div>
         <div className="tc mt5">
@@ -86,12 +86,12 @@ class SkuItems extends Component {
                       </g>
                     </svg>
                     <span className="flex-auto">
-                      {intl.formatMessage({ id: 'cartman.addItemsToCart' })}
+                      <FormattedMessage id="cartman.addItemsToCart"/>
                     </span>
                   </span>
                 </Button>
               )
-              : <Button submit type="submit">{intl.formatMessage({ id: 'cartman.addItemsToCart' })}</Button>
+              : <Button submit type="submit"><FormattedMessage id="cartman.addItemsToCart"/></Button>
           }
         </div>
       </form>

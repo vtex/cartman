@@ -1,23 +1,18 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { IntlProvider } from 'react-intl'
+import ClientSide from './components/ClientSide'
 import Sidebar from './components/Sidebar'
 import configureStore from './store/configureStore'
 
-import { getGlobalLocale, getI18nMessages } from './utils/locale'
-
 const renderRoot = () => {
-  const locale = getGlobalLocale()
-  const messages = getI18nMessages()
   const store = configureStore()
 
   return (
     <Provider store={store}>
       <ClientSide>
-        <Sidebar/>
+        <Sidebar />
       </ClientSide>
     </Provider>
   )
 }
 export default renderRoot
- 

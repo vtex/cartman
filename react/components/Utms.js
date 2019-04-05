@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { intlShape } from 'react-intl'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Label from './Label'
 import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 import { setUTMData } from '../actions/index'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class Utms extends Component {
   constructor(props) {
@@ -106,7 +106,7 @@ class Utms extends Component {
           <Input autoComplete="off" onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
         </div>
         <div className="pb4">
-          <Label htmlFor="coupon">{intl.formatMessage({ id: 'cartman.coupon' })}</Label>
+          <Label htmlFor="coupon"><FormattedMessage id="cartman.coupon"/></Label>
           <Input autoComplete="off" onChange={this.handleCouponChange} id="coupon" value={this.state.coupon} />
         </div>
 
@@ -123,12 +123,12 @@ class Utms extends Component {
                   </g>
                 </svg>
                 <span className="flex-auto">
-                  {intl.formatMessage({ id: 'cartman.setMarketingData' })}
+                  <FormattedMessage id="cartman.setMarketingData"/>
                 </span>
               </span>
             </Button>
           )
-          : <Button type="submit" primary>{intl.formatMessage({ id: 'cartman.setMarketingData' })}</Button>
+          : <Button type="submit" primary><FormattedMessage id="cartman.setMarketingData"/></Button>
         }
         </div>
       </form>

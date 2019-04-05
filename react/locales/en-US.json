@@ -38,5 +38,9 @@
   "cartman.skyId": "SKU Id",
   "cartman.viewAllDetails": "View all details",
   "cartman.addByIdMessage": "We'll filter your items by the Seller ID, if you specify one.",
-  "cartman.skuIds": "SKU IDs"
+  "cartman.skuIds": "SKU IDs",
+  "cartman.deactivate": "Deactivate Cartman",
+  "cartman.deactivateMessage1": "Cartman will not be loaded for you in this Account anymore.",
+  "cartman.deactivateMessage2": "If you change your mind later, you can reactivate Cartman through the link:",
+  "cartman.deactivateUndo": "Undo Deactivate"
 }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { intlShape } from 'react-intl'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Button from '@vtex/styleguide/lib/Button'
 import { generateUrl } from '../utils'
 import { getOrderForm } from '../actions/index'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class Actions extends Component {
   constructor(props) {
@@ -45,7 +44,7 @@ class Actions extends Component {
   }
 
   render() {
-    const { intl } = this.props
+    
     return (
       <div className="pa5 w-100 cf bb b--light-gray tc">
         <span className="mr4">
@@ -53,13 +52,13 @@ class Actions extends Component {
              onCopy={this.handleCopyCartButton}>
             {
               this.state.copied === true
-              ? <Button disabled>{intl.formatMessage({ id: 'cartman.copiedCart' })}</Button>
-              : <Button primary>{intl.formatMessage({ id: 'cartman.copyCart' })}</Button>
+              ? <Button disabled><FormattedMessage id="cartman.copiedCart"/></Button>
+              : <Button primary><FormattedMessage id="cartman.copyCart"/></Button>
             }
           </CopyToClipboard>
         </span>
         <span>
-          <Button onClick={this.handleResetCartButton} secondary>{intl.formatMessage({ id: 'cartman.emptyCart' })}</Button>
+          <Button onClick={this.handleResetCartButton} secondary><FormattedMessage id="cartman.emptyCart"/></Button>
         </span>
       </div>
     )

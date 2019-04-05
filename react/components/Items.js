@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { intlShape } from 'react-intl'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Label from './Label'
@@ -8,6 +7,7 @@ import Button from '@vtex/styleguide/lib/Button'
 import Alert from '@vtex/styleguide/lib/Alert'
 import { searchCatalog } from '../actions/index'
 import Spinner from '@vtex/styleguide/lib/Spinner'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class Items extends Component {
   constructor(props) {
@@ -95,41 +95,41 @@ class Items extends Component {
       <form onSubmit={this.handleSubmit} className="ph5 mv5">
         <div className="lh-copy f6 mb6">
           <Alert>
-            {intl.formatMessage({ id: 'cartman.addRandomMessage' })}
+            <FormattedMessage id="cartman.addRandomMessage"/>
           </Alert>
         </div>
 
         <div className="pb4">
-          <Label htmlFor="itemsNumber">{intl.formatMessage({ id: 'cartman.numberOfItems' })}</Label>
+          <Label htmlFor="itemsNumber"><FormattedMessage id="cartman.numberOfItems"/></Label>
           <Input autoComplete="off" autoFocus onChange={this.handleNumberOfItemsChange} id="itemsNumber" placeholder="Default is 1" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsQuantity">{intl.formatMessage({ id: 'cartman.quantityOfEachItem' })}</Label>
+          <Label htmlFor="itemsQuantity"><FormattedMessage id="cartman.quantityOfEachItem"/></Label>
           <Input autoComplete="off" onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsCategory">{intl.formatMessage({ id: 'cartman.categoryId' })}</Label>
+          <Label htmlFor="itemsCategory"><FormattedMessage id="cartman.categoryId"/></Label>
           <Input autoComplete="off" onChange={this.handleItemsCategoriesChange} id="itemsCategory" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsBrand">{intl.formatMessage({ id: 'cartman.brandId' })}</Label>
+          <Label htmlFor="itemsBrand"><FormattedMessage id="cartman.brandId"/></Label>
           <Input autoComplete="off" onChange={this.handleItemsBrandsChange} id="itemsBrand" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsCollection">{intl.formatMessage({ id: 'cartman.collectionId' })}</Label>
+          <Label htmlFor="itemsCollection"><FormattedMessage id="cartman.collectionId"/></Label>
           <Input autoComplete="off" onChange={this.handleItemsCollectionsChange} id="itemsCollection" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsSeller">{intl.formatMessage({ id: 'cartman.sellerId' })}</Label>
+          <Label htmlFor="itemsSeller"><FormattedMessage id="cartman.sellerId"/></Label>
           <Input autoComplete="off" onChange={this.handleItemsSellersChange} id="itemsSeller" />
         </div>
         <div className="pb4 cf">
           <div className="fl w-50 pr3">
-            <Label htmlFor="itemsPriceFrom">{intl.formatMessage({ id: 'cartman.priceFrom' })}</Label>
+            <Label htmlFor="itemsPriceFrom"><FormattedMessage id="cartman.priceFrom"/></Label>
             <Input autoComplete="off" onChange={this.handlePriceFromChange} id="itemsPriceFrom" placeholder="99.99" />
           </div>
           <div className="fl w-50 pl3">
-            <Label htmlFor="itemsPriceUpTo">{intl.formatMessage({ id: 'cartman.priceTo' })}</Label>
+            <Label htmlFor="itemsPriceUpTo"><FormattedMessage id="cartman.priceTo"/></Label>
             <Input autoComplete="off" onChange={this.handlePriceUpChange} id="itemsPriceUpTo" placeholder="99.99" />
           </div>
         </div>
@@ -147,12 +147,12 @@ class Items extends Component {
                     </g>
                   </svg>
                   <span className="flex-auto">
-                    {intl.formatMessage({ id: 'cartman.addItemsToCart' })}
+                    <FormattedMessage id="cartman.addItemsToCart"/>
                   </span>
                 </span>
               </Button>
             )
-            : <Button type="submit" primary>{intl.formatMessage({ id: 'cartman.addItemsToCart' })}</Button>
+            : <Button type="submit" primary><FormattedMessage id="cartman.addItemsToCart"/></Button>
           }
         </div>
       </form>
