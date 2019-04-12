@@ -1,7 +1,7 @@
 {
   "name": "cartman",
   "vendor": "vtex",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "title": "Create and share carts. Debug checkout.",
   "description": "Create and share carts. Debug checkout.",
   "mustUpdateAt": "2019-03-01",
