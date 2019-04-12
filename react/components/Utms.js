@@ -5,6 +5,7 @@ import Label from './Label'
 import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 import { setUTMData } from '../actions/index'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class Utms extends Component {
   constructor(props) {
@@ -84,7 +85,7 @@ class Utms extends Component {
   }
 
   render() {
-    const { isLoading } = this.props
+    const { intl, isLoading } = this.props
 
     return (
       <form className="ph5 mv5" onSubmit={this.handleSubmit}>
@@ -105,7 +106,7 @@ class Utms extends Component {
           <Input autoComplete="off" onChange={this.handleUtmiCampaignChange} id="utmiCampaign" value={this.state.utmiCampaign} />
         </div>
         <div className="pb4">
-          <Label htmlFor="coupon">Coupon</Label>
+          <Label htmlFor="coupon"><FormattedMessage id="cartman.coupon"/></Label>
           <Input autoComplete="off" onChange={this.handleCouponChange} id="coupon" value={this.state.coupon} />
         </div>
 
@@ -122,12 +123,12 @@ class Utms extends Component {
                   </g>
                 </svg>
                 <span className="flex-auto">
-                  Set Marketing data
+                  <FormattedMessage id="cartman.setMarketingData"/>
                 </span>
               </span>
             </Button>
           )
-          : <Button type="submit" primary>Set Marketing data</Button>
+          : <Button type="submit" primary><FormattedMessage id="cartman.setMarketingData"/></Button>
         }
         </div>
       </form>
@@ -136,7 +137,8 @@ class Utms extends Component {
 }
 
 Utms.propTypes = {
-  setUTMData: PropTypes.func.isRequired
+  setUTMData: PropTypes.func.isRequired,
+  intl: intlShape,
 }
 
 const mapStateToProps = (state, ownProps) => ({

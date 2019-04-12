@@ -7,6 +7,7 @@ import Button from '@vtex/styleguide/lib/Button'
 import Alert from '@vtex/styleguide/lib/Alert'
 import { addSpecifiedSku } from '../actions/index'
 import Spinner from '@vtex/styleguide/lib/Spinner'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class SkuItems extends Component {
   constructor(props) {
@@ -51,46 +52,46 @@ class SkuItems extends Component {
   }
 
   render() {
-    const {simulation, isLoading} = this.props
+    const { intl, simulation, isLoading } = this.props
     return (
       <form className="ph5 mv5" onSubmit={this.handleSubmit}>
         <div className="lh-copy f6 mb6">
           <Alert>
-            We'll filter your items by the Seller ID, if you specify one.
+            <FormattedMessage id="cartman.addByIdMessage"/>
           </Alert>
         </div>
 
         <div className="pb4">
-          <Label htmlFor="skuIds">SKU IDs *</Label>
+          <Label htmlFor="skuIds"><FormattedMessage id="cartman.skuIds"/> *</Label>
           <Input autoComplete="off" autoFocus onChange={this.handleSkuIdsChange} id="skuIds" placeholder="11111, 12345, 54321" />
         </div>
         <div className="pb4">
-          <Label htmlFor="itemsQuantity">Quantity of each item</Label>
+          <Label htmlFor="itemsQuantity"><FormattedMessage id="cartman.quantityOfEachItem"/></Label>
           <Input autoComplete="off" onChange={this.handleItemsQuantityChange} id="itemsQuantity" placeholder="Default is 1" />
         </div>
         <div className="pb4">
-          <Label htmlFor="sellerId">Seller ID</Label>
+          <Label htmlFor="sellerId"><FormattedMessage id="cartman.sellerId"/></Label>
           <Input autoComplete="off" onChange={this.handleSellerIdChange} id="sellerId" />
         </div>
         <div className="tc mt5">
           {
             isLoading
-            ? (
-              <Button submit disabled>
-                <span className="flex items-center">
-                  <svg className="vtex-cartman-loader flex-none mr3" version="1.1" x="0px" y="0px" viewBox="0 0 24 24" width="16" height="16">
-                    <g transform="rotate(57.229285712486934 12 12)">
-                      <circle opacity="0.4" fill="none" stroke="#111111" cx="12" cy="12" r="11"></circle>
-                      <path fill="none" stroke="#111111" d="M12,1 c6.0751324,0,11,4.9248676,11,11"></path>
-                    </g>
-                  </svg>
-                  <span className="flex-auto">
-                    Add items to Cart
+              ? (
+                <Button submit disabled>
+                  <span className="flex items-center">
+                    <svg className="vtex-cartman-loader flex-none mr3" version="1.1" x="0px" y="0px" viewBox="0 0 24 24" width="16" height="16">
+                      <g transform="rotate(57.229285712486934 12 12)">
+                        <circle opacity="0.4" fill="none" stroke="#111111" cx="12" cy="12" r="11"></circle>
+                        <path fill="none" stroke="#111111" d="M12,1 c6.0751324,0,11,4.9248676,11,11"></path>
+                      </g>
+                    </svg>
+                    <span className="flex-auto">
+                      <FormattedMessage id="cartman.addItemsToCart"/>
+                    </span>
                   </span>
-                </span>
-              </Button>
-            )
-            : <Button type="submit" primary>Add items to Cart</Button>
+                </Button>
+              )
+              : <Button submit type="submit"><FormattedMessage id="cartman.addItemsToCart"/></Button>
           }
         </div>
       </form>
@@ -99,7 +100,8 @@ class SkuItems extends Component {
 }
 
 SkuItems.propTypes = {
-  addSpecifiedSku: PropTypes.func.isRequired
+  addSpecifiedSku: PropTypes.func.isRequired,
+  intl: intlShape,
 }
 
 const mapStateToProps = (state, ownProps) => ({

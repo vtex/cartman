@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
 import Header from './Header'
 import Actions from './Actions'
 import Menu from './Menu'
@@ -11,7 +10,7 @@ import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import styles from '../theme.css'
-
+import { FormattedMessage } from 'react-intl'
 
 class Sidebar extends Component {
   
@@ -183,10 +182,10 @@ class Sidebar extends Component {
                         this.state.deactivate
                           ? (
                             <div className="flex-auto tc ma5 f5 lh-copy">
-                              <p className="fw5">Cartman will not be loaded for you in this Account anymore.</p>
-                              <p>If you change your mind later, you can reactivate Cartman througth the link:</p>
+                              <p className="fw5"><FormattedMessage id="cartman.deactivateMessage1"/></p>
+                              <p><FormattedMessage id="cartman.deactivateMessage2"/></p>
                               <p className="f6" style={{ wordBreak: 'break-all' }}><a href={reactivateLink}>{reactivateLink}</a></p>
-                              <div className="mt5"><Button onClick={this.handleReactivate}>Undo Deactivate</Button></div>
+                              <div className="mt5"><Button onClick={this.handleReactivate}><FormattedMessage id="cartman.deactivateUndo"/></Button></div>
                             </div>
                           )
                           : (
@@ -202,15 +201,15 @@ class Sidebar extends Component {
                                 {
                                   this.state.page === 'home' && (
                                     <div>
-                                      <Menu onClick={this.handleGoToRead} title="View Cart details" description="Go further into your Cart data" />
-                                      <Menu onClick={this.handleGoToSkuItems} title="Add items by SKU ID" description="Pick your items one by one" />
-                                      <Menu onClick={this.handleGoToItems} title="Add random items" description="We'll sort some items for you" />
-                                      <Menu onClick={this.handleGoToUtms} title="Set Marketing data" description="Define your Cart UTMs and Coupon" />
+                                      <Menu onClick={this.handleGoToRead} title={<FormattedMessage id="cartman.viewDetails"/>} description="Go further into your Cart data" />
+                                      <Menu onClick={this.handleGoToSkuItems} title={<FormattedMessage id="cartman.addBySkuId"/>} description="Pick your items one by one" />
+                                      <Menu onClick={this.handleGoToItems} title={<FormattedMessage id="cartman.addRandom"/>} description="We'll sort some items for you" />
+                                      <Menu onClick={this.handleGoToUtms} title={<FormattedMessage id="cartman.setMarketingData"/>} description="Define your Cart UTMs and Coupon" />
 
                                       <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
-                                        <div className="gray mb3">Cartman helps you to create, investigate and share Carts.</div>
-                                        <div className="rebel-pink">Don't worry! Cartman is NOT visible to your customers :)</div>
-                                        <div className=""><Button onClick={this.handleDeactivate}>Deactivate Cartman</Button></div>
+                                        <div className="gray mb2"><FormattedMessage id="cartman.cartmanDescription"/></div>
+                                        <div className="rebel-pink"><FormattedMessage id="cartman.cartmanWarning"/></div>
+                                        <div className=""><Button onClick={this.handleDeactivate}><FormattedMessage id="cartman.deactivate"/></Button></div>
                                       </div>
                                     </div>
                                   )
@@ -263,12 +262,5 @@ class Sidebar extends Component {
   }
   
 }
-
-
-
-Sidebar.propTypes = { 
-}
-
-
 
 export default Sidebar

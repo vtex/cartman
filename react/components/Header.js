@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { FormattedMessage, intlShape } from 'react-intl'
 
 class Header extends Component {
   render() {
@@ -13,11 +14,11 @@ class Header extends Component {
           </button>
         ) }
         { this.props.page === 'home' && <span>Cartman</span>}
-        { this.props.page === 'read' && <span>View Cart details</span>}
-        { this.props.page === 'skuItems' && <span>Add items by SKU ID</span>}
-        { this.props.page === 'items' && <span>Add Random Items</span>}
-        { this.props.page === 'utms' && <span>Set Marketing data</span>}
-        { this.props.page === 'itemDetail' && <span>Item Detail</span>}
+        { this.props.page === 'read' && <span><FormattedMessage id="cartman.viewCartDetails"/></span>}
+        { this.props.page === 'skuItems' && <span><FormattedMessage id="cartman.addBySkuId"/></span>}
+        { this.props.page === 'items' && <span><FormattedMessage id="cartman.addRandom"/></span>}
+        { this.props.page === 'utms' && <span><FormattedMessage id="cartman.setMarketingData"/></span>}
+        { this.props.page === 'itemDetail' && <span><FormattedMessage id="cartman.itemDetail"/></span>}
         <button onClick={this.props.closeSideBar} className="absolute right-0 top-0 bn bg-transparent pointer pa5 bd dn-m">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <g fill="#111111">
@@ -31,6 +32,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
+  intl: intlShape,
 }
 
 export default Header

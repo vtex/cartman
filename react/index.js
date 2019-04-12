@@ -6,13 +6,13 @@ import configureStore from './store/configureStore'
 
 const renderRoot = () => {
   const store = configureStore()
+
   return (
     <Provider store={store}>
       <ClientSide>
-        <Sidebar/>
+        <Sidebar />
       </ClientSide>
     </Provider>
   )
 }
 export default renderRoot
- 
