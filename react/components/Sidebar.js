@@ -9,8 +9,9 @@ import Read from './Read'
 import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import styles from '../theme.css'
 import { FormattedMessage } from 'react-intl'
+
+import '../theme.css'
 
 class Sidebar extends Component {
   
