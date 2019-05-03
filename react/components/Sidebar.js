@@ -164,7 +164,7 @@ class Sidebar extends Component {
     return (
       cartmanEnabled
         ? (
-          <div className="vtex-cartman">
+          <div className="vtex-cartman onda-v1">
             {
               this.state.isOpen && (
                 <div className="vtex-cartman-container fixed right-0 bottom-2-m w-100 mw6-m pl7-m pr5-m z-max">
