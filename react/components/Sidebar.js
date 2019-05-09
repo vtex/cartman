@@ -14,7 +14,7 @@ import { FormattedMessage } from 'react-intl'
 import '../theme.css'
 
 class Sidebar extends Component {
-  
+
   constructor(props) {
     super(props)
 
@@ -37,12 +37,12 @@ class Sidebar extends Component {
     } else {
       if (cartmanQueryOn && !this.state.deactivate){
         this.enableCartman()
-        enabled = true  
+        enabled = true
 
       } else if (isCartmanUndefined){
         this.enableCartman()
         enabled = true
-      
+
       } else {
         enabled = false
       }
@@ -105,7 +105,8 @@ class Sidebar extends Component {
       level: 'Debug',
       type: 'Info',
       workflowType: 'cartman',
-      workflowInstance: 'clicked-view-details'
+      workflowInstance: 'clicked-view-details',
+      account: vtex.accountName,
     });
   }
 
@@ -135,7 +136,8 @@ class Sidebar extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'cartman-opened',
-      event: {isOpen: this.state.isOpen}
+      event: {isOpen: this.state.isOpen},
+      account: vtex.accountName,
     });
 
   }
@@ -146,7 +148,8 @@ class Sidebar extends Component {
       level: 'Debug',
       type: 'Info',
       workflowType: 'cartman',
-      workflowInstance: 'clicked-deactivate'
+      workflowInstance: 'clicked-deactivate',
+      account: vtex.accountName,
     });
   }
 
@@ -261,7 +264,7 @@ class Sidebar extends Component {
           </div>) : (<div></div>
         ))
   }
-  
+
 }
 
 export default Sidebar

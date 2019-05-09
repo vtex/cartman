@@ -32,7 +32,8 @@ class Actions extends Component {
       level: 'Debug',
       type: 'Info',
       workflowType: 'cartman',
-      workflowInstance: 'clicked-copy'
+      workflowInstance: 'clicked-copy',
+      account: vtex.accountName,
     });
 
   }
@@ -44,7 +45,7 @@ class Actions extends Component {
   }
 
   render() {
-    
+
     return (
       <div className="pa5 w-100 cf bb b--light-gray tc">
         <span className="mr4">

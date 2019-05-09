@@ -15,12 +15,13 @@ class Read extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-detailed-item',
-      event: {item: i}
+      event: {item: i},
+      account: vtex.accountName,
     });
   }
 
   render() {
-    
+
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
     const { orderForm } = window.vtexjs.checkout
     const mkt = orderForm.marketingData

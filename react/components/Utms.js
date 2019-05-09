@@ -62,7 +62,8 @@ class Utms extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-add-marketing-data',
-      event: {isOpen: this.state}
+      event: {isOpen: this.state},
+      account: vtex.accountName,
     });
   }
 

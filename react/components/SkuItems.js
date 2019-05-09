@@ -47,7 +47,8 @@ class SkuItems extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-add-item',
-      event: {item: this.state}
+      event: {item: this.state},
+      account: vtex.accountName,
     });
   }
 

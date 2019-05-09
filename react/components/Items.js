@@ -85,7 +85,8 @@ class Items extends Component {
       level: 'Debug',
       type: 'Info',
       workflowType: 'cartman',
-      workflowInstance: 'clicked-add-random-item'
+      workflowInstance: 'clicked-add-random-item',
+      account: vtex.accountName,
     });
   }
 
