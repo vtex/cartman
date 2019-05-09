@@ -1,7 +1,25 @@
-@import 'tachyons.css';
+/* resets */
+
+.vtex-cartman {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Fabriga,-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+  font-size: 12px;
+}
+
+.vtex-cartman h1,
+.vtex-cartman h2,
+.vtex-cartman h3,
+.vtex-cartman h4,
+.vtex-cartman h5,
+.vtex-cartman h6 { line-height: inherit; margin: inherit; }
+
+/* etc */
 
 .vtex-cartman-container {
-  font-size: 12px;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
   bottom: 0;
   top: 0;
 }

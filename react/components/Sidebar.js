@@ -9,8 +9,9 @@ import Read from './Read'
 import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import styles from '../theme.css'
 import { FormattedMessage } from 'react-intl'
+
+import '../theme.css'
 
 class Sidebar extends Component {
   
@@ -164,7 +165,7 @@ class Sidebar extends Component {
     return (
       cartmanEnabled
         ? (
-          <div className="vtex-cartman">
+          <div className="vtex-cartman onda-v1">
             {
               this.state.isOpen && (
                 <div className="vtex-cartman-container fixed right-0 bottom-2-m w-100 mw6-m pl7-m pr5-m z-max">
