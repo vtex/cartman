@@ -6,6 +6,7 @@ import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 import { setUTMData } from '../actions/index'
 import { FormattedMessage, intlShape } from 'react-intl'
+import { getAccountName } from '../utils';
 
 class Utms extends Component {
   constructor(props) {
@@ -62,7 +63,8 @@ class Utms extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-add-marketing-data',
-      event: {isOpen: this.state}
+      event: {isOpen: this.state},
+      account: getAccountName(),
     });
   }
 

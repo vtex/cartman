@@ -81,3 +81,8 @@ function selectMany(f){
        return acc.concat(f(b))
    }
 }
+
+
+export function getAccountName() {
+  return window.vtex && window.vtex.accountName
+}

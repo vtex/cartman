@@ -4,6 +4,7 @@ import Label from './Label'
 import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 import { FormattedMessage, intlShape } from 'react-intl'
+import { getAccountName } from '../utils';
 
 class Read extends Component {
   handleSetSelectedItem = (i) => {
@@ -15,12 +16,13 @@ class Read extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-detailed-item',
-      event: {item: i}
+      event: {item: i},
+      account: getAccountName(),
     });
   }
 
   render() {
-    
+
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
     const { orderForm } = window.vtexjs.checkout
     const mkt = orderForm.marketingData

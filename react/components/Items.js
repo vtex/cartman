@@ -8,6 +8,7 @@ import Alert from '@vtex/styleguide/lib/Alert'
 import { searchCatalog } from '../actions/index'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 import { FormattedMessage, intlShape } from 'react-intl'
+import { getAccountName } from '../utils';
 
 class Items extends Component {
   constructor(props) {
@@ -85,7 +86,8 @@ class Items extends Component {
       level: 'Debug',
       type: 'Info',
       workflowType: 'cartman',
-      workflowInstance: 'clicked-add-random-item'
+      workflowInstance: 'clicked-add-random-item',
+      account: getAccountName(),
     });
   }
 
