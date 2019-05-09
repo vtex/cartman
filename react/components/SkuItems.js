@@ -8,6 +8,7 @@ import Alert from '@vtex/styleguide/lib/Alert'
 import { addSpecifiedSku } from '../actions/index'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 import { FormattedMessage, intlShape } from 'react-intl'
+import { getAccountName } from '../utils';
 
 class SkuItems extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class SkuItems extends Component {
       workflowType: 'cartman',
       workflowInstance: 'clicked-add-item',
       event: {item: this.state},
-      account: vtex.accountName,
+      account: getAccountName(),
     });
   }
 

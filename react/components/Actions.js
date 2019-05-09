@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Button from '@vtex/styleguide/lib/Button'
-import { generateUrl } from '../utils'
+import { generateUrl, getAccountName } from '../utils'
 import { getOrderForm } from '../actions/index'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FormattedMessage, intlShape } from 'react-intl'
@@ -33,7 +33,7 @@ class Actions extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-copy',
-      account: vtex.accountName,
+      account: getAccountName(),
     });
 
   }

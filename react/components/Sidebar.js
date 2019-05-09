@@ -10,6 +10,7 @@ import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { FormattedMessage } from 'react-intl'
+import { getAccountName } from '../utils';
 
 import '../theme.css'
 
@@ -106,7 +107,7 @@ class Sidebar extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-view-details',
-      account: vtex.accountName,
+      account: getAccountName(),
     });
   }
 
@@ -137,7 +138,7 @@ class Sidebar extends Component {
       workflowType: 'cartman',
       workflowInstance: 'cartman-opened',
       event: {isOpen: this.state.isOpen},
-      account: vtex.accountName,
+      account: getAccountName(),
     });
 
   }
@@ -149,7 +150,7 @@ class Sidebar extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'clicked-deactivate',
-      account: vtex.accountName,
+      account: getAccountName(),
     });
   }
 

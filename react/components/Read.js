@@ -4,6 +4,7 @@ import Label from './Label'
 import Input from '@vtex/styleguide/lib/Input'
 import Button from '@vtex/styleguide/lib/Button'
 import { FormattedMessage, intlShape } from 'react-intl'
+import { getAccountName } from '../utils';
 
 class Read extends Component {
   handleSetSelectedItem = (i) => {
@@ -16,7 +17,7 @@ class Read extends Component {
       workflowType: 'cartman',
       workflowInstance: 'clicked-detailed-item',
       event: {item: i},
-      account: vtex.accountName,
+      account: getAccountName(),
     });
   }
 
