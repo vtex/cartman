@@ -33,18 +33,6 @@
   }
 }
 
-.menu-item .menu-item-icon-white {
-  display: none;
-}
-
-.menu-item:hover .menu-item-icon-black {
-  display: none;
-}
-
-.menu-item:hover .menu-item-icon-white {
-  display: block;
-}
-
 .vtex-cartman-loader {
   animation: roll .7s infinite;
 }

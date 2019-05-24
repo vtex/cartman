@@ -214,7 +214,7 @@ class Sidebar extends Component {
                                       <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
                                         <div className="gray mb2"><FormattedMessage id="cartman.cartmanDescription"/></div>
                                         <div className="rebel-pink"><FormattedMessage id="cartman.cartmanWarning"/></div>
-                                        <div className=""><Button onClick={this.handleDeactivate}><FormattedMessage id="cartman.deactivate"/></Button></div>
+                                        <div className="mt5"><Button onClick={this.handleDeactivate} variation="tertiary"><FormattedMessage id="cartman.deactivate"/></Button></div>
                                       </div>
                                     </div>
                                   )

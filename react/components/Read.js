@@ -70,7 +70,7 @@ class Read extends Component {
               </p>
               <p><FormattedMessage id="cartman.skyId"/>: {item.id}</p>
               <div className="mv3">
-                <Button secondary onClick={() => this.handleSetSelectedItem(i)}><FormattedMessage id="cartman.viewAllDetails"/></Button>
+                <Button size="small" variation="secondary" onClick={() => this.handleSetSelectedItem(i)}><FormattedMessage id="cartman.viewAllDetails"/></Button>
               </div>
             </div>
           ))}

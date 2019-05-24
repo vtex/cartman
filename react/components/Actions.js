@@ -53,13 +53,13 @@ class Actions extends Component {
              onCopy={this.handleCopyCartButton}>
             {
               this.state.copied === true
-              ? <Button disabled><FormattedMessage id="cartman.copiedCart"/></Button>
-              : <Button primary><FormattedMessage id="cartman.copyCart"/></Button>
+              ? <Button disabled inline><FormattedMessage id="cartman.copiedCart"/></Button>
+              : <Button inline><FormattedMessage id="cartman.copyCart"/></Button>
             }
           </CopyToClipboard>
         </span>
         <span>
-          <Button onClick={this.handleResetCartButton} secondary><FormattedMessage id="cartman.emptyCart"/></Button>
+          <Button onClick={this.handleResetCartButton} variation="tertiary" inline><FormattedMessage id="cartman.emptyCart"/></Button>
         </span>
       </div>
     )

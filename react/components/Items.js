@@ -154,7 +154,7 @@ class Items extends Component {
                 </span>
               </Button>
             )
-            : <Button type="submit" primary><FormattedMessage id="cartman.addItemsToCart"/></Button>
+            : <Button type="submit"><FormattedMessage id="cartman.addItemsToCart"/></Button>
           }
         </div>
       </form>

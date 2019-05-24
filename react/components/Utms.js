@@ -130,7 +130,7 @@ class Utms extends Component {
               </span>
             </Button>
           )
-          : <Button type="submit" primary><FormattedMessage id="cartman.setMarketingData"/></Button>
+          : <Button type="submit"><FormattedMessage id="cartman.setMarketingData"/></Button>
         }
         </div>
       </form>
