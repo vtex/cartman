@@ -68,12 +68,14 @@ export const getI18nMessages = extra => {
   }
 
   const locale = getGlobalLocale()
+  const localePrefix = locale.split('-')[0]
   const i18n = getGlobalI18n()
   const i18nFlatMessages = getFlatMessages(i18n[locale], I18N_GLOBAL_KEYS)
 
   i18nMessages = {
     ...extra,
     ...i18nFlatMessages,
+    ...localMessages[localePrefix],
     ...localMessages[locale],
   }
 
