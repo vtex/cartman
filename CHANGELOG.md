@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- i18n messages for locales without specifications (en over en-US)
+
 ## [0.2.8] - 2019-05-09
 
 ### Added
