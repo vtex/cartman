@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import Cookies from 'js-cookie'
 import Button from '@vtex/styleguide/lib/Button'
+import { logEvent } from '../actions/amplitude'
 
 const SuccessColorfulIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
@@ -17,6 +18,9 @@ class Discounts extends Component {
     if (!attempt) {
       window.sessionStorage.setItem('promotions-analyzer-attempt', 1)
     }
+
+    const hasDiscountsApplied = Boolean(window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length)
+    logEvent("Promotion Details Viewed", { "Discounts applied?": hasDiscountsApplied ? "Yes" : "No" })
   }
 
   handlePromotionsAnalyzerOpen = () => {
@@ -27,6 +31,8 @@ class Discounts extends Component {
     Cookies.set('vtex-commerce-env', 'beta')
 
     window.open(`/admin/app/promotions-analyzer?orderFormId=${orderFormId}${attempt > 1 ? `&attempt=${attempt}` : ""}`, "_blank", "width=1200,height=700,menubar=no,status=no,toolbar=no,titlebar=no")
+
+    logEvent("Promotion Analyzer Initialized", { "Volume of Promotions on Cart": window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length, "Number of attempts": attempt })
 
     window.sessionStorage.setItem('promotions-analyzer-attempt', attempt + 1)
   }

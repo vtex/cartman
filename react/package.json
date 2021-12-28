@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@vtex/styleguide": "^2.3.0",
+    "amplitude-js": "^8.14.1",
     "bluebird": "^3.5.1",
     "exenv": "^1.2.2",
     "js-cookie": "^2.1.3",

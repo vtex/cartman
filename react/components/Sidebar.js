@@ -12,6 +12,7 @@ import Button from '@vtex/styleguide/lib/Button'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { FormattedMessage } from 'react-intl'
 import { getAccountName } from '../utils';
+import { init as initAmplitude, logEvent } from '../actions/amplitude'
 
 import '../theme.css'
 
@@ -26,6 +27,10 @@ class Sidebar extends Component {
       deactivate: false,
       selectedItem: null
     }
+  }
+
+  componentDidMount = () => {
+    initAmplitude()
   }
 
   isCartmanEnabled = () => {
@@ -146,6 +151,7 @@ class Sidebar extends Component {
       account: getAccountName(),
     });
 
+    this.state.isOpen && logEvent("Cartman Initialized")
   }
 
   handleDeactivate = () => {
