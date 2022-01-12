@@ -12,11 +12,27 @@ const SuccessColorfulIcon = () => (
 )
 
 class Discounts extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showFeedback: false
+    }
+  }
+
   componentDidMount = () => {
     const attempt = window.sessionStorage.getItem('promotions-analyzer-attempt')
 
     if (!attempt) {
       window.sessionStorage.setItem('promotions-analyzer-attempt', 1)
+    }
+
+    const doNotShowFeedbackBefore = window.localStorage.getItem('vtex-promotions-analyzer-feedback-do-not-show-before')
+
+    if (!doNotShowFeedbackBefore) {
+      const tomorrow = new Date()
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      window.localStorage.setItem('vtex-promotions-analyzer-feedback-do-not-show-before', tomorrow.toISOString())
     }
 
     const hasDiscountsApplied = Boolean(window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length)
@@ -30,14 +46,29 @@ class Discounts extends Component {
     // TODO @vlaux remove when bundles/trace izs available on stable
     Cookies.set('vtex-commerce-env', 'beta')
 
-    window.open(`/admin/app/promotions-analyzer?orderFormId=${orderFormId}${attempt > 1 ? `&attempt=${attempt}` : ""}`, "_blank", "width=1200,height=700,menubar=no,status=no,toolbar=no,titlebar=no")
+    const simulatorWindow = window.open(`/admin/app/promotions-analyzer?orderFormId=${orderFormId}${attempt > 1 ? `&attempt=${attempt}` : ""}`, "_blank", "width=1200,height=700,menubar=no,status=no,toolbar=no,titlebar=no")
 
     logEvent("Promotion Analyzer Initialized", { "Volume of Promotions on Cart": window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length, "Number of attempts": attempt })
 
     window.sessionStorage.setItem('promotions-analyzer-attempt', attempt + 1)
+
+    const doNotShowFeedbackBefore = new Date(window.localStorage.getItem('vtex-promotions-analyzer-feedback-do-not-show-before'))
+
+    if (doNotShowFeedbackBefore < new Date()) {
+      const feedbackTimer = setInterval(function () {
+        if (simulatorWindow.closed) {
+          this.setState({ showFeedback: true })
+
+          clearInterval(feedbackTimer);
+        }
+      }.bind(this), 1000);
+    }
   }
 
   render() {
+    if (this.state.showFeedback) {
+      return <iframe className='w-100 h-100 nb3 b--none' src='/admin/app/promotions-analyzer/feedback'></iframe>
+    }
 
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
     const { orderForm } = window.vtexjs.checkout
