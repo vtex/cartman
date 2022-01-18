@@ -11,6 +11,17 @@ const SuccessColorfulIcon = () => (
   </svg>
 )
 
+const AnalyzerIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4675 19.6839C16.0055 19.6839 19.6845 16.0049 19.6845 11.4669C19.6845 6.92888 16.0055 3.24988 11.4675 3.24988C6.92949 3.24988 3.25049 6.92888 3.25049 11.4669C3.25049 16.0049 6.92949 19.6839 11.4675 19.6839ZM11.4675 18.1839C7.75749 18.1839 4.75049 15.1769 4.75049 11.4669C4.75049 7.75688 7.75749 4.74988 11.4675 4.74988C15.1775 4.74988 18.1845 7.75688 18.1845 11.4669C18.1845 15.1769 15.1775 18.1839 11.4675 18.1839Z" fill="white" />
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5302 19.4703L17.2802 16.2203C16.9882 15.9273 16.5122 15.9273 16.2202 16.2203C15.9272 16.5123 15.9272 16.9883 16.2202 17.2803L19.4702 20.5303C19.7622 20.8233 20.2382 20.8233 20.5302 20.5303C20.8232 20.2383 20.8232 19.7623 20.5302 19.4703Z" fill="white" />
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.89843 14.0968L14.0984 9.89682C14.3904 9.60482 14.3904 9.12882 14.0984 8.83682C13.8054 8.54382 13.3304 8.54382 13.0374 8.83682L8.83743 13.0368C8.54443 13.3288 8.54443 13.8048 8.83743 14.0968C9.13043 14.3898 9.60543 14.3898 9.89843 14.0968Z" fill="white" />
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.2956 12.9184C14.6576 13.3084 14.6466 13.9164 14.2696 14.2894C13.8806 14.6784 13.2516 14.6754 12.8696 14.2894C12.4806 13.9004 12.4836 13.2724 12.8666 12.8934C13.2426 12.5134 13.8506 12.5014 14.2416 12.8634C14.2506 12.8724 14.2606 12.8814 14.2696 12.8904L14.2956 12.9184Z" fill="white" />
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0639 8.66046C10.4379 9.05046 10.4299 9.66746 10.0489 10.0445C9.65987 10.4335 9.03187 10.4305 8.64687 10.0415C8.26287 9.65346 8.26387 9.02646 8.65187 8.64246C9.03587 8.26346 9.65187 8.25946 10.0369 8.63346L10.0639 8.66046Z" fill="white" />
+  </svg>
+
+)
+
 class Discounts extends Component {
   constructor(props) {
     super(props)
@@ -109,8 +120,13 @@ class Discounts extends Component {
               ))}
 
               <div className='mt6'>
-                <Button secondary onClick={this.handlePromotionsAnalyzerOpen}>
-                  <FormattedMessage id="cartman.openPromotionsAnalyzer" />
+                <Button primary onClick={this.handlePromotionsAnalyzerOpen}>
+                  <div className='flex items-center'>
+                    <span className='pr3'>
+                      <AnalyzerIcon />
+                    </span>
+                    <FormattedMessage id="cartman.openPromotionsAnalyzer" />
+                  </div>
                 </Button>
               </div>
             </div>}
