@@ -112,10 +112,6 @@ class Discounts extends Component {
                 <div className="mb4" key={i}>
                   <h3 className="f5 fw5 mb3">{benefit.name}</h3>
                   {benefit.description && <p><FormattedMessage id="cartman.description" />: {benefit.description}</p>}
-                  <p><FormattedMessage id="cartman.featured" />: {benefit.featured ? <FormattedMessage id="cartman.general.yes" /> : <FormattedMessage id="cartman.general.no" />}</p>
-                  {benefit.matchedParameters['slaIds'] && <p><FormattedMessage id="cartman.slaIds" />: {benefit.matchedParameters['slaIds']}</p>}
-                  {benefit.matchedParameters['product@CatalogSystem'] && <p><FormattedMessage id="cartman.productAtCatalogSystem" />: {benefit.matchedParameters['product@CatalogSystem']}</p>}
-                  {benefit.matchedParameters['buyAndWin@Marketing'] && <p><FormattedMessage id="cartman.buyAndWin" />: {benefit.matchedParameters['buyAndWin@Marketing']}</p>}
                 </div>
               ))}
 
