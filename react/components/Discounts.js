@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
-import Cookies from 'js-cookie'
 import Button from '@vtex/styleguide/lib/Button'
 import { logEvent } from '../actions/amplitude'
 
@@ -53,9 +52,6 @@ class Discounts extends Component {
   handlePromotionsAnalyzerOpen = () => {
     const orderFormId = window.vtexjs.checkout.orderFormId;
     const attempt = Number(window.sessionStorage.getItem('promotions-analyzer-attempt'))
-
-    // TODO @vlaux remove when bundles/trace izs available on stable
-    Cookies.set('vtex-commerce-env', 'beta')
 
     const simulatorWindow = window.open(`/admin/app/promotions-analyzer?orderFormId=${orderFormId}${attempt > 1 ? `&attempt=${attempt}` : ""}`, "_blank", "width=1200,height=700,menubar=no,status=no,toolbar=no,titlebar=no")
 
