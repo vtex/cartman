@@ -1,8 +1,7 @@
 import Amplitude from 'amplitude-js';
 import { getAccountName } from '../utils';
 
-// TODO @vlaux replace by production API Key
-const AMPLITUDE_API_KEY = '7bbbcda7896c3419df94498c0928d463'
+const AMPLITUDE_API_KEY = '051cbcefafb8d388b8592ca1e2920623'
 
 export function init() {
   Amplitude.getInstance().init(AMPLITUDE_API_KEY)
