@@ -10,7 +10,7 @@ const SuccessColorfulIcon = () => (
   </svg>
 )
 
-const AnalyzerIcon = () => (
+const PromotionsSimulatorIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4675 19.6839C16.0055 19.6839 19.6845 16.0049 19.6845 11.4669C19.6845 6.92888 16.0055 3.24988 11.4675 3.24988C6.92949 3.24988 3.25049 6.92888 3.25049 11.4669C3.25049 16.0049 6.92949 19.6839 11.4675 19.6839ZM11.4675 18.1839C7.75749 18.1839 4.75049 15.1769 4.75049 11.4669C4.75049 7.75688 7.75749 4.74988 11.4675 4.74988C15.1775 4.74988 18.1845 7.75688 18.1845 11.4669C18.1845 15.1769 15.1775 18.1839 11.4675 18.1839Z" fill="white" />
     <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5302 19.4703L17.2802 16.2203C16.9882 15.9273 16.5122 15.9273 16.2202 16.2203C15.9272 16.5123 15.9272 16.9883 16.2202 17.2803L19.4702 20.5303C19.7622 20.8233 20.2382 20.8233 20.5302 20.5303C20.8232 20.2383 20.8232 19.7623 20.5302 19.4703Z" fill="white" />
@@ -31,35 +31,34 @@ class Discounts extends Component {
   }
 
   componentDidMount = () => {
-    const attempt = window.sessionStorage.getItem('promotions-analyzer-attempt')
+    const attempt = window.sessionStorage.getItem('promotions-simulator-attempt')
 
     if (!attempt) {
-      window.sessionStorage.setItem('promotions-analyzer-attempt', 1)
+      window.sessionStorage.setItem('promotions-simulator-attempt', 1)
     }
 
-    const doNotShowFeedbackBefore = window.localStorage.getItem('vtex-promotions-analyzer-feedback-do-not-show-before')
+    const doNotShowFeedbackBefore = window.localStorage.getItem('vtex-promotions-simulator-feedback-do-not-show-before')
 
     if (!doNotShowFeedbackBefore) {
-      const tomorrow = new Date()
-      tomorrow.setDate(tomorrow.getDate() + 1)
-      window.localStorage.setItem('vtex-promotions-analyzer-feedback-do-not-show-before', tomorrow.toISOString())
+      const now = new Date()
+      window.localStorage.setItem('vtex-promotions-simulator-feedback-do-not-show-before', now.toISOString())
     }
 
     const hasDiscountsApplied = Boolean(window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length)
     logEvent("Promotion Details Viewed", { "Discounts applied?": hasDiscountsApplied ? "Yes" : "No" })
   }
 
-  handlePromotionsAnalyzerOpen = () => {
+  handlePromotionsSimulatorOpen = () => {
     const orderFormId = window.vtexjs.checkout.orderFormId;
-    const attempt = Number(window.sessionStorage.getItem('promotions-analyzer-attempt'))
+    const attempt = Number(window.sessionStorage.getItem('promotions-simulator-attempt'))
 
-    const simulatorWindow = window.open(`/admin/app/promotions-analyzer?orderFormId=${orderFormId}${attempt > 1 ? `&attempt=${attempt}` : ""}`, "_blank", "width=1200,height=700,menubar=no,status=no,toolbar=no,titlebar=no")
+    const simulatorWindow = window.open(`/admin/app/promotions-simulator?orderFormId=${orderFormId}${attempt > 1 ? `&attempt=${attempt}` : ""}`, "_blank", "width=1200,height=700,menubar=no,status=no,toolbar=no,titlebar=no")
 
-    logEvent("Promotion Analyzer Initialized", { "Volume of Promotions on Cart": window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length, "Number of attempts": attempt })
+    logEvent("Promotion Simulator Initialized", { "Volume of Promotions on Cart": window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length, "Number of attempts": attempt })
 
-    window.sessionStorage.setItem('promotions-analyzer-attempt', attempt + 1)
+    window.sessionStorage.setItem('promotions-simulator-attempt', attempt + 1)
 
-    const doNotShowFeedbackBefore = new Date(window.localStorage.getItem('vtex-promotions-analyzer-feedback-do-not-show-before'))
+    const doNotShowFeedbackBefore = new Date(window.localStorage.getItem('vtex-promotions-simulator-feedback-do-not-show-before'))
 
     if (doNotShowFeedbackBefore < new Date()) {
       const feedbackTimer = setInterval(function () {
@@ -74,7 +73,7 @@ class Discounts extends Component {
 
   render() {
     if (this.state.showFeedback) {
-      return <iframe className='w-100 h-100 nb3 b--none' src='/admin/app/promotions-analyzer/feedback'></iframe>
+      return <iframe className='w-100 h-100 nb3 b--none' src='/admin/app/promotions-simulator/feedback'></iframe>
     }
 
     if (!window.vtexjs || !window.vtexjs.checkout || !window.vtexjs.checkout.orderForm) return null
@@ -112,12 +111,12 @@ class Discounts extends Component {
               ))}
 
               <div className='mt6'>
-                <Button primary onClick={this.handlePromotionsAnalyzerOpen}>
+                <Button primary onClick={this.handlePromotionsSimulatorOpen}>
                   <div className='flex items-center'>
                     <span className='pr3'>
-                      <AnalyzerIcon />
+                      <PromotionsSimulatorIcon />
                     </span>
-                    <FormattedMessage id="cartman.openPromotionsAnalyzer" />
+                    <FormattedMessage id="cartman.openPromotionsSimulator" />
                   </div>
                 </Button>
               </div>
