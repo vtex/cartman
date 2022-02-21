@@ -108,19 +108,18 @@ class Discounts extends Component {
                   <h3 className="f5 fw5 mb3">{benefit.name}</h3>
                   {benefit.description && <p><FormattedMessage id="cartman.description" />: {benefit.description}</p>}
                 </div>
-              ))}
+              ))} </div>}
 
-              <div className='mt6'>
-                <Button primary onClick={this.handlePromotionsSimulatorOpen}>
-                  <div className='flex items-center'>
-                    <span className='pr3'>
-                      <PromotionsSimulatorIcon />
-                    </span>
-                    <FormattedMessage id="cartman.openPromotionsSimulator" />
-                  </div>
-                </Button>
-              </div>
-            </div>}
+            <div className='mt6'>
+              <Button primary onClick={this.handlePromotionsSimulatorOpen}>
+                <div className='flex items-center'>
+                  <span className='pr3'>
+                    <PromotionsSimulatorIcon />
+                  </span>
+                  <FormattedMessage id="cartman.openPromotionsSimulator" />
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
       </div >
