@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Header from './Header'
 import Actions from './Actions'
+import Discounts from './Discounts'
 import Menu from './Menu'
 import Items from './Items'
 import SkuItems from './SkuItems'
@@ -11,6 +12,7 @@ import Button from '@vtex/styleguide/lib/Button'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { FormattedMessage } from 'react-intl'
 import { getAccountName } from '../utils';
+import { init as initAmplitude, logEvent } from '../actions/amplitude'
 
 import '../theme.css'
 
@@ -27,6 +29,10 @@ class Sidebar extends Component {
     }
   }
 
+  componentDidMount = () => {
+    initAmplitude()
+  }
+
   isCartmanEnabled = () => {
     let enabled = false
     let cartmanIsInLocalStorage = this.getCartmanStatusInLocalStorage()
@@ -36,11 +42,11 @@ class Sidebar extends Component {
       enabled = true
 
     } else {
-      if (cartmanQueryOn && !this.state.deactivate){
+      if (cartmanQueryOn && !this.state.deactivate) {
         this.enableCartman()
         enabled = true
 
-      } else if (isCartmanUndefined){
+      } else if (isCartmanUndefined) {
         this.enableCartman()
         enabled = true
 
@@ -74,7 +80,7 @@ class Sidebar extends Component {
 
   disableCartmanQuery = () => {
     let cartmanIndex = location.search.indexOf("cartman")
-    let newQuery = location.search.substr(0,cartmanIndex - 1)
+    let newQuery = location.search.substr(0, cartmanIndex - 1)
     location.search = newQuery
   }
 
@@ -89,7 +95,7 @@ class Sidebar extends Component {
 
   getCartmanStatusInLocalStorage = () => {
     let cartmanStatus = localStorage.isCartmanEnabled
-    if (typeof cartmanStatus !== "undefined"){
+    if (typeof cartmanStatus !== "undefined") {
       cartmanStatus = JSON.parse(cartmanStatus)
     }
 
@@ -111,6 +117,10 @@ class Sidebar extends Component {
     });
   }
 
+  handleGoToDiscounts = () => {
+    this.setState({ page: 'discounts' })
+  }
+
   handleGoToItems = () => {
     this.setState({ page: 'items' })
   }
@@ -129,7 +139,7 @@ class Sidebar extends Component {
 
   handleToggleSidebarView = () => {
     this.setState({ isOpen: !this.state.isOpen })
-    if (this.state.deactivate){
+    if (this.state.deactivate) {
       this.disableCartman()
     }
     window.logSplunk({
@@ -137,10 +147,11 @@ class Sidebar extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'cartman-opened',
-      event: {isOpen: this.state.isOpen},
+      event: { isOpen: this.state.isOpen },
       account: getAccountName(),
     });
 
+    this.state.isOpen && logEvent("Cartman Initialized")
   }
 
   handleDeactivate = () => {
@@ -187,10 +198,10 @@ class Sidebar extends Component {
                         this.state.deactivate
                           ? (
                             <div className="flex-auto tc ma5 f5 lh-copy">
-                              <p className="fw5"><FormattedMessage id="cartman.deactivateMessage1"/></p>
-                              <p><FormattedMessage id="cartman.deactivateMessage2"/></p>
+                              <p className="fw5"><FormattedMessage id="cartman.deactivateMessage1" /></p>
+                              <p><FormattedMessage id="cartman.deactivateMessage2" /></p>
                               <p className="f6" style={{ wordBreak: 'break-all' }}><a href={reactivateLink}>{reactivateLink}</a></p>
-                              <div className="mt5"><Button onClick={this.handleReactivate}><FormattedMessage id="cartman.deactivateUndo"/></Button></div>
+                              <div className="mt5"><Button onClick={this.handleReactivate}><FormattedMessage id="cartman.deactivateUndo" /></Button></div>
                             </div>
                           )
                           : (
@@ -206,24 +217,26 @@ class Sidebar extends Component {
                                 {
                                   this.state.page === 'home' && (
                                     <div>
-                                      <Menu onClick={this.handleGoToRead} title={<FormattedMessage id="cartman.viewDetails"/>} description="Go further into your Cart data" />
-                                      <Menu onClick={this.handleGoToSkuItems} title={<FormattedMessage id="cartman.addBySkuId"/>} description="Pick your items one by one" />
-                                      <Menu onClick={this.handleGoToItems} title={<FormattedMessage id="cartman.addRandom"/>} description="We'll sort some items for you" />
-                                      <Menu onClick={this.handleGoToUtms} title={<FormattedMessage id="cartman.setMarketingData"/>} description="Define your Cart UTMs and Coupon" />
+                                      <Menu onClick={this.handleGoToRead} title={<FormattedMessage id="cartman.viewDetails" />} description="Go further into your Cart data" />
+                                      <Menu onClick={this.handleGoToDiscounts} title={<FormattedMessage id="cartman.viewDiscounts" />} description="Go further into your discounts data" />
+                                      <Menu onClick={this.handleGoToSkuItems} title={<FormattedMessage id="cartman.addBySkuId" />} description="Pick your items one by one" />
+                                      <Menu onClick={this.handleGoToItems} title={<FormattedMessage id="cartman.addRandom" />} description="We'll sort some items for you" />
+                                      <Menu onClick={this.handleGoToUtms} title={<FormattedMessage id="cartman.setMarketingData" />} description="Define your Cart UTMs and Coupon" />
 
                                       <div className="tc mv5 ph4 mv7-m w-100 lh-copy f6">
-                                        <div className="gray mb2"><FormattedMessage id="cartman.cartmanDescription"/></div>
-                                        <div className="rebel-pink"><FormattedMessage id="cartman.cartmanWarning"/></div>
-                                        <div className=""><Button onClick={this.handleDeactivate}><FormattedMessage id="cartman.deactivate"/></Button></div>
+                                        <div className="gray mb2"><FormattedMessage id="cartman.cartmanDescription" /></div>
+                                        <div className="rebel-pink"><FormattedMessage id="cartman.cartmanWarning" /></div>
+                                        <div className=""><Button onClick={this.handleDeactivate}><FormattedMessage id="cartman.deactivate" /></Button></div>
                                       </div>
                                     </div>
                                   )
                                 }
-                                { this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} /> }
-                                { this.state.page === 'skuItems' && <SkuItems /> }
-                                { this.state.page === 'items' && <Items /> }
-                                { this.state.page === 'utms' && <Utms /> }
-                                { this.state.page === 'itemDetail' && <ItemDetail selectedItem={this.state.selectedItem} /> }
+                                {this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} />}
+                                {this.state.page === 'discounts' && <Discounts />}
+                                {this.state.page === 'skuItems' && <SkuItems />}
+                                {this.state.page === 'items' && <Items />}
+                                {this.state.page === 'utms' && <Utms />}
+                                {this.state.page === 'itemDetail' && <ItemDetail selectedItem={this.state.selectedItem} />}
                               </div>
                             </Fragment>
                           )
