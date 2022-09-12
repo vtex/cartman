@@ -12,9 +12,10 @@ import Button from '@vtex/styleguide/lib/Button'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { FormattedMessage } from 'react-intl'
 import { getAccountName } from '../utils';
-import { init as initAmplitude, logEvent } from '../actions/amplitude'
+
 
 import '../theme.css'
+import { logEvent } from '../utils/analytics'
 
 class Sidebar extends Component {
 
@@ -27,10 +28,6 @@ class Sidebar extends Component {
       deactivate: false,
       selectedItem: null
     }
-  }
-
-  componentDidMount = () => {
-    initAmplitude()
   }
 
   isCartmanEnabled = () => {
@@ -138,7 +135,9 @@ class Sidebar extends Component {
   }
 
   handleToggleSidebarView = () => {
-    this.setState({ isOpen: !this.state.isOpen })
+    const isOpen = !this.state.isOpen
+
+    this.setState({ isOpen })
     if (this.state.deactivate) {
       this.disableCartman()
     }
@@ -147,11 +146,11 @@ class Sidebar extends Component {
       type: 'Info',
       workflowType: 'cartman',
       workflowInstance: 'cartman-opened',
-      event: { isOpen: this.state.isOpen },
+      event: { isOpen: isOpen },
       account: getAccountName(),
     });
 
-    this.state.isOpen && logEvent("Cartman Initialized")
+    isOpen && logEvent("Cartman Initialized")
   }
 
   handleDeactivate = () => {

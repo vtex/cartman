@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import Button from '@vtex/styleguide/lib/Button'
-import { logEvent } from '../actions/amplitude'
+import { logEvent } from '../utils/analytics'
+
 
 const SuccessColorfulIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
@@ -44,8 +45,8 @@ class Discounts extends Component {
       window.localStorage.setItem('vtex-promotions-simulator-feedback-do-not-show-before', now.toISOString())
     }
 
-    const hasDiscountsApplied = Boolean(window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length)
-    logEvent("Promotion Details Viewed", { "Discounts applied?": hasDiscountsApplied ? "Yes" : "No" })
+    const discountsApplied = Boolean(window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length)
+    logEvent("Promotions Details Viewed", { discountsApplied })
   }
 
   handlePromotionsSimulatorOpen = () => {
@@ -54,9 +55,15 @@ class Discounts extends Component {
 
     const simulatorWindow = window.open(`/admin/app/promotions-simulator?orderFormId=${orderFormId}${attempt > 1 ? `&attempt=${attempt}` : ""}`, "_blank", "width=1200,height=700,menubar=no,status=no,toolbar=no,titlebar=no")
 
-    logEvent("Promotion Simulator Initialized", { "Volume of Promotions on Cart": window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length, "Number of attempts": attempt })
+    logEvent("Promotions Simulator Initialized", {
+      promotionsApplied: window.vtexjs?.checkout?.orderForm?.ratesAndBenefitsData?.rateAndBenefitsIdentifiers?.length,
+      itemsInCart: window.vtexjs?.checkout?.orderForm.items.length,
+      attempt
+    })
 
     window.sessionStorage.setItem('promotions-simulator-attempt', attempt + 1)
+
+    simulatorWindow.sessionStorage.setItem('vtex-promotions-simulator-session-id', window.sessionStorage.getItem('vtex-promotions-simulator-session-id'))
 
     const doNotShowFeedbackBefore = new Date(window.localStorage.getItem('vtex-promotions-simulator-feedback-do-not-show-before'))
 
