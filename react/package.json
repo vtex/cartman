@@ -1,6 +1,6 @@
 {
   "name": "vtex.cartman",
-  "version": "0.0.1",
+  "version": "0.3.1",
   "dependencies": {
     "@vtex/styleguide": "^2.3.0",
     "bluebird": "^3.5.1",
