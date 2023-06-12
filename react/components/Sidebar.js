@@ -1,17 +1,17 @@
-import React, { Component, Fragment } from 'react'
-import Header from './Header'
-import Actions from './Actions'
-import Discounts from './Discounts'
-import Menu from './Menu'
-import Items from './Items'
-import SkuItems from './SkuItems'
-import Utms from './Utms'
-import Read from './Read'
-import ItemDetail from './ItemDetail'
 import Button from '@vtex/styleguide/lib/Button'
+import React, { Component, Fragment } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { FormattedMessage } from 'react-intl'
-import { getAccountName } from '../utils';
+import { getAccountName } from '../utils'
+import Actions from './Actions'
+import Header from './Header'
+import ItemDetail from './ItemDetail'
+import Items from './Items'
+import Menu from './Menu'
+import Read from './Read'
+import SimulatorMenuItem from './Simulator'
+import SkuItems from './SkuItems'
+import Utms from './Utms'
 
 
 import '../theme.css'
@@ -114,10 +114,6 @@ class Sidebar extends Component {
     });
   }
 
-  handleGoToDiscounts = () => {
-    this.setState({ page: 'discounts' })
-  }
-
   handleGoToItems = () => {
     this.setState({ page: 'items' })
   }
@@ -216,8 +212,8 @@ class Sidebar extends Component {
                                 {
                                   this.state.page === 'home' && (
                                     <div>
+                                      <SimulatorMenuItem />
                                       <Menu onClick={this.handleGoToRead} title={<FormattedMessage id="cartman.viewDetails" />} description="Go further into your Cart data" />
-                                      <Menu onClick={this.handleGoToDiscounts} title={<FormattedMessage id="cartman.viewDiscounts" />} description="Go further into your discounts data" />
                                       <Menu onClick={this.handleGoToSkuItems} title={<FormattedMessage id="cartman.addBySkuId" />} description="Pick your items one by one" />
                                       <Menu onClick={this.handleGoToItems} title={<FormattedMessage id="cartman.addRandom" />} description="We'll sort some items for you" />
                                       <Menu onClick={this.handleGoToUtms} title={<FormattedMessage id="cartman.setMarketingData" />} description="Define your Cart UTMs and Coupon" />
@@ -231,7 +227,6 @@ class Sidebar extends Component {
                                   )
                                 }
                                 {this.state.page === 'read' && <Read setSelectedItem={this.setSelectedItem} goToItemDetail={this.handleGoToItemDetail} />}
-                                {this.state.page === 'discounts' && <Discounts />}
                                 {this.state.page === 'skuItems' && <SkuItems />}
                                 {this.state.page === 'items' && <Items />}
                                 {this.state.page === 'utms' && <Utms />}

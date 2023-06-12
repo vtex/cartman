@@ -7,7 +7,7 @@
   "cartman.addBySkuId": "Agregar ítems por ID de SKU",
   "cartman.addRandom": "Agregar ítems al azar",
   "cartman.viewDetails": "Ver detalles del carrito",
-  "cartman.viewDiscounts": "Ver detalles de la promoción",
+  "cartman.promotionsSimulator": "Simulador de Promociones",
   "cartman.setMarketingData": "Establecer datos de marketing",
   "cartman.itemDetail": "Detalles del ítem",
   "cartman.addRandomMessage": "Filtraremos tus ítems utilizando los parámetros que nos indiques.",
@@ -20,13 +20,7 @@
   "cartman.priceFrom": "Precio desde",
   "cartman.priceTo": "Precio hasta",
   "cartman.addItemsToCart": "Agregar ítems al carrito",
-  "cartman.marketingData": "Datos de marketing",
-  "cartman.noUtms": "No hay UTMs",
   "cartman.coupon": "Cupón",
-  "cartman.benefits": "Promociones aplicadas",
-  "cartman.noBenefits": "No hay promociones aplicadas a este carrito",
-  "cartman.openPromotionsSimulator": "Ver detalles",
-  "cartman.description": "Descripción",
   "cartman.items": "Ítems",
   "cartman.noItems": "No hay ítems",
   "cartman.categoryIds": "IDs de categoría",
@@ -42,5 +36,6 @@
   "cartman.deactivateMessage2": "Si luego cambias de opinión, puedes activar Cartman a través de este link:",
   "cartman.deactivateUndo": "Deshacer desactivación",
   "cartman.general.yes": "Sí",
-  "cartman.general.no": "No"
+  "cartman.general.no": "No",
+  "cartman.general.new": "Nuevo"
 }

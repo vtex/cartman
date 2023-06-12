@@ -15,7 +15,7 @@ class Header extends Component {
         )}
         {this.props.page === 'home' && <span>Cartman</span>}
         {this.props.page === 'read' && <span><FormattedMessage id="cartman.viewDetails" /></span>}
-        {this.props.page === 'discounts' && <span><FormattedMessage id="cartman.viewDiscounts" /></span>}
+        {this.props.page === 'discounts' && <span><FormattedMessage id="cartman.promotionsSimulator" /></span>}
         {this.props.page === 'skuItems' && <span><FormattedMessage id="cartman.addBySkuId" /></span>}
         {this.props.page === 'items' && <span><FormattedMessage id="cartman.addRandom" /></span>}
         {this.props.page === 'utms' && <span><FormattedMessage id="cartman.setMarketingData" /></span>}
