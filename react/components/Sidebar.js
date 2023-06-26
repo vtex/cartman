@@ -30,6 +30,16 @@ class Sidebar extends Component {
     }
   }
 
+  componentDidMount = () => {
+    const initOpen = location.search.includes("cartmanOpen=true")
+
+    if (initOpen) {
+      this.setState({
+        isOpen: true
+      })
+    }
+  }
+
   isCartmanEnabled = () => {
     let enabled = false
     let cartmanIsInLocalStorage = this.getCartmanStatusInLocalStorage()
