@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Access to Promotions Simulator from main menu
+
 ## [0.3.1] - 2022-09-14
 
 ## [0.3.0] - 2022-03-03
