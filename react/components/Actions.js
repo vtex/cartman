@@ -25,11 +25,14 @@ class Actions extends Component {
   }
 
   handleCopyOFId = () => {
-    this.setState({...this.state, orderFormIdCopied: true})
+    this.setState({orderFormIdCopied: true})
+    setTimeout(
+      function() { this.setState({orderFormIdCopied: false});
+    }.bind(this), 2000)
   }
 
   handleResetCopyOFIdButton = () => {
-    this.setState({...this.state, orderFormIdCopied: false})
+    this.setState({orderFormIdCopied: false})
   }
 
   handleCopyCartButton = () => {
@@ -71,7 +74,7 @@ class Actions extends Component {
         <span>
           <Button onClick={this.handleResetCartButton} secondary><FormattedMessage id="cartman.emptyCart"/></Button>
         </span>
-        <span className="mt5">
+        <div className="mt5">
           <CopyToClipboard text={window.vtexjs?.checkout?.orderFormId} onCopy={this.handleCopyOFId}>
             {
               this.state.orderFormIdCopied
@@ -81,7 +84,7 @@ class Actions extends Component {
               : <Button size="small"><FormattedMessage id="cartman.copyCartId"/></Button>
             }
           </CopyToClipboard>
-        </span>
+        </div>
       </div>
     )
   }
