@@ -71,14 +71,14 @@ class Actions extends Component {
         <span>
           <Button onClick={this.handleResetCartButton} secondary><FormattedMessage id="cartman.emptyCart"/></Button>
         </span>
-        <span>
+        <span className="mt5">
           <CopyToClipboard text={window.vtexjs?.checkout?.orderFormId} onCopy={this.handleCopyOFId}>
-          {
+            {
               this.state.orderFormIdCopied
-              ?  <Alert type="success" onClose={this.handleResetCopyOFIdButton}>
-              <FormattedMessage id="cartman.copiedCart"/>
-            </Alert>
-              : <Button primary>Copiar OF id</Button>
+              ?  <Alert type="success" size="small" onClose={this.handleResetCopyOFIdButton}>
+                  <FormattedMessage id="cartman.copiedCart"/>
+                </Alert>
+              : <Button size="small"><FormattedMessage id="cartman.copyCartId"/></Button>
             }
           </CopyToClipboard>
         </span>
