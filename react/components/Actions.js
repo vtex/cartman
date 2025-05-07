@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Button from '@vtex/styleguide/lib/Button'
+import Alert from '@vtex/styleguide/lib/Alert'
 import { generateUrl, getAccountName } from '../utils'
 import { getOrderForm } from '../actions/index'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -12,7 +13,8 @@ class Actions extends Component {
     super(props)
 
     this.state = {
-      copied: 'false'
+      copied: 'false',
+      orderFormIdCopied: false
     }
   }
 
@@ -20,6 +22,14 @@ class Actions extends Component {
     if (window.vtexjs && window.vtexjs.checkout) {
       window.vtexjs.checkout.removeAllItems()
     }
+  }
+
+  handleCopyOFId = () => {
+    this.setState({...this.state, orderFormIdCopied: true})
+  }
+
+  handleResetCopyOFIdButton = () => {
+    this.setState({...this.state, orderFormIdCopied: false})
   }
 
   handleCopyCartButton = () => {
@@ -60,6 +70,17 @@ class Actions extends Component {
         </span>
         <span>
           <Button onClick={this.handleResetCartButton} secondary><FormattedMessage id="cartman.emptyCart"/></Button>
+        </span>
+        <span>
+          <CopyToClipboard text={window.vtexjs?.checkout?.orderFormId} onCopy={this.handleCopyOFId}>
+          {
+              this.state.orderFormIdCopied
+              ?  <Alert type="success" onClose={this.handleResetCopyOFIdButton}>
+              <FormattedMessage id="cartman.copiedCart"/>
+            </Alert>
+              : <Button primary>Copiar OF id</Button>
+            }
+          </CopyToClipboard>
         </span>
       </div>
     )
