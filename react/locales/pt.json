@@ -3,6 +3,7 @@
   "cartman.cartmanWarning": "Não se preocupe! O Cartman NÃO aparece para seus clientes :)",
   "cartman.copyCart": "Copiar link do carrinho",
   "cartman.copiedCart": "Copiado!",
+  "cartman.copyCartId": "Copiar ID do carrinho",
   "cartman.emptyCart": "Carrinho vazio",
   "cartman.addBySkuId": "Adicionar itens pelo ID do SKU",
   "cartman.addRandom": "Adicionar itens aleatórios",
