@@ -12,8 +12,8 @@
   "settingsSchema": {},
   "dependencies": {},
   "builders": {
-    "pages": "0.x",
-    "react": "2.x"
+    "pages": "1.x",
+    "react": "3.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
