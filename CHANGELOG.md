@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update `react` builder from `2.x` to `3.x` and `pages` builder from `0.x` to `1.x` (render-runtime `8.x`). `pages/pages.json` and `react/` are unchanged.
+
 ## [0.4.0] - 2025-05-08
 
 ### Added
